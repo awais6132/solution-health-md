@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: var(--font-plus-jakarta-sans), 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+    color: #111111;
+    background-color: #f0fdf4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@theme {
+  --color-main-text: #111111;
+  --color-placeholder: #b4b9c4;
+  --color-link-teal: #0f6aa0;
+  --color-link-lime: #8db92e;
+  --color-brand-deep-blue: #10669d;
+  --color-input-bg: #f5f8ff;
+  --color-card-glass: rgba(255, 255, 255, 0.85);
+
+  --radius-btn: 8px;
+  --radius-input: 8px;
+  --radius-checkbox: 4px;
+  --radius-card: 20px;
+}
+
+@theme inline {
+  --font-sans: var(--font-plus-jakarta-sans), 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  --font-heading: var(--font-plus-jakarta-sans), 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08), 0 0 25px rgba(16, 102, 157, 0.04);
+  border-radius: 20px;
+}
+
+.custom-input {
+  background-color: #f5f8ff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #111111;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-input::placeholder {
+  color: #b4b9c4;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #10669d;
+  box-shadow: 0 0 0 3px rgba(16, 102, 157, 0.12);
+  background-color: #ffffff;
+}
+
+.custom-btn-primary {
+  background-color: #10669d;
+  color: #ffffff;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-btn-primary:hover {
+  background-color: #0d5380;
+  box-shadow: 0 4px 12px rgba(16, 102, 157, 0.25);
+}
+
+.custom-btn-outline {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #111111;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-btn-outline:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
