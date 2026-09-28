@@ -70,3 +70,42 @@ export function validateSignup(data: unknown): {
 
   return { success: false, errors };
 }
+
+/**
+ * Reusable Centralized Login Validation Schema
+ */
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .min(1, 'Email is required')
+    .email('Please enter a valid email address'),
+  password: z
+    .string()
+    .min(1, 'Password is required'),
+  rememberMe: z.boolean().optional().default(false),
+});
+
+export type LoginInput = z.infer<typeof loginSchema>;
+
+export function validateLogin(data: unknown): {
+  success: boolean;
+  data?: LoginInput;
+  errors?: Record<string, string>;
+} {
+  const result = loginSchema.safeParse(data);
+
+  if (result.success) {
+    return { success: true, data: result.data };
+  }
+
+  const errors: Record<string, string> = {};
+  for (const issue of result.error.issues) {
+    const fieldName = issue.path[0];
+    if (fieldName && !errors[String(fieldName)]) {
+      errors[String(fieldName)] = issue.message;
+    }
+  }
+
+  return { success: false, errors };
+}
