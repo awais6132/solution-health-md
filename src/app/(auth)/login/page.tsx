@@ -9,6 +9,7 @@ import {
   AuthHeader,
   AuthButton,
   AuthFooterLink,
+  ForgotPasswordButton,
 } from '@/components/auth';
 import {
   Input,
@@ -109,12 +110,7 @@ export default function LoginPage() {
                 </span>
               }
             />
-            <Link
-              href={ROUTES.FORGOT_PASSWORD}
-              className="text-[12px] text-[#0F6AA0] font-medium hover:underline transition-colors"
-            >
-              Forgot Password?
-            </Link>
+            <ForgotPasswordButton />
           </div>
         </div>
 
