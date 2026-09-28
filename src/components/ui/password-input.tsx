@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { Input, InputProps } from './input';
-import { Lock, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
+import { PasswordLockIcon } from './icons';
 
 export interface PasswordInputProps extends Omit<InputProps, 'type' | 'leftIcon' | 'rightIcon'> {
   showLockIcon?: boolean;
@@ -16,7 +17,7 @@ export const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputPro
       <Input
         ref={ref}
         type={showPassword ? 'text' : 'password'}
-        leftIcon={showLockIcon ? <Lock className="h-4 w-4" /> : undefined}
+        leftIcon={showLockIcon ? <PasswordLockIcon className="w-[24px] h-[24px] rounded-[22.8px] opacity-100 shrink-0" /> : undefined}
         rightIcon={
           <button
             type="button"

@@ -2,17 +2,22 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { User, Mail } from 'lucide-react';
-import { siteConfig } from '@/constants/site';
 import { ROUTES } from '@/constants/routes';
 import { validateSignup, SignupInput } from '@/schemas/auth';
-import { Input } from '@/components/ui/input';
-import { PasswordInput } from '@/components/ui/password-input';
-import { PhoneInput } from '@/components/ui/phone-input';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Button } from '@/components/ui/button';
-import { SocialButton } from '@/components/ui/social-button';
+import {
+  AuthCard,
+  AuthHeader,
+  AuthButton,
+  AuthFooterLink,
+} from '@/components/auth';
+import {
+  Input,
+  PasswordInput,
+  PhoneInput,
+  Checkbox,
+  UserAvatarIcon,
+  EmailIcon,
+} from '@/components/ui';
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState<SignupInput>({
@@ -42,7 +47,7 @@ export default function SignUpPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Centralized Zod validation (Single Source of Truth)
+    // Centralized Zod validation
     const validation = validateSignup(formData);
 
     if (!validation.success && validation.errors) {
@@ -58,36 +63,23 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="w-full max-w-[470px] px-2 sm:px-0">
-      {/* Centered Glassmorphism Card with balanced top & bottom space */}
-      <div className="w-full rounded-[20px] bg-white/85 backdrop-blur-xl border border-white/80 p-5 sm:p-5.5 shadow-xl shadow-slate-900/5 space-y-2.5 sm:space-y-3">
-        {/* Solutions Health MD Logo Top Center */}
-        <div className="flex justify-center">
-          <Link href={ROUTES.HOME} className="inline-block transition-transform hover:scale-105">
-            <Image
-              src="/assets/images/logo.png"
-              alt={siteConfig.name}
-              width={180}
-              height={52}
-              priority
-              quality={100}
-              className="h-9 sm:h-10 w-auto object-contain"
-            />
-          </Link>
-        </div>
+    <AuthCard
+      size="lg"
+      variant="white"
+      className="w-full max-w-[490px] xl:max-w-[526px] flex flex-col justify-between"
+    >
+      {/* 1. Header (Logo, Title, Subtitle) */}
+      <AuthHeader
+        title="Create your Account"
+        subtitle="Create an account to access features"
+        align="center"
+        className="mb-0"
+        showLogo={true}
+      />
 
-        {/* Header Title & Subtitle */}
-        <div className="text-center space-y-0.5">
-          <h1 className="text-lg sm:text-[21px] font-bold tracking-tight text-[#111111]">
-            Create your Account
-          </h1>
-          <p className="text-[11px] sm:text-xs font-normal text-slate-600">
-            Create an account to access features
-          </p>
-        </div>
-
-        {/* Form Elements */}
-        <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-2.5">
+      {/* 2. Signup Form */}
+      <form onSubmit={handleSubmit} className="space-y-2.5 flex-1 flex flex-col justify-between">
+        <div className="space-y-2.5">
           {/* Row 1: First name & Last name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <Input
@@ -96,9 +88,9 @@ export default function SignUpPage() {
               placeholder="Enter your First name"
               value={formData.firstName}
               onChange={(e) => handleChange('firstName', e.target.value)}
-              leftIcon={<User className="h-3.5 w-3.5" />}
+              leftIcon={<UserAvatarIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
               error={errors.firstName}
-              className="h-9 text-xs"
+              className="h-9 text-xs bg-slate-50/80"
             />
             <Input
               label="Last name"
@@ -106,9 +98,9 @@ export default function SignUpPage() {
               placeholder="Enter your last name"
               value={formData.lastName}
               onChange={(e) => handleChange('lastName', e.target.value)}
-              leftIcon={<User className="h-3.5 w-3.5" />}
+              leftIcon={<UserAvatarIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
               error={errors.lastName}
-              className="h-9 text-xs"
+              className="h-9 text-xs bg-slate-50/80"
             />
           </div>
 
@@ -121,9 +113,9 @@ export default function SignUpPage() {
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => handleChange('email', e.target.value)}
-              leftIcon={<Mail className="h-3.5 w-3.5" />}
+              leftIcon={<EmailIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
               error={errors.email}
-              className="h-9 text-xs"
+              className="h-9 text-xs bg-slate-50/80"
             />
             <PhoneInput
               label="Phone Number"
@@ -132,7 +124,7 @@ export default function SignUpPage() {
               value={formData.phone}
               onChange={(e) => handleChange('phone', e.target.value)}
               error={errors.phone}
-              className="h-9 text-xs"
+              className="h-9 text-xs bg-slate-50/80"
             />
           </div>
 
@@ -145,7 +137,7 @@ export default function SignUpPage() {
               value={formData.password}
               onChange={(e) => handleChange('password', e.target.value)}
               error={errors.password}
-              className="h-9 text-xs"
+              className="h-9 text-xs bg-slate-50/80"
             />
             <PasswordInput
               label="Confirm Password"
@@ -154,7 +146,7 @@ export default function SignUpPage() {
               value={formData.confirmPassword}
               onChange={(e) => handleChange('confirmPassword', e.target.value)}
               error={errors.confirmPassword}
-              className="h-9 text-xs"
+              className="h-9 text-xs bg-slate-50/80"
             />
           </div>
 
@@ -165,7 +157,7 @@ export default function SignUpPage() {
               checked={formData.agreeTerms}
               onChange={(e) => handleChange('agreeTerms', e.target.checked)}
               label={
-                <span className="text-[10.5px] text-slate-700">
+                <span className="text-[11px] leading-[15px] font-normal tracking-normal text-slate-600">
                   Creating an account means you&apos;re okay with our{' '}
                   <Link
                     href={ROUTES.TERMS}
@@ -185,42 +177,39 @@ export default function SignUpPage() {
               }
             />
             {errors.agreeTerms && (
-              <p className="text-[11px] text-rose-500 mt-0.5 pl-5">{errors.agreeTerms}</p>
+              <p className="text-xs text-rose-500 mt-0.5">{errors.agreeTerms}</p>
             )}
           </div>
+        </div>
 
-          {/* Action Buttons */}
-          <div className="space-y-2 pt-0.5">
-            {/* Primary Sign Up Button (8px radius, #10669D) */}
-            <Button
-              type="submit"
-              variant="primary"
-              disabled={isSubmitting}
-              className="w-full h-9 sm:h-9.5 text-xs sm:text-sm font-semibold rounded-[8px] bg-[#10669D] hover:bg-[#0D5380] active:scale-[0.99] transition-transform shadow-xs"
-            >
-              {isSubmitting ? 'Creating account...' : 'Sign up'}
-            </Button>
+        {/* Action Buttons & Footer */}
+        <div className="space-y-2 pt-1.5">
+          <AuthButton
+            type="submit"
+            variant="primary"
+            isLoading={isSubmitting}
+            className="h-9.5 text-[13.5px] font-semibold rounded-[8px]"
+          >
+            Sign up
+          </AuthButton>
 
-            {/* Social Google Signup Button (8px radius) */}
-            <SocialButton provider="google" className="h-9 sm:h-9.5 text-xs">
-              Signup with Google
-            </SocialButton>
-          </div>
+          <AuthButton
+            variant="google"
+            className="h-9.5 text-[13.5px] font-semibold rounded-[8px]"
+          >
+            Signup with Google
+          </AuthButton>
 
-          {/* Bottom Login Link */}
-          <div className="text-center pt-0.5">
-            <p className="text-[11px] sm:text-xs text-slate-700">
-              Already have an account?{' '}
-              <Link
-                href={ROUTES.LOGIN}
-                className="text-[#8DB92E] font-semibold hover:underline transition-colors"
-              >
-                Login
-              </Link>
-            </p>
-          </div>
-        </form>
-      </div>
-    </div>
+          {/* Footer Link */}
+          <AuthFooterLink
+            text="Already have an account?"
+            linkText="Login"
+            href={ROUTES.LOGIN}
+            linkColorClassName="text-[#7cb342] hover:text-[#689f38] hover:underline font-semibold"
+            className="mt-1.5"
+          />
+        </div>
+      </form>
+    </AuthCard>
   );
 }

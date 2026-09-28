@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { PhoneFlagIcon } from './icons';
 
 export interface PhoneInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -18,42 +19,22 @@ export const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-semibold text-[#111111] tracking-tight"
+            className="block text-[14px] leading-[20px] font-medium tracking-normal text-[#111111]"
           >
             {label}
           </label>
         )}
         <div className="relative flex items-center">
-          <div className="absolute left-3 flex items-center gap-1.5 pl-0.5 pointer-events-none text-[#111111]">
-            {/* US Flag SVG Icon */}
-            <svg
-              className="h-3.5 w-5 rounded-xs shadow-xs"
-              viewBox="0 0 640 480"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g fillRule="evenodd">
-                <path fill="#bd3d44" d="M0 0h640v480H0z" />
-                <path stroke="#fff" strokeWidth="37" d="M0 55.4h640M0 129.2h640M0 203.1h640M0 277h640M0 350.8h640M0 424.6h640" />
-                <path fill="#192f5d" d="M0 0h295.4v258.5H0z" />
-                <marker id="a" markerHeight="30" markerWidth="30">
-                  <path fill="#fff" d="m14 0 9 27-23-17h28L5 27z" />
-                </marker>
-                <path
-                  fill="#fff"
-                  d="M20 20h255.4v218.5H20z"
-                  opacity="0.1"
-                />
-              </g>
-            </svg>
-            <span className="text-xs font-medium text-slate-700">{countryCode}</span>
+          <div className="absolute left-3 flex items-center gap-1.5 pointer-events-none text-[#111111]">
+            <PhoneFlagIcon className="w-[40px] h-[24px] rounded-[22.8px] opacity-100 shrink-0" />
+            {countryCode && <span className="text-xs font-medium text-slate-700">{countryCode}</span>}
           </div>
           <input
             id={inputId}
             type="tel"
             ref={ref}
             className={cn(
-              'w-full h-11 pl-20 pr-3.5 bg-[#F5F8FF] border border-[#E5E9F2] rounded-[8px] text-sm text-[#111111] placeholder:text-[#B4B9C4] transition-all duration-200 focus:outline-none focus:border-[#10669D] focus:ring-2 focus:ring-[#10669D]/15 focus:bg-white',
+              'w-full h-11 pl-[92px] pr-3.5 bg-[#F5F8FF] border border-[#E5E9F2] rounded-[8px] text-sm text-[#111111] placeholder:text-[#B4B9C4] transition-all duration-200 focus:outline-none focus:border-[#10669D] focus:ring-2 focus:ring-[#10669D]/15 focus:bg-white',
               error ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/15' : '',
               className
             )}
