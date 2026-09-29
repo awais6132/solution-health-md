@@ -109,3 +109,122 @@ export function validateLogin(data: unknown): {
 
   return { success: false, errors };
 }
+
+/**
+ * Reusable Centralized Send OTP / Forgot Password Validation Schema
+ */
+export const sendOtpSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .min(1, 'Email is required')
+    .email('Please enter a valid email address'),
+});
+
+export type SendOtpInput = z.infer<typeof sendOtpSchema>;
+
+export function validateSendOtp(data: unknown): {
+  success: boolean;
+  data?: SendOtpInput;
+  errors?: Record<string, string>;
+} {
+  const result = sendOtpSchema.safeParse(data);
+
+  if (result.success) {
+    return { success: true, data: result.data };
+  }
+
+  const errors: Record<string, string> = {};
+  for (const issue of result.error.issues) {
+    const fieldName = issue.path[0];
+    if (fieldName && !errors[String(fieldName)]) {
+      errors[String(fieldName)] = issue.message;
+    }
+  }
+
+  return { success: false, errors };
+}
+
+/**
+ * Reusable Centralized Verify OTP Validation Schema
+ */
+export const verifyOtpSchema = z.object({
+  otp: z
+    .string()
+    .min(6, 'Please enter the complete 6-digit verification code')
+    .max(6, 'Verification code must be 6 digits')
+    .regex(/^\d{6}$/, 'Verification code must contain only numbers'),
+});
+
+export type VerifyOtpInput = z.infer<typeof verifyOtpSchema>;
+
+export function validateVerifyOtp(data: unknown): {
+  success: boolean;
+  data?: VerifyOtpInput;
+  errors?: Record<string, string>;
+} {
+  const result = verifyOtpSchema.safeParse(data);
+
+  if (result.success) {
+    return { success: true, data: result.data };
+  }
+
+  const errors: Record<string, string> = {};
+  for (const issue of result.error.issues) {
+    const fieldName = issue.path[0];
+    if (fieldName && !errors[String(fieldName)]) {
+      errors[String(fieldName)] = issue.message;
+    }
+  }
+
+  return { success: false, errors };
+}
+
+/**
+ * Reusable Centralized Reset Password / Create New Password Validation Schema
+ */
+export const resetPasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(1, 'Password is required')
+      .min(6, 'Password must be at least 6 characters'),
+    confirmPassword: z
+      .string()
+      .min(1, 'Confirm Password is required'),
+    agreeTerms: z
+      .boolean()
+      .refine((val) => val === true, {
+        message: 'You must accept our Terms & Conditions',
+      }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
+  });
+
+export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
+
+export function validateResetPassword(data: unknown): {
+  success: boolean;
+  data?: ResetPasswordInput;
+  errors?: Record<string, string>;
+} {
+  const result = resetPasswordSchema.safeParse(data);
+
+  if (result.success) {
+    return { success: true, data: result.data };
+  }
+
+  const errors: Record<string, string> = {};
+  for (const issue of result.error.issues) {
+    const fieldName = issue.path[0];
+    if (fieldName && !errors[String(fieldName)]) {
+      errors[String(fieldName)] = issue.message;
+    }
+  }
+
+  return { success: false, errors };
+}
+
+
