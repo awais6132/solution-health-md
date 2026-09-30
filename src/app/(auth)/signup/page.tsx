@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { useFormik } from 'formik';
 import { ROUTES } from '@/constants/routes';
-import { validateSignup, SignupInput } from '@/schemas/auth';
+import { signupValidationSchema } from '@/schemas/auth';
 import {
   AuthCard,
   AuthHeader,
@@ -20,47 +21,22 @@ import {
 } from '@/components/ui';
 
 export default function SignUpPage() {
-  const [formData, setFormData] = useState<SignupInput>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-    agreeTerms: false,
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+      agreeTerms: false,
+    },
+    validationSchema: signupValidationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log('Signup Form values:', values);
+      setSubmitting(false);
+    },
   });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (field: keyof SignupInput, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[field];
-        return next;
-      });
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Centralized Zod validation
-    const validation = validateSignup(formData);
-
-    if (!validation.success && validation.errors) {
-      setErrors(validation.errors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      alert('Account created successfully!');
-      setIsSubmitting(false);
-    }, 800);
-  };
 
   return (
     <AuthCard
@@ -78,28 +54,32 @@ export default function SignUpPage() {
       />
 
       {/* 2. Signup Form */}
-      <form onSubmit={handleSubmit} className="space-y-2.5 flex-1 flex flex-col justify-between">
+      <form onSubmit={formik.handleSubmit} className="space-y-2.5 flex-1 flex flex-col justify-between">
         <div className="space-y-2.5">
           {/* Row 1: First name & Last name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <Input
               label="First name"
               id="first-name"
+              name="firstName"
               placeholder="Enter your First name"
-              value={formData.firstName}
-              onChange={(e) => handleChange('firstName', e.target.value)}
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               leftIcon={<UserAvatarIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
-              error={errors.firstName}
+              error={formik.touched.firstName && formik.errors.firstName ? formik.errors.firstName : undefined}
               className="h-9 text-xs bg-slate-50/80"
             />
             <Input
               label="Last name"
               id="last-name"
+              name="lastName"
               placeholder="Enter your last name"
-              value={formData.lastName}
-              onChange={(e) => handleChange('lastName', e.target.value)}
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               leftIcon={<UserAvatarIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
-              error={errors.lastName}
+              error={formik.touched.lastName && formik.errors.lastName ? formik.errors.lastName : undefined}
               className="h-9 text-xs bg-slate-50/80"
             />
           </div>
@@ -109,21 +89,25 @@ export default function SignUpPage() {
             <Input
               label="Email"
               id="email"
+              name="email"
               type="email"
               placeholder="Enter your email"
-              value={formData.email}
-              onChange={(e) => handleChange('email', e.target.value)}
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               leftIcon={<EmailIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
-              error={errors.email}
+              error={formik.touched.email && formik.errors.email ? formik.errors.email : undefined}
               className="h-9 text-xs bg-slate-50/80"
             />
             <PhoneInput
               label="Phone Number"
               id="phone-number"
+              name="phone"
               countryCode="+001"
-              value={formData.phone}
-              onChange={(e) => handleChange('phone', e.target.value)}
-              error={errors.phone}
+              value={formik.values.phone}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.phone && formik.errors.phone ? formik.errors.phone : undefined}
               className="h-9 text-xs bg-slate-50/80"
             />
           </div>
@@ -133,19 +117,23 @@ export default function SignUpPage() {
             <PasswordInput
               label="Password"
               id="password"
+              name="password"
               placeholder="••••••••"
-              value={formData.password}
-              onChange={(e) => handleChange('password', e.target.value)}
-              error={errors.password}
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.password && formik.errors.password ? formik.errors.password : undefined}
               className="h-9 text-xs bg-slate-50/80"
             />
             <PasswordInput
               label="Confirm Password"
               id="confirm-password"
+              name="confirmPassword"
               placeholder="••••••••"
-              value={formData.confirmPassword}
-              onChange={(e) => handleChange('confirmPassword', e.target.value)}
-              error={errors.confirmPassword}
+              value={formik.values.confirmPassword}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.confirmPassword && formik.errors.confirmPassword ? formik.errors.confirmPassword : undefined}
               className="h-9 text-xs bg-slate-50/80"
             />
           </div>
@@ -154,8 +142,10 @@ export default function SignUpPage() {
           <div className="pt-0.5">
             <Checkbox
               id="agree-terms"
-              checked={formData.agreeTerms}
-              onChange={(e) => handleChange('agreeTerms', e.target.checked)}
+              name="agreeTerms"
+              checked={formik.values.agreeTerms}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               label={
                 <span className="text-[11px] leading-[15px] font-normal tracking-normal text-slate-600">
                   Creating an account means you&apos;re okay with our{' '}
@@ -176,8 +166,8 @@ export default function SignUpPage() {
                 </span>
               }
             />
-            {errors.agreeTerms && (
-              <p className="text-xs text-rose-500 mt-0.5">{errors.agreeTerms}</p>
+            {formik.touched.agreeTerms && formik.errors.agreeTerms && (
+              <p className="text-xs text-rose-500 mt-0.5">{formik.errors.agreeTerms}</p>
             )}
           </div>
         </div>
@@ -187,7 +177,8 @@ export default function SignUpPage() {
           <AuthButton
             type="submit"
             variant="primary"
-            isLoading={isSubmitting}
+            isLoading={formik.isSubmitting}
+            disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
             className="h-9.5 text-[13.5px] font-semibold rounded-[8px]"
           >
             Sign up

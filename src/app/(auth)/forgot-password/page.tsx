@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
+import { useFormik } from 'formik';
 import { ROUTES } from '@/constants/routes';
-import { validateSendOtp, SendOtpInput } from '@/schemas/auth';
+import { forgotPasswordValidationSchema } from '@/schemas/auth';
 import {
   AuthCard,
   AuthHeader,
@@ -17,41 +18,21 @@ import {
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
-  const [formData, setFormData] = useState<SendOtpInput>({
-    email: '',
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+    },
+    validationSchema: forgotPasswordValidationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log('Forgot Password values:', values);
+      setTimeout(() => {
+        setSubmitting(false);
+        // Navigate to OTP Verification screen with email param
+        router.push(`${ROUTES.VERIFY_OTP}?email=${encodeURIComponent(values.email)}`);
+      }, 600);
+    },
   });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (value: string) => {
-    setFormData({ email: value });
-    if (errors.email) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next.email;
-        return next;
-      });
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const validation = validateSendOtp(formData);
-
-    if (!validation.success && validation.errors) {
-      setErrors(validation.errors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      // Navigate to OTP Verification screen with email param
-      router.push(`${ROUTES.VERIFY_OTP}?email=${encodeURIComponent(formData.email)}`);
-    }, 600);
-  };
 
   return (
     <AuthCard
@@ -70,19 +51,21 @@ export default function ForgotPasswordPage() {
       />
 
       {/* 2. OTP Send Form */}
-      <form onSubmit={handleSubmit} className="space-y-3.5 flex-1 flex flex-col justify-between pt-2">
+      <form onSubmit={formik.handleSubmit} className="space-y-3.5 flex-1 flex flex-col justify-between pt-2">
         <div className="space-y-3">
           <Input
             label="Email"
             id="email"
+            name="email"
             type="email"
             placeholder="Enter your email"
-            value={formData.email}
-            onChange={(e) => handleChange(e.target.value)}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             leftIcon={<EmailIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
-            error={errors.email}
+            error={formik.touched.email && formik.errors.email ? formik.errors.email : undefined}
             className="h-9.5 text-xs bg-slate-50/80"
-            disabled={isSubmitting}
+            disabled={formik.isSubmitting}
             autoFocus
           />
         </div>
@@ -92,8 +75,8 @@ export default function ForgotPasswordPage() {
           <AuthButton
             type="submit"
             variant="primary"
-            isLoading={isSubmitting}
-            disabled={isSubmitting}
+            isLoading={formik.isSubmitting}
+            disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
             className="h-9.5 text-[13.5px] font-semibold rounded-[8px]"
           >
             Send Recovery Email

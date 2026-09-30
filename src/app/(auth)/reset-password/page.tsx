@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
+import { useFormik } from 'formik';
 import { ROUTES } from '@/constants/routes';
-import { validateResetPassword, ResetPasswordInput } from '@/schemas/auth';
+import { resetPasswordValidationSchema } from '@/schemas/auth';
 import {
   AuthCard,
   AuthHeader,
@@ -17,43 +18,23 @@ import {
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const [formData, setFormData] = useState<ResetPasswordInput>({
-    password: '',
-    confirmPassword: '',
-    agreeTerms: false,
+
+  const formik = useFormik({
+    initialValues: {
+      password: '',
+      confirmPassword: '',
+      agreeTerms: false,
+    },
+    validationSchema: resetPasswordValidationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log('Reset Password values:', values);
+      setTimeout(() => {
+        setSubmitting(false);
+        alert('Password reset successfully! Please sign in with your new password.');
+        router.push(ROUTES.LOGIN);
+      }, 800);
+    },
   });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (field: keyof ResetPasswordInput, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[field];
-        return next;
-      });
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const validation = validateResetPassword(formData);
-
-    if (!validation.success && validation.errors) {
-      setErrors(validation.errors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert('Password reset successfully! Please sign in with your new password.');
-      router.push(ROUTES.LOGIN);
-    }, 800);
-  };
 
   return (
     <AuthCard
@@ -72,18 +53,20 @@ export default function ResetPasswordPage() {
       />
 
       {/* 2. Reset Password Form */}
-      <form onSubmit={handleSubmit} className="space-y-3.5 flex-1 flex flex-col justify-between pt-2">
+      <form onSubmit={formik.handleSubmit} className="space-y-3.5 flex-1 flex flex-col justify-between pt-2">
         <div className="space-y-3">
           {/* Password Field */}
           <PasswordInput
             label="Password"
             id="password"
+            name="password"
             placeholder="••••••••"
-            value={formData.password}
-            onChange={(e) => handleChange('password', e.target.value)}
-            error={errors.password}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.password && formik.errors.password ? formik.errors.password : undefined}
             className="h-9.5 text-xs bg-slate-50/80"
-            disabled={isSubmitting}
+            disabled={formik.isSubmitting}
             autoFocus
           />
 
@@ -91,28 +74,32 @@ export default function ResetPasswordPage() {
           <PasswordInput
             label="Confirm Password"
             id="confirm-password"
+            name="confirmPassword"
             placeholder="••••••••"
-            value={formData.confirmPassword}
-            onChange={(e) => handleChange('confirmPassword', e.target.value)}
-            error={errors.confirmPassword}
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.confirmPassword && formik.errors.confirmPassword ? formik.errors.confirmPassword : undefined}
             className="h-9.5 text-xs bg-slate-50/80"
-            disabled={isSubmitting}
+            disabled={formik.isSubmitting}
           />
 
           {/* Terms & Conditions Checkbox */}
           <div className="pt-0.5">
             <Checkbox
               id="agree-terms"
-              checked={formData.agreeTerms}
-              onChange={(e) => handleChange('agreeTerms', e.target.checked)}
+              name="agreeTerms"
+              checked={formik.values.agreeTerms}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               label={
                 <span className="text-[12px] font-normal text-slate-700 select-none">
                   You accept our Terms & Conditions
                 </span>
               }
             />
-            {errors.agreeTerms && (
-              <p className="text-xs text-rose-500 mt-1">{errors.agreeTerms}</p>
+            {formik.touched.agreeTerms && formik.errors.agreeTerms && (
+              <p className="text-xs text-rose-500 mt-1">{formik.errors.agreeTerms}</p>
             )}
           </div>
         </div>
@@ -122,8 +109,8 @@ export default function ResetPasswordPage() {
           <AuthButton
             type="submit"
             variant="primary"
-            isLoading={isSubmitting}
-            disabled={isSubmitting}
+            isLoading={formik.isSubmitting}
+            disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
             className="h-9.5 text-[13.5px] font-semibold rounded-[8px]"
           >
             Reset Password

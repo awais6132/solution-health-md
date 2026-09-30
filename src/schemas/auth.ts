@@ -1,230 +1,106 @@
-import { z } from 'zod';
+import * as Yup from 'yup';
 
 /**
- * Reusable Centralized Signup Validation Schema
- * Single Source of Truth for frontend form and backend/API validation
+ * ============================================================================
+ * Centralized Field Validation Rules (Single Source of Truth)
+ * ============================================================================
+ * Har field ka standard validation rule ek hi jagah define hai.
+ * Kal ko rule ya error message change karna ho, to sirf yahan update karna hoga.
  */
-export const signupSchema = z
-  .object({
-    firstName: z
-      .string()
-      .trim()
-      .min(1, 'First name is required')
-      .max(50, 'First name is too long'),
-    lastName: z
-      .string()
-      .trim()
-      .min(1, 'Last name is required')
-      .max(50, 'Last name is too long'),
-    email: z
-      .string()
-      .trim()
-      .min(1, 'Email is required')
-      .email('Please enter a valid email address'),
-    phone: z
-      .string()
-      .trim()
-      .optional()
-      .default(''),
-    password: z
-      .string()
-      .min(1, 'Password is required')
-      .min(6, 'Password must be at least 6 characters'),
-    confirmPassword: z
-      .string()
-      .min(1, 'Confirm Password is required'),
-    agreeTerms: z
-      .boolean()
-      .refine((val) => val === true, {
-        message: 'You must agree to the Terms and Privacy Policy',
-      }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  });
-
-export type SignupInput = z.infer<typeof signupSchema>;
-
-/**
- * Type-safe helper to validate form data and return clean error map
- */
-export function validateSignup(data: unknown): {
-  success: boolean;
-  data?: SignupInput;
-  errors?: Record<string, string>;
-} {
-  const result = signupSchema.safeParse(data);
-
-  if (result.success) {
-    return { success: true, data: result.data };
-  }
-
-  const errors: Record<string, string> = {};
-  for (const issue of result.error.issues) {
-    const fieldName = issue.path[0];
-    if (fieldName && !errors[String(fieldName)]) {
-      errors[String(fieldName)] = issue.message;
-    }
-  }
-
-  return { success: false, errors };
-}
-
-/**
- * Reusable Centralized Login Validation Schema
- */
-export const loginSchema = z.object({
-  email: z
-    .string()
+export const authValidationRules = {
+  firstName: Yup.string()
     .trim()
-    .min(1, 'Email is required')
-    .email('Please enter a valid email address'),
-  password: z
-    .string()
-    .min(1, 'Password is required'),
-  rememberMe: z.boolean().optional().default(false),
-});
+    .required('First name is required')
+    .max(50, 'First name must not exceed 50 characters'),
 
-export type LoginInput = z.infer<typeof loginSchema>;
-
-export function validateLogin(data: unknown): {
-  success: boolean;
-  data?: LoginInput;
-  errors?: Record<string, string>;
-} {
-  const result = loginSchema.safeParse(data);
-
-  if (result.success) {
-    return { success: true, data: result.data };
-  }
-
-  const errors: Record<string, string> = {};
-  for (const issue of result.error.issues) {
-    const fieldName = issue.path[0];
-    if (fieldName && !errors[String(fieldName)]) {
-      errors[String(fieldName)] = issue.message;
-    }
-  }
-
-  return { success: false, errors };
-}
-
-/**
- * Reusable Centralized Send OTP / Forgot Password Validation Schema
- */
-export const sendOtpSchema = z.object({
-  email: z
-    .string()
+  lastName: Yup.string()
     .trim()
-    .min(1, 'Email is required')
-    .email('Please enter a valid email address'),
-});
+    .required('Last name is required')
+    .max(50, 'Last name must not exceed 50 characters'),
 
-export type SendOtpInput = z.infer<typeof sendOtpSchema>;
+  email: Yup.string()
+    .trim()
+    .email('Please enter a valid email address')
+    .required('Email is required'),
 
-export function validateSendOtp(data: unknown): {
-  success: boolean;
-  data?: SendOtpInput;
-  errors?: Record<string, string>;
-} {
-  const result = sendOtpSchema.safeParse(data);
+  phone: Yup.string()
+    .trim()
+    .required('Phone number is required'),
 
-  if (result.success) {
-    return { success: true, data: result.data };
-  }
+  password: Yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .required('Password is required'),
 
-  const errors: Record<string, string> = {};
-  for (const issue of result.error.issues) {
-    const fieldName = issue.path[0];
-    if (fieldName && !errors[String(fieldName)]) {
-      errors[String(fieldName)] = issue.message;
-    }
-  }
+  confirmPassword: (passwordField = 'password') =>
+    Yup.string()
+      .oneOf([Yup.ref(passwordField)], 'Passwords must match')
+      .required('Confirm password is required'),
 
-  return { success: false, errors };
-}
+  agreeTerms: Yup.boolean().oneOf([true], 'You must accept the terms and privacy policy'),
 
-/**
- * Reusable Centralized Verify OTP Validation Schema
- */
-export const verifyOtpSchema = z.object({
-  otp: z
-    .string()
-    .min(6, 'Please enter the complete 6-digit verification code')
-    .max(6, 'Verification code must be 6 digits')
-    .regex(/^\d{6}$/, 'Verification code must contain only numbers'),
-});
+  rememberMe: Yup.boolean().optional().default(false),
 
-export type VerifyOtpInput = z.infer<typeof verifyOtpSchema>;
-
-export function validateVerifyOtp(data: unknown): {
-  success: boolean;
-  data?: VerifyOtpInput;
-  errors?: Record<string, string>;
-} {
-  const result = verifyOtpSchema.safeParse(data);
-
-  if (result.success) {
-    return { success: true, data: result.data };
-  }
-
-  const errors: Record<string, string> = {};
-  for (const issue of result.error.issues) {
-    const fieldName = issue.path[0];
-    if (fieldName && !errors[String(fieldName)]) {
-      errors[String(fieldName)] = issue.message;
-    }
-  }
-
-  return { success: false, errors };
-}
+  otp: Yup.string()
+    .length(6, 'Please enter the complete 6-digit verification code')
+    .matches(/^\d{6}$/, 'Verification code must contain only numbers')
+    .required('Verification code is required'),
+};
 
 /**
- * Reusable Centralized Reset Password / Create New Password Validation Schema
+ * ============================================================================
+ * Auth Module Schemas (Composed from Reusable Rules)
+ * ============================================================================
  */
-export const resetPasswordSchema = z
-  .object({
-    password: z
-      .string()
-      .min(1, 'Password is required')
-      .min(6, 'Password must be at least 6 characters'),
-    confirmPassword: z
-      .string()
-      .min(1, 'Confirm Password is required'),
-    agreeTerms: z
-      .boolean()
-      .refine((val) => val === true, {
-        message: 'You must accept our Terms & Conditions',
-      }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  });
 
-export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
+// 1. Signup Schema
+export const signupValidationSchema = Yup.object({
+  firstName: authValidationRules.firstName,
+  lastName: authValidationRules.lastName,
+  email: authValidationRules.email,
+  phone: authValidationRules.phone,
+  password: authValidationRules.password,
+  confirmPassword: authValidationRules.confirmPassword('password'),
+  agreeTerms: authValidationRules.agreeTerms,
+});
 
-export function validateResetPassword(data: unknown): {
-  success: boolean;
-  data?: ResetPasswordInput;
-  errors?: Record<string, string>;
-} {
-  const result = resetPasswordSchema.safeParse(data);
+// 2. Login Schema
+export const loginValidationSchema = Yup.object({
+  email: authValidationRules.email,
+  password: authValidationRules.password,
+  rememberMe: authValidationRules.rememberMe,
+});
 
-  if (result.success) {
-    return { success: true, data: result.data };
-  }
+// 3. Forgot Password / Send OTP Schema
+export const forgotPasswordValidationSchema = Yup.object({
+  email: authValidationRules.email,
+});
 
-  const errors: Record<string, string> = {};
-  for (const issue of result.error.issues) {
-    const fieldName = issue.path[0];
-    if (fieldName && !errors[String(fieldName)]) {
-      errors[String(fieldName)] = issue.message;
-    }
-  }
+// 4. Reset Password Schema
+export const resetPasswordValidationSchema = Yup.object({
+  password: authValidationRules.password,
+  confirmPassword: authValidationRules.confirmPassword('password'),
+  agreeTerms: authValidationRules.agreeTerms,
+});
 
-  return { success: false, errors };
-}
+// 5. Verify OTP Schema
+export const verifyOtpValidationSchema = Yup.object({
+  otp: authValidationRules.otp,
+});
 
+// Aliases for backwards compatibility
+export const signupSchema = signupValidationSchema;
+export const loginSchema = loginValidationSchema;
+export const sendOtpSchema = forgotPasswordValidationSchema;
+export const resetPasswordSchema = resetPasswordValidationSchema;
+export const verifyOtpSchema = verifyOtpValidationSchema;
 
+/**
+ * ============================================================================
+ * Type Definitions inferred from Schemas
+ * ============================================================================
+ */
+export type SignupInput = Yup.InferType<typeof signupValidationSchema>;
+export type LoginInput = Yup.InferType<typeof loginValidationSchema>;
+export type SendOtpInput = Yup.InferType<typeof forgotPasswordValidationSchema>;
+export type ResetPasswordInput = Yup.InferType<typeof resetPasswordValidationSchema>;
+export type VerifyOtpInput = Yup.InferType<typeof verifyOtpValidationSchema>;

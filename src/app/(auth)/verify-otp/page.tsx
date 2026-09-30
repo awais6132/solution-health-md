@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useFormik } from 'formik';
 import { ROUTES } from '@/constants/routes';
-import { validateVerifyOtp, VerifyOtpInput } from '@/schemas/auth';
+import { verifyOtpValidationSchema } from '@/schemas/auth';
 import {
   AuthCard,
   AuthHeader,
@@ -17,9 +18,6 @@ function VerifyOtpForm() {
   const searchParams = useSearchParams();
   const emailParam = searchParams.get('email') || 'your email';
 
-  const [otp, setOtp] = useState('');
-  const [error, setError] = useState<string | undefined>();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [resendTimer, setResendTimer] = useState(59);
   const [resendSuccess, setResendSuccess] = useState(false);
 
@@ -32,11 +30,6 @@ function VerifyOtpForm() {
     return () => clearInterval(interval);
   }, [resendTimer]);
 
-  const handleOtpChange = (val: string) => {
-    setOtp(val);
-    if (error) setError(undefined);
-  };
-
   const handleResend = () => {
     if (resendTimer > 0) return;
     setResendTimer(59);
@@ -44,23 +37,20 @@ function VerifyOtpForm() {
     setTimeout(() => setResendSuccess(false), 3000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const validation = validateVerifyOtp({ otp });
-
-    if (!validation.success && validation.errors) {
-      setError(validation.errors.otp);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert('OTP verified successfully!');
-      router.push(ROUTES.RESET_PASSWORD);
-    }, 800);
-  };
+  const formik = useFormik({
+    initialValues: {
+      otp: '',
+    },
+    validationSchema: verifyOtpValidationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log('Verify OTP values:', values);
+      setTimeout(() => {
+        setSubmitting(false);
+        alert('OTP verified successfully!');
+        router.push(ROUTES.RESET_PASSWORD);
+      }, 800);
+    },
+  });
 
   const formattedTimer = `00:${resendTimer < 10 ? `0${resendTimer}` : resendTimer}`;
 
@@ -86,14 +76,17 @@ function VerifyOtpForm() {
       />
 
       {/* 2. OTP Form */}
-      <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col justify-between mt-2">
+      <form onSubmit={formik.handleSubmit} className="space-y-5 flex-1 flex flex-col justify-between mt-2">
         <div className="space-y-4">
           <OtpInput
             length={6}
-            value={otp}
-            onChange={handleOtpChange}
-            error={error}
-            disabled={isSubmitting}
+            value={formik.values.otp}
+            onChange={(val) => {
+              formik.setFieldValue('otp', val);
+              formik.setFieldTouched('otp', true, false);
+            }}
+            error={formik.touched.otp && formik.errors.otp ? formik.errors.otp : undefined}
+            disabled={formik.isSubmitting}
           />
 
           {/* Resend notification / timer */}
@@ -125,8 +118,8 @@ function VerifyOtpForm() {
           <AuthButton
             type="submit"
             variant="success"
-            isLoading={isSubmitting}
-            disabled={isSubmitting || otp.length < 6}
+            isLoading={formik.isSubmitting}
+            disabled={formik.isSubmitting || formik.values.otp.length < 6}
             className="h-9.5 text-[13.5px] font-semibold rounded-[8px]"
           >
             Verify

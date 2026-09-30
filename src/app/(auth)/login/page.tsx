@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
+import { useFormik } from 'formik';
 import { ROUTES } from '@/constants/routes';
-import { validateLogin, LoginInput } from '@/schemas/auth';
+import { loginValidationSchema } from '@/schemas/auth';
 import {
   AuthCard,
   AuthHeader,
@@ -19,42 +19,21 @@ import {
 } from '@/components/ui';
 
 export default function LoginPage() {
-  const [formData, setFormData] = useState<LoginInput>({
-    email: '',
-    password: '',
-    rememberMe: false,
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      rememberMe: false,
+    },
+    validationSchema: loginValidationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log('Login Form values:', values);
+      setTimeout(() => {
+        alert('Logged in successfully!');
+        setSubmitting(false);
+      }, 800);
+    },
   });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (field: keyof LoginInput, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[field];
-        return next;
-      });
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const validation = validateLogin(formData);
-
-    if (!validation.success && validation.errors) {
-      setErrors(validation.errors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      alert('Logged in successfully!');
-      setIsSubmitting(false);
-    }, 800);
-  };
 
   return (
     <AuthCard
@@ -72,18 +51,20 @@ export default function LoginPage() {
       />
 
       {/* 2. Login Form */}
-      <form onSubmit={handleSubmit} className="space-y-3 flex-1 flex flex-col justify-between pt-1">
+      <form onSubmit={formik.handleSubmit} className="space-y-3 flex-1 flex flex-col justify-between pt-1">
         <div className="space-y-3">
           {/* Email Field */}
           <Input
             label="Email"
             id="email"
+            name="email"
             type="email"
             placeholder="Enter your email"
-            value={formData.email}
-            onChange={(e) => handleChange('email', e.target.value)}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             leftIcon={<EmailIcon className="w-[22px] h-[22px] rounded-[22.8px] opacity-100 shrink-0" />}
-            error={errors.email}
+            error={formik.touched.email && formik.errors.email ? formik.errors.email : undefined}
             className="h-9.5 text-xs bg-slate-50/80"
           />
 
@@ -91,10 +72,12 @@ export default function LoginPage() {
           <PasswordInput
             label="Password"
             id="password"
+            name="password"
             placeholder="••••••••"
-            value={formData.password}
-            onChange={(e) => handleChange('password', e.target.value)}
-            error={errors.password}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.password && formik.errors.password ? formik.errors.password : undefined}
             className="h-9.5 text-xs bg-slate-50/80"
           />
 
@@ -102,8 +85,10 @@ export default function LoginPage() {
           <div className="flex items-center justify-between pt-0.5">
             <Checkbox
               id="remember-me"
-              checked={formData.rememberMe}
-              onChange={(e) => handleChange('rememberMe', e.target.checked)}
+              name="rememberMe"
+              checked={formik.values.rememberMe}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               label={
                 <span className="text-[12px] font-medium text-slate-700 select-none">
                   Remember me
@@ -119,7 +104,8 @@ export default function LoginPage() {
           <AuthButton
             type="submit"
             variant="primary"
-            isLoading={isSubmitting}
+            isLoading={formik.isSubmitting}
+            disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
             className="h-9.5 text-[13.5px] font-semibold rounded-[8px]"
           >
             Log In
