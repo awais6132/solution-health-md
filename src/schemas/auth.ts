@@ -41,9 +41,10 @@ export const authValidationRules = {
   rememberMe: Yup.boolean().optional().default(false),
 
   otp: Yup.string()
+    .trim()
+    .required('Verification code is required')
     .length(6, 'Please enter the complete 6-digit verification code')
-    .matches(/^\d{6}$/, 'Verification code must contain only numbers')
-    .required('Verification code is required'),
+    .matches(/^\d{6}$/, 'Verification code must contain only numbers'),
 };
 
 /**

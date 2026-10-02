@@ -8,15 +8,46 @@ export const siteConfig: SiteConfig = {
 
 export const mainNavItems: NavItem[] = [
   {
-    title: 'Home',
-    href: '/',
+    title: 'Our Services',
+    href: '#services',
   },
   {
-    title: 'Features',
-    href: '#features',
+    title: 'How It Works',
+    href: '#how-it-works',
   },
   {
-    title: 'Getting Started',
-    href: '#get-started',
+    title: 'Pricing',
+    href: '#pricing',
+  },
+  {
+    title: 'About',
+    href: '#about',
+  },
+  {
+    title: 'FAQs',
+    href: '#faqs',
+  },
+];
+
+export const userProfileMenuItems: NavItem[] = [
+  {
+    title: 'My Profile',
+    href: '/dashboard/profile',
+  },
+  {
+    title: 'My Appointments',
+    href: '/dashboard/appointments',
+  },
+  {
+    title: 'My Subscriptions',
+    href: '/dashboard/subscriptions',
+  },
+  {
+    title: 'My Invoices',
+    href: '/dashboard/invoices',
+  },
+  {
+    title: 'Sign Out',
+    href: '/login',
   },
 ];

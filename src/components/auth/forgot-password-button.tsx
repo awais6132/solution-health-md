@@ -21,7 +21,7 @@ export function ForgotPasswordButton({
   className,
 }: ForgotPasswordButtonProps) {
   const baseClasses = cn(
-    'text-[12px] font-medium text-[#0F6AA0] hover:text-[#0b5480] hover:underline transition-colors select-none inline-flex items-center cursor-pointer',
+    'text-[12px] font-medium text-[#0F6AA0] hover:text-[#0b5480] hover:translate-x-0.5 transition-all duration-200 ease-out select-none inline-flex items-center cursor-pointer',
     className
   );
 

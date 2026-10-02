@@ -13,26 +13,56 @@ import {
 } from '@/components/auth';
 import { OtpInput } from '@/components/ui';
 
+const RESEND_COOLDOWN_SECONDS = 59;
+const OTP_EXPIRY_STORAGE_KEY = 'solution_health_otp_resend_expiry';
+
 function VerifyOtpForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const emailParam = searchParams.get('email') || 'your email';
 
-  const [resendTimer, setResendTimer] = useState(59);
+  const [resendTimer, setResendTimer] = useState<number>(0);
   const [resendSuccess, setResendSuccess] = useState(false);
 
-  // Countdown timer for resend
+  // Initialize remaining time from sessionStorage on client mount
+  useEffect(() => {
+    const storedExpiry = sessionStorage.getItem(OTP_EXPIRY_STORAGE_KEY);
+    if (storedExpiry) {
+      const remaining = Math.max(0, Math.ceil((parseInt(storedExpiry, 10) - Date.now()) / 1000));
+      setResendTimer(remaining);
+    } else {
+      // First visit: set 59s cooldown and save expiry timestamp
+      const newExpiry = Date.now() + RESEND_COOLDOWN_SECONDS * 1000;
+      sessionStorage.setItem(OTP_EXPIRY_STORAGE_KEY, newExpiry.toString());
+      setResendTimer(RESEND_COOLDOWN_SECONDS);
+    }
+  }, []);
+
+  // Countdown timer synced with target timestamp
   useEffect(() => {
     if (resendTimer <= 0) return;
+
     const interval = setInterval(() => {
-      setResendTimer((prev) => prev - 1);
+      const storedExpiry = sessionStorage.getItem(OTP_EXPIRY_STORAGE_KEY);
+      if (storedExpiry) {
+        const remaining = Math.max(0, Math.ceil((parseInt(storedExpiry, 10) - Date.now()) / 1000));
+        setResendTimer(remaining);
+        if (remaining <= 0) {
+          clearInterval(interval);
+        }
+      } else {
+        setResendTimer((prev) => Math.max(0, prev - 1));
+      }
     }, 1000);
+
     return () => clearInterval(interval);
   }, [resendTimer]);
 
   const handleResend = () => {
     if (resendTimer > 0) return;
-    setResendTimer(59);
+    const newExpiry = Date.now() + RESEND_COOLDOWN_SECONDS * 1000;
+    sessionStorage.setItem(OTP_EXPIRY_STORAGE_KEY, newExpiry.toString());
+    setResendTimer(RESEND_COOLDOWN_SECONDS);
     setResendSuccess(true);
     setTimeout(() => setResendSuccess(false), 3000);
   };
@@ -45,6 +75,7 @@ function VerifyOtpForm() {
     onSubmit: async (values, { setSubmitting }) => {
       console.log('Verify OTP values:', values);
       setTimeout(() => {
+        sessionStorage.removeItem(OTP_EXPIRY_STORAGE_KEY);
         setSubmitting(false);
         alert('OTP verified successfully!');
         router.push(ROUTES.RESET_PASSWORD);
@@ -84,6 +115,9 @@ function VerifyOtpForm() {
             onChange={(val) => {
               formik.setFieldValue('otp', val);
               formik.setFieldTouched('otp', true, false);
+            }}
+            onBlur={() => {
+              formik.setFieldTouched('otp', true, true);
             }}
             error={formik.touched.otp && formik.errors.otp ? formik.errors.otp : undefined}
             disabled={formik.isSubmitting}

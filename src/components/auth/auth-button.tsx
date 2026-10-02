@@ -12,10 +12,21 @@ export interface AuthButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
    */
   variant?: 'primary' | 'success' | 'google' | 'outline';
   isLoading?: boolean;
+  showArrow?: boolean;
 }
 
 export const AuthButton = React.forwardRef<HTMLButtonElement, AuthButtonProps>(
-  ({ className, variant = 'primary', isLoading = false, children, disabled, ...props }, ref) => {
+  (
+    {
+      className,
+      variant = 'primary',
+      isLoading = false,
+      children,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     // If variant is google, render the specialized SocialButton
     if (variant === 'google') {
       return (
@@ -31,15 +42,12 @@ export const AuthButton = React.forwardRef<HTMLButtonElement, AuthButtonProps>(
     }
 
     const baseStyles =
-      'w-full h-11 inline-flex items-center justify-center font-semibold rounded-[8px] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer shadow-xs text-sm sm:text-base';
+      'w-full h-11 inline-flex items-center justify-center font-semibold rounded-[8px] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer text-sm sm:text-base select-none';
 
     const variants = {
-      primary:
-        'bg-[#10669D] hover:bg-[#0D5380] active:bg-[#0B456B] text-white focus:ring-[#10669D]',
-      success:
-        'bg-[#4a9b44] hover:bg-[#3c7f37] active:bg-[#32692e] text-white focus:ring-[#4a9b44]',
-      outline:
-        'border border-[#E5E9F2] bg-white hover:bg-[#F8FAFC] text-[#111111] focus:ring-slate-300',
+      primary: 'btn-animated-gradient-primary focus:ring-[#4b9b44]',
+      success: 'btn-animated-gradient-success focus:ring-[#4b9b44]',
+      outline: 'btn-animated-gradient-outline focus:ring-slate-300',
     };
 
     return (
@@ -82,3 +90,4 @@ export const AuthButton = React.forwardRef<HTMLButtonElement, AuthButtonProps>(
 );
 
 AuthButton.displayName = 'AuthButton';
+

@@ -12,7 +12,7 @@ export const SocialButton = React.forwardRef<HTMLButtonElement, SocialButtonProp
         ref={ref}
         type="button"
         className={cn(
-          'w-full h-11 inline-flex items-center justify-center gap-2.5 rounded-[8px] bg-white border border-[#E5E9F2] text-sm font-medium text-[#111111] shadow-2xs hover:bg-[#F8FAFC] hover:border-[#CBD5E1] active:scale-[0.99] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-slate-300',
+          'w-full h-11 inline-flex items-center justify-center gap-2.5 rounded-[8px] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-slate-300 cursor-pointer select-none btn-animated-gradient-social',
           className
         )}
         {...props}
@@ -37,7 +37,7 @@ export const SocialButton = React.forwardRef<HTMLButtonElement, SocialButtonProp
             />
           </svg>
         )}
-        {children}
+        <span>{children}</span>
       </button>
     );
   }

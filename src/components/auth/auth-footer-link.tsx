@@ -21,7 +21,7 @@ export function AuthFooterLink({
   linkText,
   href,
   onClick,
-  linkColorClassName = 'text-[#4a9b44] hover:text-[#3c7f37] hover:underline font-semibold',
+  linkColorClassName = 'text-[#4a9b44] hover:text-[#3c7f37] hover:underline transition-all duration-200 ease-out font-semibold',
   className,
 }: AuthFooterLinkProps) {
   return (

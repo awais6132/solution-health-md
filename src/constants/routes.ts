@@ -4,6 +4,11 @@
  */
 export const ROUTES = {
   HOME: '/',
+  SERVICES: '#services',
+  HOW_IT_WORKS: '#how-it-works',
+  PRICING: '#pricing',
+  ABOUT: '#about',
+  FAQS: '#faqs',
   SIGNUP: '/signup',
   LOGIN: '/login',
   FORGOT_PASSWORD: '/forgot-password',
@@ -12,9 +17,9 @@ export const ROUTES = {
   WELCOME: '/welcome',
   TERMS: '/terms',
   PRIVACY: '/privacy',
-  ABOUT: '/about',
-  FEATURES: '#features',
-  GET_STARTED: '#get-started',
+  MEDICAL_RECORDS: '/dashboard/medical-records',
+  APPOINTMENTS: '/dashboard/appointments',
+  BILLING: '/dashboard/billing',
 } as const;
 
 export type AppRoute = (typeof ROUTES)[keyof typeof ROUTES];

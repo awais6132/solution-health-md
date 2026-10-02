@@ -7,6 +7,7 @@ export interface OtpInputProps {
   length?: number;
   value: string;
   onChange: (value: string) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: string;
   disabled?: boolean;
   className?: string;
@@ -16,6 +17,7 @@ export function OtpInput({
   length = 6,
   value = '',
   onChange,
+  onBlur,
   error,
   disabled = false,
   className,
@@ -74,7 +76,7 @@ export function OtpInput({
 
   return (
     <div className={cn('w-full flex flex-col items-center', className)}>
-      <div className="flex items-center justify-between gap-2 sm:gap-3 w-full">
+      <div className="flex items-center justify-center gap-2.5 sm:gap-3.5 w-full">
         {Array.from({ length }).map((_, index) => (
           <input
             key={index}
@@ -88,17 +90,18 @@ export function OtpInput({
             value={digits[index] || ''}
             onChange={(e) => handleChange(e, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
+            onBlur={onBlur}
             onPaste={handlePaste}
             disabled={disabled}
             aria-label={`OTP Digit ${index + 1}`}
             className={cn(
-              'w-11 h-13 sm:w-14 sm:h-16 text-center text-xl sm:text-2xl font-semibold text-slate-800 bg-white border border-slate-200/90 rounded-xl shadow-xs transition-all duration-200 focus:outline-none focus:border-[#4a9b44] focus:ring-4 focus:ring-[#4a9b44]/15 disabled:opacity-50',
+              'w-11 h-13 sm:w-13 sm:h-15 text-center text-xl sm:text-2xl font-semibold text-slate-800 bg-white border border-slate-200/90 rounded-xl shadow-xs transition-all duration-200 focus:outline-none focus:border-[#4b9b44] focus:ring-4 focus:ring-[#4b9b44]/15 disabled:opacity-50',
               error ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/15' : ''
             )}
           />
         ))}
       </div>
-      {error && <p className="text-xs text-rose-500 mt-2 text-left w-full">{error}</p>}
+      {error && <p className="text-[10px] font-medium leading-[14px] text-rose-500 mt-2 text-center w-full">{error}</p>}
     </div>
   );
 }

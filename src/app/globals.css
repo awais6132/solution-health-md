@@ -124,3 +124,67 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #f8fafc;
   border-color: #cbd5e1;
 }
+
+/* Animated Gradient Slide Buttons */
+.btn-animated-gradient-primary {
+  color: #ffffff;
+  background: linear-gradient(99deg, #4b9b44 25%, #9cc03c 70%, #4b9b44);
+  background-size: 160%;
+  background-position: 0%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: background-position 0.8s ease-in-out, background-size 0.8s ease-in-out, box-shadow 0.4s ease-out, transform 0.2s ease-out;
+}
+
+.btn-animated-gradient-primary:hover {
+  background-size: 210%;
+  background-position: 100%;
+  box-shadow: 0 10px 24px -4px rgba(75, 155, 68, 0.42), 0 0 16px 0 rgba(156, 192, 60, 0.25);
+}
+
+.btn-animated-gradient-success {
+  color: #ffffff;
+  background: linear-gradient(99deg, #4b9b44 25%, #9cc03c 70%, #4b9b44);
+  background-size: 160%;
+  background-position: 0%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: background-position 0.8s ease-in-out, background-size 0.8s ease-in-out, box-shadow 0.4s ease-out, transform 0.2s ease-out;
+}
+
+.btn-animated-gradient-success:hover {
+  background-size: 210%;
+  background-position: 100%;
+  box-shadow: 0 10px 24px -4px rgba(75, 155, 68, 0.42), 0 0 16px 0 rgba(156, 192, 60, 0.25);
+}
+
+.btn-animated-gradient-outline {
+  color: #111111;
+  background: linear-gradient(99deg, #ffffff 30%, #f1f5f9 70%, #ffffff);
+  background-size: 150%;
+  background-position: 0%;
+  border: 1px solid #e2e8f0;
+  transition: background-position 0.8s ease-in-out, background-size 0.8s ease-in-out, border-color 0.3s ease-out, box-shadow 0.4s ease-out;
+}
+
+.btn-animated-gradient-outline:hover {
+  background-size: 200%;
+  background-position: 100%;
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-animated-gradient-social {
+  color: #111111;
+  background: linear-gradient(99deg, #ffffff 30%, #f8fafc 70%, #ffffff);
+  background-size: 150%;
+  background-position: 0%;
+  border: 1px solid #e5e9f2;
+  transition: background-position 0.8s ease-in-out, background-size 0.8s ease-in-out, border-color 0.3s ease-out, box-shadow 0.4s ease-out;
+}
+
+.btn-animated-gradient-social:hover {
+  background-size: 200%;
+  background-position: 100%;
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08);
+}
+
