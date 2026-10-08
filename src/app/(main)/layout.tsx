@@ -8,10 +8,10 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 w-full max-w-full overflow-x-hidden">
       <Header />
-      <main className="flex-1">{children}</main>
-      <Footer />
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">{children}</main>
+      <Footer showPreFooter={true} />
     </div>
   );
 }

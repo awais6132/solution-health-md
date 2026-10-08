@@ -21,22 +21,17 @@ function VerifyOtpForm() {
   const searchParams = useSearchParams();
   const emailParam = searchParams.get('email') || 'your email';
 
-  const [resendTimer, setResendTimer] = useState<number>(0);
-  const [resendSuccess, setResendSuccess] = useState(false);
-
-  // Initialize remaining time from sessionStorage on client mount
-  useEffect(() => {
+  const [resendTimer, setResendTimer] = useState<number>(() => {
+    if (typeof window === 'undefined') return 0;
     const storedExpiry = sessionStorage.getItem(OTP_EXPIRY_STORAGE_KEY);
     if (storedExpiry) {
-      const remaining = Math.max(0, Math.ceil((parseInt(storedExpiry, 10) - Date.now()) / 1000));
-      setResendTimer(remaining);
-    } else {
-      // First visit: set 59s cooldown and save expiry timestamp
-      const newExpiry = Date.now() + RESEND_COOLDOWN_SECONDS * 1000;
-      sessionStorage.setItem(OTP_EXPIRY_STORAGE_KEY, newExpiry.toString());
-      setResendTimer(RESEND_COOLDOWN_SECONDS);
+      return Math.max(0, Math.ceil((parseInt(storedExpiry, 10) - Date.now()) / 1000));
     }
-  }, []);
+    const newExpiry = Date.now() + RESEND_COOLDOWN_SECONDS * 1000;
+    sessionStorage.setItem(OTP_EXPIRY_STORAGE_KEY, newExpiry.toString());
+    return RESEND_COOLDOWN_SECONDS;
+  });
+  const [resendSuccess, setResendSuccess] = useState(false);
 
   // Countdown timer synced with target timestamp
   useEffect(() => {

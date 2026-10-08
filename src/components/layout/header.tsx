@@ -36,7 +36,7 @@ export function Header({
         className
       )}
     >
-      <div className="w-full max-w-[2000px] mx-auto flex h-[90.375px] items-center justify-between px-4 sm:px-8 lg:px-[80px]">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex h-[90.375px] items-center justify-between">
         {/* 1. Brand Logo */}
         <Link
           href={ROUTES.HOME}
@@ -63,8 +63,8 @@ export function Header({
               style={{
                 fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif',
                 fontWeight: 500,
-                fontSize: '15.82px',
-                lineHeight: '22.59px',
+                fontSize: '12.82px',
+                lineHeight: '20px',
                 letterSpacing: '0px',
                 verticalAlign: 'middle',
               }}
@@ -106,7 +106,7 @@ export function Header({
                 letterSpacing: '0px',
                 verticalAlign: 'middle',
               }}
-              className="inline-flex items-center justify-center text-white bg-[#4b9b44] hover:bg-[#3d8537] active:scale-[0.98] shadow-xs cursor-pointer transition-all duration-200 select-none group whitespace-nowrap"
+              className="inline-flex items-center justify-center text-white btn-animated-gradient-success active:scale-[0.98] shadow-xs cursor-pointer select-none group whitespace-nowrap"
             >
               <span>{ctaText}</span>
               <svg

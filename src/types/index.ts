@@ -23,3 +23,12 @@ export interface ApiResponse<T = unknown> {
   message?: string;
   error?: string;
 }
+
+export * from './footer';
+export * from './hero';
+export * from './trust-features';
+export * from './services';
+export * from './testimonials';
+export * from './faq-insights';
+
+

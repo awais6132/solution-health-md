@@ -7,7 +7,25 @@
     padding: 0;
   }
 
+:root {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
   body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     font-family: var(--font-plus-jakarta-sans), 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
     color: #111111;
@@ -156,20 +174,36 @@ body::-webkit-scrollbar-thumb:hover {
   box-shadow: 0 10px 24px -4px rgba(75, 155, 68, 0.42), 0 0 16px 0 rgba(156, 192, 60, 0.25);
 }
 
-.btn-animated-gradient-outline {
-  color: #111111;
-  background: linear-gradient(99deg, #ffffff 30%, #f1f5f9 70%, #ffffff);
-  background-size: 150%;
+.btn-animated-gradient-dark {
+  color: #ffffff;
+  background: linear-gradient(99deg, #071F3D 25%, #0E6C9B 70%, #071F3D);
+  background-size: 160%;
   background-position: 0%;
-  border: 1px solid #e2e8f0;
-  transition: background-position 0.8s ease-in-out, background-size 0.8s ease-in-out, border-color 0.3s ease-out, box-shadow 0.4s ease-out;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: background-position 0.8s ease-in-out, background-size 0.8s ease-in-out, box-shadow 0.4s ease-out, transform 0.2s ease-out;
+}
+
+.btn-animated-gradient-dark:hover {
+  background-size: 210%;
+  background-position: 100%;
+  box-shadow: 0 10px 24px -4px rgba(14, 108, 155, 0.45), 0 0 16px 0 rgba(37, 99, 235, 0.25);
+}
+
+.btn-animated-gradient-outline {
+  color: #1e293b;
+  background: linear-gradient(99deg, #ffffff 30%, #f0fdf4 70%, #ffffff);
+  background-size: 160%;
+  background-position: 0%;
+  border: 1px solid #cbd5e1;
+  transition: background-position 0.8s ease-in-out, background-size 0.8s ease-in-out, border-color 0.3s ease-out, box-shadow 0.4s ease-out, transform 0.2s ease-out, color 0.2s ease-out;
 }
 
 .btn-animated-gradient-outline:hover {
-  background-size: 200%;
+  background-size: 210%;
   background-position: 100%;
-  border-color: #cbd5e1;
-  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08);
+  border-color: #4b9b44;
+  color: #2e7d32;
+  box-shadow: 0 8px 20px -4px rgba(75, 155, 68, 0.18), 0 0 12px 0 rgba(75, 155, 68, 0.08);
 }
 
 .btn-animated-gradient-social {

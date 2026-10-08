@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { userProfileMenuItems } from '@/constants/site';
-import { FileText, Calendar, CreditCard, LogOut, ChevronDown, User } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export interface UserProfileMenuProps {
@@ -169,7 +169,6 @@ export function UserProfileMenu({
           {/* Menu Items List */}
           <div className="flex flex-col space-y-3.5">
             {userProfileMenuItems.map((item, index) => {
-              const isSignOut = item.title === 'Sign Out';
               return (
                 <React.Fragment key={item.title}>
                   {index === userProfileMenuItems.length - 1 && (

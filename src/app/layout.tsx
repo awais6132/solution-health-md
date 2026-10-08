@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Plus_Jakarta_Sans, Caveat } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/constants/site';
 
@@ -7,6 +7,13 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta-sans',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  variable: '--font-caveat',
+  subsets: ['latin'],
+  weight: ['600', '700'],
   display: 'swap',
 });
 
@@ -27,7 +34,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${plusJakartaSans.variable} font-sans h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${caveat.variable} font-sans h-full antialiased`}
     >
       <body
         suppressHydrationWarning
