@@ -29,8 +29,8 @@ export function HeroTrustBar({ items }: HeroTrustBarProps) {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="w-full border-y border-slate-200/90 bg-white py-3.5 sm:py-4 shadow-2xs">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full border-y border-slate-200/90 bg-white py-3.5 sm:py-4 shadow-2xs box-border">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 items-center">
           {items.map((item, index) => (
             <div

@@ -19,7 +19,7 @@ export const FaqInsightsSection: React.FC<FaqInsightsSectionProps> = ({
       aria-label="Frequently Asked Questions and Health Insights"
       className={`relative w-full max-w-full overflow-hidden overflow-x-hidden py-16 sm:py-20 lg:py-24 bg-white ${className}`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
           {/* Left Column: Frequently Asked Questions (Accordion) */}
           <div className="lg:col-span-5 w-full">

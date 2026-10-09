@@ -16,7 +16,7 @@ export const CareModelsSection: React.FC<CareModelsSectionProps> = ({
       aria-label="Care Delivery Options"
       className={`w-full bg-white pb-14 sm:pb-20 lg:pb-24 ${className}`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
         {/* 2-Column Responsive Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7 lg:gap-8">
           {items.map((item) => (

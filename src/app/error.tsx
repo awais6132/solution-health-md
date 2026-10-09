@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export default function Error({
@@ -24,9 +25,11 @@ export default function Error({
         <Button onClick={() => reset()} variant="primary">
           Try again
         </Button>
-        <Button onClick={() => (window.location.href = '/')} variant="outline">
-          Go to Home
-        </Button>
+        <Link href="/">
+          <Button variant="outline">
+            Go to Home
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export function Container({
     <Component
       className={cn(
         'w-full mx-auto box-border transition-all',
-        fluid ? 'max-w-full px-4 sm:px-6' : 'max-w-[1440px] px-4 sm:px-6 lg:px-[74px]',
+        fluid ? 'max-w-full px-4 sm:px-6' : 'max-w-[1440px] px-4 sm:px-6 lg:px-[50px]',
         className
       )}
       style={style}

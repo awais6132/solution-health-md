@@ -24,24 +24,16 @@ export function HeroContent({
   secondaryCta,
 }: HeroContentProps) {
   return (
-    <div
-      className="flex flex-col items-start text-left w-full max-w-[650.7px] box-border justify-center"
-      style={{
-        gap: '27.11px',
-        paddingTop: '2.26px',
-        minHeight: '453.56px',
-      }}
-    >
+    <div className="flex flex-col items-start text-left w-full max-w-[650.7px] box-border justify-center gap-5 sm:gap-6 lg:gap-[27px]">
       {/* 1. Pill / Top Tagline Badge */}
       <HeroBadge badge={badge} />
 
-      {/* 2. Dual-Colored Main Headline with exact Figma layout & typography */}
+      {/* 2. Dual-Colored Main Headline with exact Figma typography */}
       <h1
-        className="w-full max-w-[650.7px] text-[38px] sm:text-[52px] lg:text-[67.78px] leading-[1.05] lg:leading-[67.78px] tracking-[-1.5px] lg:tracking-[-3px] font-extrabold"
+        className="w-full max-w-[650.7px] text-[34px] sm:text-[48px] md:text-[56px] lg:text-[67.78px] leading-[1.08] lg:leading-[67.78px] tracking-tight lg:tracking-[-3px] font-extrabold"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 800,
-          verticalAlign: 'middle',
         }}
       >
         <span
@@ -50,7 +42,6 @@ export function HeroContent({
             color: '#0E6C9B',
             fontFamily: 'Inter, sans-serif',
             fontWeight: 800,
-            letterSpacing: '-3px',
           }}
         >
           {headline.primaryText}
@@ -61,21 +52,19 @@ export function HeroContent({
             color: '#4B9B44',
             fontFamily: 'Inter, sans-serif',
             fontWeight: 800,
-            letterSpacing: '-3px',
           }}
         >
           {headline.highlightText}
         </span>
       </h1>
 
-      {/* 3. Description Copy with exact Figma typography & color (line break at 'with') */}
+      {/* 3. Description Copy with exact typography */}
       <p
-        className="w-full text-base sm:text-lg lg:text-[20.33px] leading-relaxed lg:leading-[33.04px]"
+        className="w-full text-[15px] sm:text-[17px] lg:text-[20.33px] leading-relaxed lg:leading-[33.04px]"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 400,
           letterSpacing: '0px',
-          verticalAlign: 'middle',
           color: '#475569',
         }}
       >
@@ -90,14 +79,14 @@ export function HeroContent({
         )}
       </p>
 
-      {/* 4. Action Buttons (Pill shaped) */}
-      <div className="flex flex-wrap items-center gap-3.5 pt-2">
+      {/* 4. Action Buttons matching exact Figma design */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1 w-full sm:w-auto">
         {primaryCta && (
-          <Link href={primaryCta.href} className="group">
+          <Link href={primaryCta.href} className="group w-full sm:w-auto">
             <Button
               variant="secondary"
               size="lg"
-              className="rounded-full px-8 py-3 text-sm sm:text-[15px] font-semibold text-white shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border-none cursor-pointer flex items-center gap-2 select-none"
+              className="w-full sm:w-auto justify-center rounded-full px-8 py-3.5 sm:py-3 text-[15px] font-semibold text-white shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border-none cursor-pointer flex items-center gap-2 select-none"
             >
               <span>{primaryCta.label}</span>
               <ArrowRight
@@ -109,11 +98,11 @@ export function HeroContent({
         )}
 
         {secondaryCta && (
-          <Link href={secondaryCta.href}>
+          <Link href={secondaryCta.href} className="w-full sm:w-auto">
             <Button
               variant="outline"
               size="lg"
-              className="rounded-full px-8 py-3 text-sm sm:text-[15px] font-semibold text-slate-800 shadow-[0_4px_14px_rgba(0,0,0,0.05)] hover:border-[#4b9b44] hover:text-[#2e7d32] hover:shadow-[0_10px_24px_-4px_rgba(75,155,68,0.22)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 cursor-pointer select-none"
+              className="w-full sm:w-auto justify-center rounded-full px-8 py-3.5 sm:py-3 text-[15px] font-semibold text-slate-800 bg-white shadow-[0_4px_14px_rgba(0,0,0,0.05)] hover:border-[#4b9b44] hover:text-[#2e7d32] hover:shadow-[0_10px_24px_-4px_rgba(75,155,68,0.22)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 cursor-pointer select-none"
             >
               {secondaryCta.label}
             </Button>
@@ -123,3 +112,5 @@ export function HeroContent({
     </div>
   );
 }
+
+export default HeroContent;

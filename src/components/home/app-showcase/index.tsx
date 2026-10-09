@@ -19,7 +19,7 @@ export const AppShowcaseSection: React.FC<AppShowcaseSectionProps> = ({
       aria-label="Patient Portal and Mobile App"
       className={`relative w-full max-w-full bg-[#F4F8FA] overflow-hidden overflow-x-hidden py-16 sm:py-20 lg:py-24 ${className}`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left Column: Heading, Description & Download Badges (4 cols) */}
           <div className="lg:col-span-4 flex justify-center lg:justify-start">

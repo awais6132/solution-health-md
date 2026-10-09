@@ -32,7 +32,7 @@ export const CareServicesSection: React.FC<CareServicesSectionProps> = ({
       aria-label="Care and Treatment Options"
       className={`w-full bg-white py-12 sm:py-16 lg:py-20 ${className}`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
         {/* Header with Title & Action link */}
         <ServicesHeader
           headline={activeConfig.headline}

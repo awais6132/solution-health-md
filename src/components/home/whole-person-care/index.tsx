@@ -39,7 +39,7 @@ export const WholePersonCareSection: React.FC<WholePersonCareSectionProps> = ({
       )}
 
       {/* 2. Main Content Container */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] space-y-10 sm:space-y-12 box-border">
         {/* Top Split Header: Left Intro & Right Cursive Tagline */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-10">
           <CareIntro

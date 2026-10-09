@@ -42,7 +42,7 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
       )}
 
       {/* 2. Main Content Container (width: 1440px) */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-center">
           {/* Left Column: Intro Copy & Main CTA */}
           <div className="w-full lg:col-span-5 max-w-xl">
