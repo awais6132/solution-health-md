@@ -45,7 +45,7 @@ export function HeroBanner({ config }: HeroBannerProps) {
   return (
     <div suppressHydrationWarning className="relative w-full bg-white flex justify-center overflow-hidden box-border">
       {/* 1440px Centered Canvas: Locks Text and Imagery in exact proportion on all screen sizes */}
-      <div className="relative w-full max-w-[1440px] mx-auto min-h-[540px] lg:min-h-[600px] flex items-center box-border pt-6 sm:pt-10 pb-16">
+      <div className="relative w-full max-w-[1440px] mx-auto min-h-[520px] sm:min-h-[540px] lg:min-h-[600px] flex items-center box-border pt-6 sm:pt-10 pb-20 sm:pb-16">
         
         {/* 1. Layered Slide Background Images */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -83,8 +83,8 @@ export function HeroBanner({ config }: HeroBannerProps) {
             </div>
           )}
 
-          {/* Soft white gradient overlay on left to guarantee text readability across all background images */}
-          <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white via-white/85 to-transparent max-w-[720px] lg:max-w-[780px]" />
+          {/* Soft white gradient overlay: on mobile, provides full gentle wash for 100% text readability; on desktop, subtle fade */}
+          <div className="absolute inset-0 z-10 pointer-events-none bg-white/80 sm:bg-transparent sm:bg-gradient-to-r sm:from-white sm:via-white/90 sm:to-transparent max-w-full sm:max-w-[720px] lg:max-w-[780px]" />
         </div>
 
         {/* 2. Text & CTA Content positioned inside 1440px canvas */}
@@ -109,9 +109,9 @@ export function HeroBanner({ config }: HeroBannerProps) {
 
         {/* 3. Tabbna-Style Eye-Catching Frosted Capsule Indicator Bar */}
         {slides && slides.length > 1 && (
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center pointer-events-auto">
+          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center pointer-events-auto max-w-[calc(100%-24px)]">
             <div
-              className="inline-flex items-center gap-2.5 sm:gap-3.5 bg-[#0A2540]/92 backdrop-blur-xl px-4 py-2 sm:px-6 sm:py-2.5 rounded-full border border-white/20 shadow-[0_16px_36px_-6px_rgba(10,37,64,0.4),0_0_24px_rgba(75,155,68,0.18)] transition-all duration-500 select-none"
+              className="inline-flex items-center gap-1.5 sm:gap-2.5 sm:gap-3.5 bg-[#0A2540]/92 backdrop-blur-xl px-3 py-1.5 sm:px-6 sm:py-2.5 rounded-full border border-white/20 shadow-[0_16px_36px_-6px_rgba(10,37,64,0.4),0_0_24px_rgba(75,155,68,0.18)] transition-all duration-500 select-none max-w-full overflow-hidden"
               role="tablist"
               aria-label="Hero slide switcher"
             >
@@ -124,18 +124,18 @@ export function HeroBanner({ config }: HeroBannerProps) {
                   return (
                     <div
                       key={slide.id || idx}
-                      className="flex items-center gap-2.5 sm:gap-3 transition-all duration-500"
+                      className="flex items-center gap-2 sm:gap-3 transition-all duration-500"
                     >
                       {/* Vibrant glowing brand active indicator bar */}
                       <span
-                        className="w-7 sm:w-8 h-2.5 sm:h-3 rounded-full transition-all duration-500 shrink-0"
+                        className="w-5 sm:w-8 h-2 sm:h-3 rounded-full transition-all duration-500 shrink-0"
                         style={{
                           background: `linear-gradient(135deg, ${slideAccent}, ${slideSecondary})`,
                           boxShadow: `0 0 16px ${slideAccent}, 0 0 32px ${slideAccent}70`,
                         }}
                       />
                       {/* Active Service Name in bold white */}
-                      <span className="text-white font-bold text-sm sm:text-[15px] lg:text-[16px] tracking-tight whitespace-nowrap select-none drop-shadow-xs">
+                      <span className="text-white font-bold text-xs sm:text-[15px] lg:text-[16px] tracking-tight whitespace-nowrap select-none drop-shadow-xs">
                         {slide.serviceName}
                       </span>
                     </div>
@@ -149,9 +149,9 @@ export function HeroBanner({ config }: HeroBannerProps) {
                     type="button"
                     onClick={() => handleSelect(idx)}
                     aria-label={`Switch to ${slide.serviceName}`}
-                    className="relative flex items-center justify-center p-1.5 cursor-pointer border-none bg-transparent group"
+                    className="relative flex items-center justify-center p-1 sm:p-1.5 cursor-pointer border-none bg-transparent group"
                   >
-                    <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/35 group-hover:bg-white group-hover:scale-130 transition-all duration-300 shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
+                    <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/35 group-hover:bg-white group-hover:scale-130 transition-all duration-300 shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
                   </button>
                 );
               })}

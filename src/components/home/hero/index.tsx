@@ -33,8 +33,7 @@ export function HeroSection({ config, className = '' }: HeroSectionProps) {
   return (
     <section
       aria-label="Hero Introduction"
-      style={{ padding: '0 0 0 25px' }}
-      className={`relative w-full bg-white pl-[25px] pr-0 ${className}`}
+      className={`relative w-full bg-white px-4 sm:px-6 lg:pl-[25px] lg:pr-0 ${className}`}
     >
       {/* 1. Panoramic Hero Banner (Doctors on right, white fade on left with Content) */}
       <HeroBanner config={activeConfig} />
