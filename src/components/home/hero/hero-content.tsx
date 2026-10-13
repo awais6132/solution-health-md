@@ -39,7 +39,7 @@ export function HeroContent({
 
       {/* 2. Dual-Colored Main Headline with reserved 3-line min-height to prevent content jumping */}
       <h1
-        className="w-full max-w-[650.7px] text-[26px] xs:text-[28px] sm:text-[36px] md:text-[44px] lg:text-[48px] xl:text-[54px] leading-[1.18] sm:leading-[1.15] lg:leading-[1.12] tracking-tight lg:tracking-[-1.5px] font-extrabold min-h-[96px] sm:min-h-[130px] md:min-h-[148px] lg:min-h-[162px] xl:min-h-[178px] flex flex-col justify-start"
+        className="w-full max-w-[650.7px] text-[30px] sm:text-[38px] md:text-[44px] lg:text-[48px] xl:text-[54px] leading-[1.15] lg:leading-[1.12] tracking-tight lg:tracking-[-1.5px] font-extrabold min-h-[104px] sm:min-h-[130px] md:min-h-[148px] lg:min-h-[162px] xl:min-h-[178px] flex flex-col justify-start"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 800,
@@ -69,7 +69,7 @@ export function HeroContent({
 
       {/* 3. Description Copy with balanced typography */}
       <p
-        className="w-full text-[14px] sm:text-[16px] lg:text-[17px] xl:text-[18px] leading-relaxed min-h-[38px] sm:min-h-[48px] lg:min-h-[54px]"
+        className="w-full text-[14px] sm:text-[16px] lg:text-[17px] xl:text-[18px] leading-relaxed min-h-[42px] sm:min-h-[48px] lg:min-h-[54px]"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 400,

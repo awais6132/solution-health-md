@@ -2,6 +2,7 @@ import React from 'react';
 import { heroConfig as defaultHeroConfig } from '@/constants/hero';
 import { HeroSectionConfig } from '@/types/hero';
 import { HeroBanner } from './hero-banner';
+import { HeroMobileBanner } from './hero-mobile-banner';
 import { HeroTrustBar } from './hero-trust-bar';
 
 export interface HeroSectionProps {
@@ -31,19 +32,37 @@ export function HeroSection({ config, className = '' }: HeroSectionProps) {
   };
 
   return (
-    <section
-      aria-label="Hero Introduction"
-      className={`relative w-full bg-white px-4 sm:px-6 lg:pl-[25px] lg:pr-0 ${className}`}
-    >
-      {/* 1. Panoramic Hero Banner (Doctors on right, white fade on left with Content) */}
-      <HeroBanner config={activeConfig} />
+    <>
+      {/* 1. DESKTOP VIEW (100.0% EXACT ORIGINAL IMPLEMENTATION PRESERVED) */}
+      <section
+        aria-label="Hero Introduction"
+        style={{ padding: '0 0 0 25px' }}
+        className={`relative w-full bg-white pl-[25px] pr-0 hidden lg:block ${className}`}
+      >
+        {/* Panoramic Hero Banner (Doctors on right, white fade on left with Content) */}
+        <HeroBanner config={activeConfig} />
 
-      {/* 2. Horizontal Trust Bar Feature Strip */}
-      {activeConfig.trustBar.enabled && (
-        <HeroTrustBar items={activeConfig.trustBar.items} />
-      )}
-    </section>
+        {/* Horizontal Trust Bar Feature Strip */}
+        {activeConfig.trustBar.enabled && (
+          <HeroTrustBar items={activeConfig.trustBar.items} />
+        )}
+      </section>
+
+      {/* 2. MOBILE & TABLET VIEW (HIGH-IMPACT, EYE-CATCHING, PURPOSE-BUILT FOR MOBILE SCREENS) */}
+      <section
+        aria-label="Hero Introduction Mobile"
+        className={`relative w-full bg-white px-4 sm:px-6 pt-4 pb-8 block lg:hidden ${className}`}
+      >
+        <HeroMobileBanner config={activeConfig} />
+
+        {/* Horizontal Trust Bar Feature Strip */}
+        {activeConfig.trustBar.enabled && (
+          <HeroTrustBar items={activeConfig.trustBar.items} />
+        )}
+      </section>
+    </>
   );
 }
 
 export default HeroSection;
+export * from './hero-mobile-banner';
