@@ -47,10 +47,17 @@ export function HeroMobileBanner({ config }: HeroMobileBannerProps) {
   const secondaryColor = currentSlide.secondaryColor || '#8DB92E';
 
   return (
-    <div suppressHydrationWarning className="relative w-full flex flex-col items-start gap-4 sm:gap-5 box-border overflow-hidden">
+    <div
+      suppressHydrationWarning
+      style={{
+        background: `radial-gradient(ellipse 120% 80% at 85% 0%, ${accentColor}24 0%, ${accentColor}0a 55%, #ffffff 88%)`,
+        transition: 'background 0.7s ease',
+      }}
+      className="relative w-full flex flex-col items-start gap-4 sm:gap-5 box-border px-4 sm:px-6 py-[30px] overflow-hidden"
+    >
       {/* 1. Ambient Brand Glow Effect */}
       <div
-        className="absolute -top-12 -right-8 w-64 h-64 rounded-full blur-[100px] opacity-25 pointer-events-none transition-colors duration-700 -z-0"
+        className="absolute -top-16 -right-12 w-80 h-80 rounded-full blur-[110px] opacity-35 pointer-events-none transition-colors duration-700 -z-0"
         style={{ backgroundColor: accentColor }}
       />
 
