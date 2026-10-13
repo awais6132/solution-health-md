@@ -51,7 +51,7 @@ export function HeroSection({ config, className = '' }: HeroSectionProps) {
       {/* 2. MOBILE & TABLET VIEW (HIGH-IMPACT, EYE-CATCHING, PURPOSE-BUILT FOR MOBILE SCREENS) */}
       <section
         aria-label="Hero Introduction Mobile"
-        className={`relative w-full bg-white px-4 sm:px-6 pt-4 pb-8 block lg:hidden ${className}`}
+        className={`relative w-full bg-white px-4 sm:px-6 py-[30px] block lg:hidden ${className}`}
       >
         <HeroMobileBanner config={activeConfig} />
 
