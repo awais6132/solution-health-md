@@ -15,10 +15,10 @@ export function FooterBottomBar({ bottomBar }: FooterBottomBarProps) {
     : `${currentYear}`;
 
   return (
-    <div className="border-t border-slate-200/80 pt-6 mt-12">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+    <div suppressHydrationWarning className="border-t border-slate-200/80 pt-6 mt-12">
+      <div suppressHydrationWarning className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         {/* Left: Dynamic Copyright & Legal Links */}
-        <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2">
+        <div suppressHydrationWarning className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2">
           <span suppressHydrationWarning>
             © {yearText} {bottomBar.copyrightOwner}
           </span>
@@ -37,6 +37,7 @@ export function FooterBottomBar({ bottomBar }: FooterBottomBarProps) {
         {/* Right: Signature Brand Slogan */}
         {bottomBar.tagline && (
           <div
+            suppressHydrationWarning
             className="font-serif italic font-semibold text-sm tracking-tight select-none"
             style={{ color: 'rgba(75, 155, 68, 1)' }}
           >

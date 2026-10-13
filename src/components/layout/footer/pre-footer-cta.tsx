@@ -31,7 +31,8 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
             alt="A healthier tomorrow background"
             fill
             priority={false}
-            className="object-cover object-center"
+            className="object-cover object-bottom"
+            style={{ objectPosition: 'center bottom' }}
             sizes="100vw"
           />
           {/* Overlay with exact design token #0F63968F */}
@@ -42,26 +43,22 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
         </div>
       )}
 
-      {/* 2. Unified Container with exact vertical padding 72.3px and standard horizontal padding */}
-      <Container className="relative z-10 py-[72.3px]">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10">
-          {/* Left Side: Headline & Description */}
-          <div className="space-y-2 text-center lg:text-left max-w-2xl">
+      {/* 2. Unified Container with exact vertical padding and standard horizontal padding */}
+      <Container className="relative z-10 py-12 sm:py-14 lg:py-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
+          {/* Left Side: Headline & Description - Single Line Headline on Desktop */}
+          <div className="flex-1 min-w-0 text-center lg:text-left">
             <h2
-              className="text-white drop-shadow-xs"
+              className="text-white drop-shadow-md font-extrabold tracking-tight text-2xl sm:text-3xl md:text-[32px] lg:text-[34px] xl:text-[38px] leading-tight lg:whitespace-nowrap"
               style={{
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 800,
-                fontSize: '40.67px',
-                lineHeight: '45.19px',
-                letterSpacing: '-1.02px',
-                verticalAlign: 'middle',
+                fontFamily: 'Inter, var(--font-plus-jakarta-sans), sans-serif',
+                letterSpacing: '-0.02em',
               }}
             >
               {ctaData.title}
             </h2>
             {ctaData.description && (
-              <p className="text-sm sm:text-base text-white/95 font-normal drop-shadow-2xs">
+              <p className="text-sm sm:text-base md:text-[16.5px] text-white/95 font-normal drop-shadow-xs mt-2">
                 {ctaData.description}
               </p>
             )}
@@ -72,9 +69,8 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
             {ctaData.primaryButton && (
               <Link href={ctaData.primaryButton.href}>
                 <Button
-                  variant="secondary"
                   size="lg"
-                  className="rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border-none cursor-pointer group"
+                  className="rounded-full px-7 py-3 text-sm sm:text-base font-semibold text-white bg-[#4B9B44] hover:bg-[#3f8539] shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border-none cursor-pointer group"
                 >
                   <span>{ctaData.primaryButton.label}</span>
                   <span className="ml-1.5 transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -87,7 +83,7 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="rounded-full px-7 py-3 text-sm font-medium border border-white/40 bg-white/10 hover:bg-white/20 text-white hover:text-white backdrop-blur-xs transition-all duration-200 cursor-pointer"
+                  className="rounded-full px-7 py-3 text-sm sm:text-base font-medium border border-white/40 bg-white/10 hover:bg-white/20 text-white hover:text-white backdrop-blur-md transition-all duration-200 cursor-pointer shadow-sm"
                 >
                   {ctaData.secondaryButton.label}
                 </Button>

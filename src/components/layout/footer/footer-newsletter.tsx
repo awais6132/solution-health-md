@@ -38,7 +38,7 @@ export function FooterNewsletter({ config }: FooterNewsletterProps) {
   };
 
   return (
-    <div className="space-y-3">
+    <div suppressHydrationWarning className="space-y-3">
       <h3
         className="font-bold"
         style={{

@@ -14,8 +14,12 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
 
   return (
     <div
-      className={`group relative flex flex-col justify-between bg-white rounded-[24.3px] border-[1.01px] border-slate-100/90 p-[24.3px] w-full max-w-[348px] min-h-[317.25px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] hover:-translate-y-1 ${className}`}
+      className={`group relative flex flex-col justify-between bg-white rounded-[24.3px] border-[1.01px] border-slate-100/90 p-[24.3px] w-full max-w-[348.06px] min-h-[317.25px] h-[317.25px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] hover:-translate-y-1 ${className}`}
       style={{
+        width: '100%',
+        maxWidth: '348.06px',
+        minHeight: '317.25px',
+        height: '317.25px',
         opacity: 1,
       }}
     >
@@ -63,17 +67,32 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
       </div>
 
       {/* 4. Action Buttons */}
-      <div className="mt-auto pt-4 flex flex-wrap items-center gap-2.5">
+      <div
+        className={`mt-auto pt-3 flex w-full ${
+          actions.length > 1
+            ? 'flex-col xl:flex-row items-center gap-2'
+            : 'flex-wrap items-center gap-2.5'
+        }`}
+      >
         {actions.map((action, index) => {
           const isOutline = action.variant === 'outline';
-          const hasArrow = !isOutline;
+          // Icon removed for the card with multiple buttons as requested
+          const hasArrow = actions.length === 1 && !isOutline;
+          const isMulti = actions.length > 1;
 
           return (
-            <Link key={index} href={action.href} className="inline-block group/btn">
+            <Link
+              key={index}
+              href={action.href}
+              className={isMulti ? 'w-full xl:flex-1' : 'inline-block group/btn'}
+            >
               <Button
                 variant={action.variant}
-                size="sm"
-                className={`rounded-full px-4 py-2.5 text-xs sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none whitespace-nowrap inline-flex items-center gap-1.5 ${
+                className={`rounded-full h-auto py-2 font-semibold transition-all duration-200 cursor-pointer select-none whitespace-nowrap inline-flex items-center justify-center gap-1.5 w-full ${
+                  isMulti
+                    ? 'px-3 text-xs xl:px-2 xl:text-[11.5px]'
+                    : 'px-4 text-xs sm:text-[13px]'
+                } ${
                   isOutline
                     ? 'border border-[#4b9b44] text-[#4b9b44] bg-white hover:bg-[#4b9b44]/10 hover:border-[#3d8537]'
                     : 'border-none text-white shadow-xs hover:scale-[1.02] active:scale-[0.98]'

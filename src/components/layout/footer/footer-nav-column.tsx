@@ -9,7 +9,7 @@ interface FooterNavColumnProps {
 
 export function FooterNavColumn({ section }: FooterNavColumnProps) {
   return (
-    <div className="space-y-3">
+    <div suppressHydrationWarning className="space-y-3">
       <h3
         className="font-bold"
         style={{

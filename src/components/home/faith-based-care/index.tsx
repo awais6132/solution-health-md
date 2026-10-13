@@ -17,9 +17,10 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
   return (
     <section
       aria-label="Faith-Based Healthcare"
-      className={`relative w-full overflow-hidden py-12 sm:py-16 lg:py-20 min-h-[416px] flex items-center ${className}`}
+      className={`relative w-full overflow-hidden py-[50px] min-h-[416px] flex items-center px-[25px] ${className}`}
       style={{
         backgroundColor: '#1E293B',
+        padding: '50px 25px',
       }}
     >
       {/* 1. Backdrop Scenic Image with Overlay */}
@@ -42,10 +43,11 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
       )}
 
       {/* 2. Main Content Container (width: 1440px) */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-center">
-          {/* Left Column: Intro Copy & Main CTA */}
-          <div className="w-full lg:col-span-5 max-w-xl">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto box-border">
+        {/* Container ke andar 2 divs: Left 40% and Right 60% */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 xl:gap-10 w-full">
+          {/* Left Div: 40% Width */}
+          <div className="w-full lg:w-[40%] flex flex-col justify-center">
             <FaithIntro
               eyebrow={activeConfig.eyebrow}
               headline={activeConfig.headline}
@@ -54,11 +56,14 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
             />
           </div>
 
-          {/* Right Column: 2 White Feature Cards */}
-          <div className="w-full lg:col-span-7 flex justify-center lg:justify-end">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 w-full max-w-[720px]">
+          {/* Right Div: 60% Width */}
+          <div className="w-full lg:w-[60%] flex justify-center lg:justify-end">
+            {/* Right Div ke andar 2 Divs: 50% / 50% equal divide */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 w-full max-w-[720px] justify-items-center lg:justify-items-end">
               {activeConfig.cards.map((card) => (
-                <FaithCard key={card.id} item={card} />
+                <div key={card.id} className="w-full max-w-[348.06px] flex justify-center">
+                  <FaithCard item={card} className="w-full" />
+                </div>
               ))}
             </div>
           </div>

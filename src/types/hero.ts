@@ -14,6 +14,25 @@ export interface HeroTrustItem {
   iconName: 'award' | 'shield' | 'pill' | 'video' | 'clock' | 'check-circle';
 }
 
+export interface HeroSlide {
+  id: string;
+  serviceName: string;
+  accentColor: string;
+  secondaryColor?: string;
+  badge: HeroBadgeConfig;
+  headline: {
+    primaryText: string;
+    highlightText: string;
+  };
+  description: string;
+  primaryCta: HeroButtonConfig;
+  secondaryCta: HeroButtonConfig;
+  bannerImage: {
+    src: string;
+    alt: string;
+  };
+}
+
 export interface HeroSectionConfig {
   badge: HeroBadgeConfig;
   headline: {
@@ -27,6 +46,7 @@ export interface HeroSectionConfig {
     src: string;
     alt: string;
   };
+  slides?: HeroSlide[];
   trustBar: {
     enabled: boolean;
     items: HeroTrustItem[];

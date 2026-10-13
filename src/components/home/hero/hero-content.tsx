@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { HeroBadgeConfig, HeroButtonConfig } from '@/types/hero';
@@ -14,6 +16,7 @@ interface HeroContentProps {
   description: string;
   primaryCta: HeroButtonConfig;
   secondaryCta: HeroButtonConfig;
+  accentColor?: string;
 }
 
 export function HeroContent({
@@ -22,15 +25,21 @@ export function HeroContent({
   description,
   primaryCta,
   secondaryCta,
+  accentColor = '#4B9B44',
 }: HeroContentProps) {
-  return (
-    <div className="flex flex-col items-start text-left w-full max-w-[650.7px] box-border justify-center gap-5 sm:gap-6 lg:gap-[27px]">
-      {/* 1. Pill / Top Tagline Badge */}
-      <HeroBadge badge={badge} />
+  const [isPrimaryHovered, setIsPrimaryHovered] = useState(false);
+  const [isSecondaryHovered, setIsSecondaryHovered] = useState(false);
 
-      {/* 2. Dual-Colored Main Headline with exact Figma typography */}
+  return (
+    <div suppressHydrationWarning className="flex flex-col items-start text-left w-full max-w-[650.7px] box-border justify-start gap-4 sm:gap-5 lg:gap-6 min-h-[380px] sm:min-h-[420px] lg:min-h-[440px]">
+      {/* 1. Pill / Top Tagline Badge */}
+      <div className="min-h-[32px] flex items-center">
+        <HeroBadge badge={badge} accentColor={accentColor} />
+      </div>
+
+      {/* 2. Dual-Colored Main Headline with reserved 3-line min-height to prevent content jumping */}
       <h1
-        className="w-full max-w-[650.7px] text-[34px] sm:text-[48px] md:text-[56px] lg:text-[67.78px] leading-[1.08] lg:leading-[67.78px] tracking-tight lg:tracking-[-3px] font-extrabold"
+        className="w-full max-w-[650.7px] text-[30px] sm:text-[38px] md:text-[44px] lg:text-[48px] xl:text-[54px] leading-[1.15] lg:leading-[1.12] tracking-tight lg:tracking-[-1.5px] font-extrabold min-h-[104px] sm:min-h-[130px] md:min-h-[148px] lg:min-h-[162px] xl:min-h-[178px] flex flex-col justify-start"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 800,
@@ -47,9 +56,9 @@ export function HeroContent({
           {headline.primaryText}
         </span>
         <span
-          className="block"
+          className="block transition-colors duration-500"
           style={{
-            color: '#4B9B44',
+            color: accentColor,
             fontFamily: 'Inter, sans-serif',
             fontWeight: 800,
           }}
@@ -58,9 +67,9 @@ export function HeroContent({
         </span>
       </h1>
 
-      {/* 3. Description Copy with exact typography */}
+      {/* 3. Description Copy with balanced typography */}
       <p
-        className="w-full text-[15px] sm:text-[17px] lg:text-[20.33px] leading-relaxed lg:leading-[33.04px]"
+        className="w-full text-[14px] sm:text-[16px] lg:text-[17px] xl:text-[18px] leading-relaxed min-h-[42px] sm:min-h-[48px] lg:min-h-[54px]"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 400,
@@ -79,30 +88,59 @@ export function HeroContent({
         )}
       </p>
 
-      {/* 4. Action Buttons matching exact Figma design */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1 w-full sm:w-auto">
+      {/* 4. Action Buttons with rich dynamic hover animations */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1 w-full sm:w-auto min-h-[52px]">
         {primaryCta && (
           <Link href={primaryCta.href} className="group w-full sm:w-auto">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto justify-center rounded-full px-8 py-3.5 sm:py-3 text-[15px] font-semibold text-white shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border-none cursor-pointer flex items-center gap-2 select-none"
+            <button
+              type="button"
+              style={{
+                borderRadius: '11295.75px',
+                fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif',
+                fontWeight: 600,
+                fontSize: '15px',
+                lineHeight: '22.59px',
+                letterSpacing: '0px',
+              }}
+              className="w-full sm:w-auto inline-flex items-center justify-center text-white btn-animated-gradient-success active:scale-[0.98] shadow-xs cursor-pointer select-none group whitespace-nowrap px-7 py-3 gap-2"
             >
               <span>{primaryCta.label}</span>
-              <ArrowRight
-                className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+              <svg
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
                 strokeWidth={2.2}
-              />
-            </Button>
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5l7 7-7 7" />
+              </svg>
+            </button>
           </Link>
         )}
 
         {secondaryCta && (
-          <Link href={secondaryCta.href} className="w-full sm:w-auto">
+          <Link
+            href={secondaryCta.href}
+            className="w-full sm:w-auto"
+            onMouseEnter={() => setIsSecondaryHovered(true)}
+            onMouseLeave={() => setIsSecondaryHovered(false)}
+          >
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto justify-center rounded-full px-8 py-3.5 sm:py-3 text-[15px] font-semibold text-slate-800 bg-white shadow-[0_4px_14px_rgba(0,0,0,0.05)] hover:border-[#4b9b44] hover:text-[#2e7d32] hover:shadow-[0_10px_24px_-4px_rgba(75,155,68,0.22)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 cursor-pointer select-none"
+              style={{
+                backgroundColor: isSecondaryHovered ? `${accentColor}0f` : '#ffffff',
+                borderColor: isSecondaryHovered ? accentColor : 'rgba(226, 232, 240, 0.9)',
+                color: isSecondaryHovered ? accentColor : '#1e293b',
+                boxShadow: isSecondaryHovered
+                  ? `0 10px 24px -4px ${accentColor}25, 0 0 12px ${accentColor}15`
+                  : '0 4px 14px rgba(0,0,0,0.04)',
+                transform: isSecondaryHovered ? 'translateY(-2px) scale(1.02)' : 'none',
+              }}
+              className="w-full sm:w-auto justify-center rounded-full px-8 py-3.5 sm:py-3 text-[15px] font-semibold border transition-all duration-300 cursor-pointer select-none active:scale-[0.98]"
             >
               {secondaryCta.label}
             </Button>

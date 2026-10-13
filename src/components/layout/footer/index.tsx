@@ -50,17 +50,17 @@ export function Footer({
   };
 
   return (
-    <footer className={`w-full ${className}`}>
+    <footer suppressHydrationWarning className={`w-full ${className}`}>
       {/* 1. Conditional Pre-Footer CTA Banner Section */}
       {showPreFooter && <PreFooterCTA config={activeConfig.preFooter} />}
 
       {/* 2. Main Footer Content */}
-      <div className="bg-white border-t border-slate-200">
+      <div suppressHydrationWarning className="bg-white border-t border-slate-200">
         <Container className="pt-14 pb-8">
           {/* Responsive Multi-Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
+          <div suppressHydrationWarning className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
             {/* Brand Column (Col Span 2) */}
-            <div className="lg:col-span-2">
+            <div suppressHydrationWarning className="lg:col-span-2">
               <FooterBrand
                 name={activeConfig.brand.name}
                 logoSrc={activeConfig.brand.logoSrc}
@@ -71,13 +71,13 @@ export function Footer({
 
             {/* Dynamic Navigation Columns (Col Span 1 each) */}
             {activeConfig.navigationSections.map((section) => (
-              <div key={section.title} className="lg:col-span-1">
+              <div key={section.title} suppressHydrationWarning className="lg:col-span-1">
                 <FooterNavColumn section={section} />
               </div>
             ))}
 
             {/* Newsletter Subscription Column (Col Span 1 on 6-col grid) */}
-            <div className="lg:col-span-1">
+            <div suppressHydrationWarning className="lg:col-span-1">
               <FooterNewsletter config={activeConfig.newsletter} />
             </div>
           </div>

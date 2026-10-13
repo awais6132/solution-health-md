@@ -22,6 +22,7 @@ export function HeroSection({ config, className = '' }: HeroSectionProps) {
     primaryCta: { ...defaultHeroConfig.primaryCta, ...config?.primaryCta },
     secondaryCta: { ...defaultHeroConfig.secondaryCta, ...config?.secondaryCta },
     bannerImage: { ...defaultHeroConfig.bannerImage, ...config?.bannerImage },
+    slides: config?.slides || defaultHeroConfig.slides,
     trustBar: {
       ...defaultHeroConfig.trustBar,
       ...config?.trustBar,
@@ -32,7 +33,8 @@ export function HeroSection({ config, className = '' }: HeroSectionProps) {
   return (
     <section
       aria-label="Hero Introduction"
-      className={`relative w-full bg-white ${className}`}
+      style={{ padding: '0 0 0 25px' }}
+      className={`relative w-full bg-white pl-[25px] pr-0 ${className}`}
     >
       {/* 1. Panoramic Hero Banner (Doctors on right, white fade on left with Content) */}
       <HeroBanner config={activeConfig} />

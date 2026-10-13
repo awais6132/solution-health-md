@@ -20,14 +20,13 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
   return (
     <section
       aria-label="How It Works"
-      className={`w-full bg-white ${className}`}
+      className={`w-full bg-white py-[50px] px-[25px] ${className}`}
       style={{
-        paddingTop: '65px',
-        paddingBottom: '65px',
+        padding: '50px 25px',
         backgroundColor: '#FFFFFF',
       }}
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] box-border">
+      <div className="w-full max-w-[1440px] mx-auto box-border">
         {/* Centered Section Header */}
         <HowItWorksHeader
           headline={activeConfig.headline}

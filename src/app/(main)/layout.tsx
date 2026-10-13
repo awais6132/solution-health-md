@@ -8,9 +8,9 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 w-full max-w-full overflow-x-hidden">
+    <div suppressHydrationWarning className="min-h-screen flex flex-col bg-white text-slate-900 w-full max-w-full overflow-x-clip">
       <Header />
-      <main className="flex-1 w-full max-w-full overflow-x-hidden">{children}</main>
+      <main suppressHydrationWarning className="flex-1 w-full max-w-full">{children}</main>
       <Footer showPreFooter={true} />
     </div>
   );

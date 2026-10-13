@@ -18,6 +18,7 @@ export const defaultAppShowcaseConfig: AppShowcaseConfig = {
       href: 'https://play.google.com/store',
     },
   ],
+  imageSrc: '/assets/images/app-mockup.png',
   mockup: {
     userName: 'Alexander M.',
     refillTitle: 'Next Refill Dispatch',

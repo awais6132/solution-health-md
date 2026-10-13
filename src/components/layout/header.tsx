@@ -102,6 +102,16 @@ export function Header({
   ctaHref = ROUTES.SIGNUP,
 }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Track scroll state for elevation shadow
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Lock background scroll when drawer is open
   useEffect(() => {
@@ -129,12 +139,16 @@ export function Header({
   return (
     <>
       <header
+        style={{ padding: '0 25px' }}
         className={cn(
-          'sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all shadow-2xs box-border',
+          'fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 box-border px-[25px]',
+          isScrolled
+            ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-md'
+            : 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-2xs',
           className
         )}
       >
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] flex h-[72px] sm:h-[80px] lg:h-[90.375px] items-center justify-between box-border">
+        <div className="w-full max-w-[1440px] mx-auto flex h-[90.375px] items-center justify-between box-border">
           {/* 1. Brand Logo */}
           <Link
             href={ROUTES.HOME}
@@ -243,6 +257,12 @@ export function Header({
           </div>
         </div>
       </header>
+
+      {/* Spacer so page content flows naturally below the fixed header */}
+      <div
+        className="h-[90.375px] w-full shrink-0"
+        aria-hidden="true"
+      />
 
       {/* High-End Mobile & Tablet Slide-Over Sheet */}
       {isMobileMenuOpen && (
