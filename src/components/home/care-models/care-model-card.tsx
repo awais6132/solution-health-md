@@ -17,7 +17,6 @@ export const CareModelCard: React.FC<CareModelCardProps> = ({ item, className = 
     <div
       className={`group relative flex flex-col justify-between overflow-hidden border border-white/5 transition-all duration-300 w-full p-6 sm:p-8 lg:p-9.5 ${className}`}
       style={{
-        maxWidth: '665.77px',
         minHeight: '523.23px',
         borderRadius: '27.11px',
         backgroundColor: '#0000008C',

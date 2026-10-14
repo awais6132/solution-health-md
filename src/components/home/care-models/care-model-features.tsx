@@ -11,13 +11,7 @@ export const CareModelFeatures: React.FC<CareModelFeaturesProps> = ({
   checkmarkColor = 'text-[#4ADE80]',
 }) => {
   return (
-    <ul
-      className="flex flex-col w-full"
-      style={{
-        paddingTop: '9.04px',
-        gap: '18.08px',
-      }}
-    >
+    <ul className="flex flex-col w-full space-y-4 pt-2">
       {features.map((feature, index) => (
         <li key={index} className="flex items-center gap-2.5 sm:gap-3 group/item">
           <span className={`shrink-0 ${checkmarkColor}`}>

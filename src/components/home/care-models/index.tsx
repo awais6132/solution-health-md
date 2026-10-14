@@ -14,14 +14,13 @@ export const CareModelsSection: React.FC<CareModelsSectionProps> = ({
   return (
     <section
       aria-label="Care Delivery Options"
-      style={{ padding: '50px 25px' }}
-      className={`w-full bg-white py-[50px] px-[25px] ${className}`}
+      className={`w-full bg-white ${className}`}
     >
-      <div className="w-full mx-auto box-border">
-        {/* 2-Column Responsive Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7 lg:gap-8">
+      <div className="w-full box-border">
+        {/* 2-Column Responsive Flex Row without grid and without gap */}
+        <div className="flex flex-col lg:flex-row w-full items-stretch">
           {items.map((item) => (
-            <CareModelCard key={item.id} item={item} />
+            <CareModelCard key={item.id} item={item} className="flex-1 w-full" />
           ))}
         </div>
       </div>
