@@ -12,7 +12,7 @@ export const HowItWorksHeader: React.FC<HowItWorksHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-center text-center max-w-2xl mx-auto mb-10 sm:mb-12 ${className}`}>
+    <div className={`flex flex-col items-center text-center mx-auto mb-10 sm:mb-12 ${className}`}>
       <h2
         className="w-full"
         style={{
@@ -30,7 +30,7 @@ export const HowItWorksHeader: React.FC<HowItWorksHeaderProps> = ({
       </h2>
       {subheadline && (
         <p
-          className="w-full max-w-[424px] mt-2.5"
+          className="w-full mt-2.5"
           style={{
             fontFamily: 'Inter, sans-serif',
             fontWeight: 400,

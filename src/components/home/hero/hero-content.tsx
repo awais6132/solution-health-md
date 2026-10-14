@@ -31,7 +31,7 @@ export function HeroContent({
   const [isSecondaryHovered, setIsSecondaryHovered] = useState(false);
 
   return (
-    <div suppressHydrationWarning className="flex flex-col items-start text-left w-full max-w-[650.7px] box-border justify-start gap-4 sm:gap-5 lg:gap-6 min-h-[380px] sm:min-h-[420px] lg:min-h-[440px]">
+    <div suppressHydrationWarning className="flex flex-col items-start text-left w-full lg:w-1/2 box-border justify-start gap-4 sm:gap-5 lg:gap-6 min-h-[380px] sm:min-h-[420px] lg:min-h-[440px]">
       {/* 1. Pill / Top Tagline Badge */}
       <div className="min-h-[32px] flex items-center">
         <HeroBadge badge={badge} accentColor={accentColor} />
@@ -39,7 +39,7 @@ export function HeroContent({
 
       {/* 2. Dual-Colored Main Headline with reserved 3-line min-height to prevent content jumping */}
       <h1
-        className="w-full max-w-[650.7px] text-[30px] sm:text-[38px] md:text-[44px] lg:text-[48px] xl:text-[54px] leading-[1.15] lg:leading-[1.12] tracking-tight lg:tracking-[-1.5px] font-extrabold min-h-[104px] sm:min-h-[130px] md:min-h-[148px] lg:min-h-[162px] xl:min-h-[178px] flex flex-col justify-start"
+        className="w-full text-[30px] sm:text-[38px] md:text-[44px] lg:text-[48px] xl:text-[54px] leading-[1.15] lg:leading-[1.12] tracking-tight lg:tracking-[-1.5px] font-extrabold min-h-[104px] sm:min-h-[130px] md:min-h-[148px] lg:min-h-[162px] xl:min-h-[178px] flex flex-col justify-start"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 800,

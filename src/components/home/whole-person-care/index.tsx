@@ -19,7 +19,7 @@ export const WholePersonCareSection: React.FC<WholePersonCareSectionProps> = ({
     <section
       aria-label="Whole-Person Care and Wellness Pillars"
       style={{ padding: '50px 25px' }}
-      className={`relative w-full max-w-full overflow-hidden overflow-x-hidden py-[50px] min-h-[480px] flex items-center bg-[#071F3D] px-[25px] ${className}`}
+      className={`relative w-full overflow-hidden overflow-x-hidden py-[50px] min-h-[480px] flex items-center bg-[#071F3D] px-[25px] ${className}`}
     >
       {/* 1. Panoramic Scenic Background Image */}
       {activeConfig.backgroundImage && (
@@ -40,7 +40,7 @@ export const WholePersonCareSection: React.FC<WholePersonCareSectionProps> = ({
       )}
 
       {/* 2. Main Content Container */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto space-y-10 sm:space-y-12 box-border">
+      <div className="relative z-10 w-full mx-auto space-y-10 sm:space-y-12 box-border">
         {/* Top Split Header: Left Intro & Right Cursive Tagline */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-10">
           <CareIntro

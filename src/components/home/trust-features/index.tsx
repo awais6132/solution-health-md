@@ -22,7 +22,7 @@ export const TrustFeatures: React.FC<TrustFeaturesProps> = ({
       style={{ padding: '20px 25px' }}
       className={`w-full bg-[#F8F9FF] border-y-[1.13px] border-[#F1F5F9] py-[20px] px-[25px] box-border ${className}`}
     >
-      <div className="w-full max-w-[1440px] mx-auto box-border">
+      <div className="w-full mx-auto box-border">
         {/* Mobile & Tablet: Modern 2-col/responsive grid of cards; Desktop: Exact horizontal flex row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row items-stretch lg:items-center justify-between gap-3 sm:gap-4 lg:gap-0 w-full">
           {items.map((item) => (

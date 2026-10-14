@@ -48,7 +48,7 @@ export const CareModelCard: React.FC<CareModelCardProps> = ({ item, className = 
 
       {/* 2. Foreground Graphic/Artwork if provided */}
       {foregroundImage && (
-        <div className="absolute right-0 bottom-0 top-0 w-[46%] sm:w-[50%] max-w-[330px] pointer-events-none z-[5] flex items-end justify-end overflow-hidden">
+        <div className="absolute right-0 bottom-0 top-0 w-[46%] sm:w-[50%] pointer-events-none z-[5] flex items-end justify-end overflow-hidden">
           <div className="relative w-full h-full">
             <Image
               src={foregroundImage}
@@ -61,7 +61,7 @@ export const CareModelCard: React.FC<CareModelCardProps> = ({ item, className = 
       )}
 
       {/* 3. Content Layer */}
-      <div className="relative z-10 flex flex-col justify-between h-full space-y-6 sm:space-y-8 w-full max-w-[591.22px]">
+      <div className="relative z-10 flex flex-col justify-between h-full space-y-6 sm:space-y-8 w-full">
         <div className="flex flex-col space-y-5 sm:space-y-6">
           {/* Header (Badge + Title + Subtitle) */}
           <CareModelHeader badge={badge} title={title} subtitle={subtitle} />

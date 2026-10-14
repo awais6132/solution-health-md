@@ -17,7 +17,7 @@ export const AppFeatures: React.FC<AppFeaturesProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-start justify-center space-y-6 sm:space-y-7 max-w-sm ${className}`}>
+    <div className={`flex flex-col items-start justify-center space-y-6 sm:space-y-7 ${className}`}>
       {/* 1. Feature Checklist */}
       <ul className="flex flex-col space-y-3.5 sm:space-y-4">
         {features.map((item) => (

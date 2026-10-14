@@ -17,7 +17,7 @@ export const CareModelsSection: React.FC<CareModelsSectionProps> = ({
       style={{ padding: '50px 25px' }}
       className={`w-full bg-white py-[50px] px-[25px] ${className}`}
     >
-      <div className="w-full max-w-[1440px] mx-auto box-border">
+      <div className="w-full mx-auto box-border">
         {/* 2-Column Responsive Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7 lg:gap-8">
           {items.map((item) => (

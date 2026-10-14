@@ -30,7 +30,7 @@ export function HeroTrustBar({ items }: HeroTrustBarProps) {
 
   return (
     <div className="w-full border-y border-slate-200/90 bg-white py-3.5 sm:py-4 shadow-2xs box-border">
-      <div className="w-full max-w-[1440px] mx-auto box-border">
+      <div className="w-full mx-auto box-border">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 items-center">
           {items.map((item, index) => (
             <div

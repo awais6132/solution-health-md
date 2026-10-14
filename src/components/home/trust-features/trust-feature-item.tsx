@@ -53,7 +53,7 @@ export const TrustFeatureItemComponent: React.FC<TrustFeatureItemProps> = ({ ite
       </div>
 
       {/* Feature Title (13px Semi-Bold) */}
-      <span className="font-semibold text-[13.5px] sm:text-[13px] leading-[19px] tracking-[0px] text-[#0F172A] max-w-[220px] lg:max-w-[190px]">
+      <span className="font-semibold text-[13.5px] sm:text-[13px] leading-[19px] tracking-[0px] text-[#0F172A]">
         {title}
       </span>
     </div>

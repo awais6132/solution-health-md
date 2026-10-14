@@ -46,7 +46,7 @@ export const StepCard: React.FC<StepCardProps> = ({ step, className = '' }) => {
 
       {/* 3. Step Description */}
       <p
-        className="w-full max-w-[271px]"
+        className="w-full"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 400,

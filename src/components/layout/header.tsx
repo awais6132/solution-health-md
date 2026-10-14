@@ -148,7 +148,7 @@ export function Header({
           className
         )}
       >
-        <div className="w-full max-w-[1440px] mx-auto flex h-[90.375px] items-center justify-between box-border">
+        <div className="w-full mx-auto flex h-[90.375px] items-center justify-between box-border">
           {/* 1. Brand Logo */}
           <Link
             href={ROUTES.HOME}

@@ -50,7 +50,7 @@ function SocialIcon({ iconName }: { iconName: SocialLinkItem['iconName'] }) {
 
 export function FooterBrand({ name, logoSrc, description, socials }: FooterBrandProps) {
   return (
-    <div className="space-y-4 max-w-xs">
+    <div className="space-y-4">
       {/* Brand Logo */}
       <Link
         href={ROUTES.HOME}

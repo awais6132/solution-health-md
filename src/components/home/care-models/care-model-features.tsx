@@ -12,7 +12,7 @@ export const CareModelFeatures: React.FC<CareModelFeaturesProps> = ({
 }) => {
   return (
     <ul
-      className="flex flex-col w-full max-w-[591.22px]"
+      className="flex flex-col w-full"
       style={{
         paddingTop: '9.04px',
         gap: '18.08px',

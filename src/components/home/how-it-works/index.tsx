@@ -26,7 +26,7 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
         backgroundColor: '#FFFFFF',
       }}
     >
-      <div className="w-full max-w-[1440px] mx-auto box-border">
+      <div className="w-full mx-auto box-border">
         {/* Centered Section Header */}
         <HowItWorksHeader
           headline={activeConfig.headline}

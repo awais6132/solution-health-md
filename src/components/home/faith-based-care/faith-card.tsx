@@ -14,10 +14,9 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
 
   return (
     <div
-      className={`group relative flex flex-col justify-between bg-white rounded-[24.3px] border-[1.01px] border-slate-100/90 p-[24.3px] w-full max-w-[348.06px] min-h-[317.25px] h-[317.25px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] hover:-translate-y-1 ${className}`}
+      className={`group relative flex flex-col justify-between bg-white rounded-[24.3px] border-[1.01px] border-slate-100/90 p-[24.3px] w-full min-h-[317.25px] h-[317.25px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] hover:-translate-y-1 ${className}`}
       style={{
         width: '100%',
-        maxWidth: '348.06px',
         minHeight: '317.25px',
         height: '317.25px',
         opacity: 1,

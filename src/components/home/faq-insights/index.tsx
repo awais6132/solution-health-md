@@ -18,9 +18,9 @@ export const FaqInsightsSection: React.FC<FaqInsightsSectionProps> = ({
       id="faqs-and-insights"
       aria-label="Frequently Asked Questions and Health Insights"
       style={{ padding: '50px 25px' }}
-      className={`relative w-full max-w-full overflow-hidden overflow-x-hidden py-[50px] bg-white px-[25px] ${className}`}
+      className={`relative w-full overflow-hidden overflow-x-hidden py-[50px] bg-white px-[25px] ${className}`}
     >
-      <div className="w-full max-w-[1440px] mx-auto box-border">
+      <div className="w-full mx-auto box-border">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
           {/* Left Column: Frequently Asked Questions (Accordion) */}
           <div className="lg:col-span-5 w-full">

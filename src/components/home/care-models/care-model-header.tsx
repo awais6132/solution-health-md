@@ -74,7 +74,7 @@ export const CareModelHeader: React.FC<CareModelHeaderProps> = ({
 
       {/* Subtitle / Tagline */}
       <p
-        className="w-full max-w-[591.22px]"
+        className="w-full"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 500,

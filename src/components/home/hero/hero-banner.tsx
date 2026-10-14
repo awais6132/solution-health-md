@@ -44,8 +44,8 @@ export function HeroBanner({ config }: HeroBannerProps) {
 
   return (
     <div suppressHydrationWarning className="relative w-full bg-white flex justify-center overflow-hidden box-border">
-      {/* 1440px Centered Canvas: Locks Text and Imagery in exact proportion on all screen sizes */}
-      <div className="relative w-full max-w-[1440px] mx-auto min-h-[540px] lg:min-h-[600px] flex items-center box-border pt-6 sm:pt-10 pb-16">
+      {/* Centered Canvas: Locks Text and Imagery in proportion */}
+      <div className="relative w-full mx-auto min-h-[540px] lg:min-h-[600px] flex items-center box-border pt-6 sm:pt-10 pb-16">
         
         {/* 1. Layered Slide Background Images */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -65,7 +65,7 @@ export function HeroBanner({ config }: HeroBannerProps) {
                     fill
                     priority={idx === 0}
                     className="object-cover object-right-top lg:object-right select-none"
-                    sizes="(max-width: 1440px) 100vw, 1440px"
+                    sizes="(max-width: 2048px) 100vw, 2048px"
                   />
                 </div>
               );
@@ -78,13 +78,13 @@ export function HeroBanner({ config }: HeroBannerProps) {
                 fill
                 priority
                 className="object-cover object-right-top lg:object-right select-none"
-                sizes="(max-width: 1440px) 100vw, 1440px"
+                sizes="(max-width: 2048px) 100vw, 2048px"
               />
             </div>
           )}
 
           {/* Soft white gradient overlay on left to guarantee text readability across all background images */}
-          <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white via-white/85 to-transparent max-w-[720px] lg:max-w-[780px]" />
+          <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white via-white/85 to-transparent w-full lg:w-[55%]" />
         </div>
 
         {/* 2. Text & CTA Content positioned inside 1440px canvas */}

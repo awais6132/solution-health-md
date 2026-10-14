@@ -16,7 +16,7 @@ export const AppIntro: React.FC<AppIntroProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-start justify-center space-y-6 max-w-md ${className}`}>
+    <div className={`flex flex-col items-start justify-center space-y-6 ${className}`}>
       {/* 1. Main Headline with clean two-line break matching the screenshot */}
       <h2
         className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0F172A] tracking-tight leading-[1.14]"
@@ -33,7 +33,7 @@ export const AppIntro: React.FC<AppIntroProps> = ({
 
       {/* 2. Subtitle Description */}
       <p
-        className="text-base sm:text-[16.5px] text-[#64748B] font-normal leading-relaxed max-w-[380px]"
+        className="text-base sm:text-[16.5px] text-[#64748B] font-normal leading-relaxed"
         style={{ fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif' }}
       >
         {description}

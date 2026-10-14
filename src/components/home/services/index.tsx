@@ -33,7 +33,7 @@ export const CareServicesSection: React.FC<CareServicesSectionProps> = ({
       style={{ padding: '50px 25px' }}
       className={`w-full bg-white py-[50px] px-[25px] ${className}`}
     >
-      <div className="w-full max-w-[1440px] mx-auto box-border">
+      <div className="w-full mx-auto box-border">
         {/* Header with Title & Action link */}
         <ServicesHeader
           headline={activeConfig.headline}

@@ -13,7 +13,7 @@ export const CareIntro: React.FC<CareIntroProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-start text-left justify-center space-y-3 max-w-xl ${className}`}>
+    <div className={`flex flex-col items-start text-left justify-center space-y-3 ${className}`}>
       {/* 1. Main Heading (2 Lines) */}
       <h2
         className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-sm"
@@ -25,7 +25,7 @@ export const CareIntro: React.FC<CareIntroProps> = ({
 
       {/* 2. Subtitle Description */}
       <p
-        className="text-sm sm:text-base lg:text-[17px] text-white/90 font-normal leading-relaxed max-w-lg drop-shadow-2xs"
+        className="text-sm sm:text-base lg:text-[17px] text-white/90 font-normal leading-relaxed drop-shadow-2xs"
         style={{ fontFamily: 'Inter, sans-serif' }}
       >
         {description}

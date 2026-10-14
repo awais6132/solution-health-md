@@ -17,9 +17,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     <section
       aria-label="Patient Testimonials and Real Results"
       style={{ padding: '50px 25px' }}
-      className={`relative w-full max-w-full overflow-hidden overflow-x-hidden py-[50px] bg-[#EFF6F9] px-[25px] ${className}`}
+      className={`relative w-full overflow-hidden overflow-x-hidden py-[50px] bg-[#EFF6F9] px-[25px] ${className}`}
     >
-      <div className="w-full max-w-[1440px] mx-auto box-border">
+      <div className="w-full mx-auto box-border">
         {/* Top Header */}
         <TestimonialsHeader
           headline={activeConfig.headline}

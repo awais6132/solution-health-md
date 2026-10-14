@@ -28,7 +28,7 @@ export const TestimonialsHeader: React.FC<TestimonialsHeaderProps> = ({
           {headline}
         </h2>
         <p
-          className="text-sm sm:text-base text-[#64748B] font-normal leading-relaxed max-w-xl"
+          className="text-sm sm:text-base text-[#64748B] font-normal leading-relaxed"
           style={{ fontFamily: 'Inter, sans-serif' }}
         >
           {description}

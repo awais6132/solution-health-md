@@ -20,7 +20,7 @@ export const FaithIntro: React.FC<FaithIntroProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-start text-left justify-center space-y-4 sm:space-y-5 max-w-[592px] ${className}`}>
+    <div className={`flex flex-col items-start text-left justify-center space-y-4 sm:space-y-5 ${className}`}>
       {/* 1. Eyebrow Tag with Cross */}
       <div
         className="flex items-center gap-2 uppercase"
