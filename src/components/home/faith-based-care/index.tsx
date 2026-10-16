@@ -17,7 +17,7 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
   return (
     <section
       aria-label="Faith-Based Healthcare"
-      className={`relative w-full overflow-hidden site-section min-h-[416px] flex items-center px-0 ${className}`}
+      className={`relative w-full overflow-hidden site-section site-section-both min-h-[416px] flex items-center px-0 ${className}`}
       style={{
         backgroundColor: '#1E293B',
       }}
@@ -44,7 +44,7 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
       {/* 2. Main Content Container */}
       <div className="relative z-10 w-full box-border site-container">
         {/* Container ke andar 2 divs: Left 40% and Right 60% */}
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-6">
           {/* Left Div: 40% Width */}
           <div className="w-full lg:w-[40%] flex flex-col justify-center">
             <FaithIntro
