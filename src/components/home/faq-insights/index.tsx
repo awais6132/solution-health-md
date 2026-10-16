@@ -21,7 +21,7 @@ export const FaqInsightsSection: React.FC<FaqInsightsSectionProps> = ({
     >
       <div className="w-full box-border site-container">
         {/* Responsive Flex Container (Zero Margins, Pure Flex Gap) */}
-        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-12 xl:gap-16 w-full">
+        <div className="flex flex-col lg:flex-row items-start gap-10">
           {/* Left Column: Frequently Asked Questions (Accordion) */}
           <div className="w-full lg:w-[42%] flex flex-col">
             <FaqAccordion

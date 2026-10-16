@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Star, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HeroSectionConfig, HeroSlide } from '@/types/hero';
 
 interface HeroMobileBannerProps {
@@ -167,56 +166,9 @@ export function HeroMobileBanner({ config }: HeroMobileBannerProps) {
         )}
       </div>
 
-      {/* 6. Dedicated High-Resolution Visual Showcase Card */}
-      <div className="relative z-10 w-full aspect-[16/10] xs:aspect-[16/9.5] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_14px_34px_-8px_rgba(10,37,64,0.18)] border border-slate-200/80 bg-slate-100 mt-2 select-none">
-        {/* Layered Slide Background Images */}
-        {slides ? (
-          slides.map((slide, idx) => {
-            const isActive = idx === activeIndex;
-            return (
-              <div
-                key={slide.id || idx}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-                }`}
-              >
-                <Image
-                  src={slide.bannerImage.src}
-                  alt={slide.bannerImage.alt}
-                  fill
-                  priority={idx === 0}
-                  className={`object-cover ${idx === 0 ? 'object-center' : 'object-right'} select-none`}
-                  sizes="(max-width: 1024px) 100vw, 600px"
-                />
-              </div>
-            );
-          })
-        ) : (
-          <div className="relative w-full h-full">
-            <Image
-              src={config.bannerImage.src}
-              alt={config.bannerImage.alt}
-              fill
-              priority
-              className="object-cover object-center select-none"
-              sizes="(max-width: 1024px) 100vw, 600px"
-            />
-          </div>
-        )}
-
-        {/* Soft bottom vignette for contrast and depth */}
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 pointer-events-none" />
-
-        {/* Glassmorphic Floating Trust Badge */}
-        <div className="absolute bottom-2.5 left-2.5 xs:bottom-3 xs:left-3 z-20 flex items-center gap-1.5 bg-black/65 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white text-[11px] font-medium shadow-md">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-          <span className="whitespace-nowrap">Board-Certified Clinicians • 50 States</span>
-        </div>
-      </div>
-
-      {/* 7. Frosted Capsule Slide Switcher */}
+      {/* 6. Frosted Capsule Slide Switcher */}
       {slides && slides.length > 1 && (
-        <div className="relative z-10 w-full flex justify-center items-center pt-1.5 pb-0">
+        <div className="relative z-10 w-full flex justify-center items-center pt-2 pb-0">
           <div
             className="inline-flex items-center gap-2 bg-[#0A2540]/92 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20 shadow-[0_12px_28px_-6px_rgba(10,37,64,0.35)] transition-all duration-500 select-none max-w-full"
             role="tablist"
