@@ -16,10 +16,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   return (
     <section
       aria-label="Patient Testimonials and Real Results"
-      style={{ padding: '50px 25px' }}
-      className={`relative w-full overflow-hidden overflow-x-hidden py-[50px] bg-[#EFF6F9] px-[25px] ${className}`}
+      className={`relative w-full overflow-hidden site-section site-section-both bg-[#EFF6F9] px-0 ${className}`}
     >
-      <div className="w-full mx-auto box-border">
+      <div className="w-full box-border site-container flex flex-col gap-[30px]">
         {/* Top Header */}
         <TestimonialsHeader
           headline={activeConfig.headline}
@@ -27,10 +26,10 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           viewAllLink={activeConfig.viewAllLink}
         />
 
-        {/* 3-Column Responsive Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
+        {/* 3-Column Responsive Flex Row (Zero Margins, Pure Flex Gap) */}
+        <div className="flex flex-col lg:flex-row items-stretch gap-6 w-full">
           {activeConfig.testimonials.map((item) => (
-            <TestimonialCard key={item.id} item={item} />
+            <TestimonialCard key={item.id} item={item} className="flex-1 w-full" />
           ))}
         </div>
       </div>

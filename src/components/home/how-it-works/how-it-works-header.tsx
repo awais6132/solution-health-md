@@ -12,7 +12,7 @@ export const HowItWorksHeader: React.FC<HowItWorksHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-center text-center mx-auto mb-10 sm:mb-12 ${className}`}>
+    <div className={`flex flex-col items-center text-center ${className}`}>
       <h2
         className="w-full"
         style={{

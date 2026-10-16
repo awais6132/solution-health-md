@@ -5,11 +5,12 @@ import { FeaturedArticleItem } from '@/types/faq-insights';
 
 interface FeaturedArticleCardProps {
   article: FeaturedArticleItem;
+  className?: string;
 }
 
-export const FeaturedArticleCard: React.FC<FeaturedArticleCardProps> = ({ article }) => {
+export const FeaturedArticleCard: React.FC<FeaturedArticleCardProps> = ({ article, className = '' }) => {
   return (
-    <article className="w-full flex flex-col bg-[#F0F7FA] hover:bg-[#E8F3F8] transition-all duration-200 rounded-2xl overflow-hidden border border-[#E2EEF4]/60 group">
+    <article className={`w-full flex flex-col bg-[#F0F7FA] hover:bg-[#E8F3F8] transition-all duration-200 rounded-2xl overflow-hidden border border-[#E2EEF4]/60 group ${className}`}>
       {/* Wide Hero Image */}
       <div className="relative w-full h-44 sm:h-52 md:h-60 overflow-hidden bg-slate-200">
         <Image

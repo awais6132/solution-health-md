@@ -52,6 +52,8 @@ export function HeroBanner({ config }: HeroBannerProps) {
           {slides ? (
             slides.map((slide, idx) => {
               const isActive = idx === activeIndex;
+              const isFirstSlide = idx === 0;
+
               return (
                 <div
                   key={slide.id || idx}
@@ -59,14 +61,22 @@ export function HeroBanner({ config }: HeroBannerProps) {
                     isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                   }`}
                 >
-                  <Image
-                    src={slide.bannerImage.src}
-                    alt={slide.bannerImage.alt}
-                    fill
-                    priority={idx === 0}
-                    className="object-cover object-right-top lg:object-right select-none"
-                    sizes="(max-width: 2048px) 100vw, 2048px"
-                  />
+                  <div
+                    className={
+                      isFirstSlide
+                        ? 'relative w-full h-full'
+                        : 'relative w-full h-full lg:w-[55%] lg:ml-auto [mask-image:linear-gradient(to_right,transparent,black_18%)]'
+                    }
+                  >
+                    <Image
+                      src={slide.bannerImage.src}
+                      alt={slide.bannerImage.alt}
+                      fill
+                      priority={isFirstSlide}
+                      className="object-cover object-right select-none"
+                      sizes="(max-width: 2048px) 100vw, 2048px"
+                    />
+                  </div>
                 </div>
               );
             })
@@ -77,18 +87,20 @@ export function HeroBanner({ config }: HeroBannerProps) {
                 alt={config.bannerImage.alt}
                 fill
                 priority
-                className="object-cover object-right-top lg:object-right select-none"
+                className="object-cover object-right select-none"
                 sizes="(max-width: 2048px) 100vw, 2048px"
               />
             </div>
           )}
 
-          {/* Soft white gradient overlay on left to guarantee text readability across all background images */}
-          <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white via-white/85 to-transparent w-full lg:w-[55%]" />
+          {/* Soft white gradient overlay on left for 1st slide doctors banner */}
+          {activeIndex === 0 && (
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white via-white/85 to-transparent w-full lg:w-[55%]" />
+          )}
         </div>
 
         {/* 2. Text & CTA Content positioned inside 1440px canvas */}
-        <div className="relative z-10 w-full box-border">
+        <div className="relative z-10 w-full box-border site-container">
           <HeroContent
             badge={currentSlide.badge}
             headline={currentSlide.headline}

@@ -13,18 +13,18 @@ export const CareModelHeader: React.FC<CareModelHeaderProps> = ({
   subtitle,
 }) => {
   return (
-    <div className="flex flex-col space-y-2.5 sm:space-y-3">
+    <div className="flex flex-col gap-2.5 sm:gap-3">
       {/* Badge & Title Row */}
       <div className="flex items-center gap-3 sm:gap-3.5">
-        <div className="shrink-0 w-[45.19px] h-[45.19px] flex items-center justify-center select-none">
+        <div className="shrink-0 w-[45px] h-[45px] flex items-center justify-center select-none">
           {badge.icon === 'refresh' ? (
             <svg
-              width="46"
-              height="46"
+              width="45"
+              height="45"
               viewBox="0 0 46 46"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-[45.19px] h-[45.19px]"
+              className="w-[45px] h-[45px]"
             >
               <rect width="45.1875" height="45.1875" rx="22.5938" fill="#4B9B44" />
               <path
@@ -37,12 +37,12 @@ export const CareModelHeader: React.FC<CareModelHeaderProps> = ({
             </svg>
           ) : (
             <svg
-              width="46"
-              height="46"
+              width="45"
+              height="45"
               viewBox="0 0 46 46"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-[45.19px] h-[45.19px]"
+              className="w-[45px] h-[45px]"
             >
               <rect width="45.1875" height="45.1875" rx="22.5938" fill="#2563EB" />
               <path
@@ -56,35 +56,13 @@ export const CareModelHeader: React.FC<CareModelHeaderProps> = ({
           )}
         </div>
 
-        <h2
-          className="tracking-normal leading-tight font-bold"
-          style={{
-            fontFamily: 'Inter, sans-serif',
-            fontWeight: 700,
-            fontSize: '27.11px',
-            lineHeight: '36.15px',
-            letterSpacing: '0px',
-            verticalAlign: 'middle',
-            color: '#F8F9FF',
-          }}
-        >
+        <h2 className="text-2xl sm:text-[27px] font-bold text-[#F8F9FF] leading-tight tracking-normal">
           {title}
         </h2>
       </div>
 
       {/* Subtitle / Tagline */}
-      <p
-        className="w-full"
-        style={{
-          fontFamily: 'Inter, sans-serif',
-          fontWeight: 500,
-          fontSize: '18.08px',
-          lineHeight: '27.11px',
-          letterSpacing: '0px',
-          verticalAlign: 'middle',
-          color: '#F8F9FF',
-        }}
-      >
+      <p className="text-base sm:text-[18px] font-medium text-[#F8F9FF] leading-relaxed w-full">
         {subtitle}
       </p>
     </div>

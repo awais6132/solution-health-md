@@ -23,7 +23,7 @@ export function Container({
   return (
     <Component
       className={cn(
-        'w-full mx-auto box-border transition-all px-[25px]',
+        'w-full mx-auto box-border transition-all site-container',
         className
       )}
       style={style}

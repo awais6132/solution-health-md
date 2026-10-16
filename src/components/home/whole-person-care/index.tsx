@@ -18,8 +18,7 @@ export const WholePersonCareSection: React.FC<WholePersonCareSectionProps> = ({
   return (
     <section
       aria-label="Whole-Person Care and Wellness Pillars"
-      style={{ padding: '50px 25px' }}
-      className={`relative w-full overflow-hidden overflow-x-hidden py-[50px] min-h-[480px] flex items-center bg-[#071F3D] px-[25px] ${className}`}
+      className={`relative w-full overflow-hidden site-section site-section-both flex items-center bg-[#071F3D] ${className}`}
     >
       {/* 1. Panoramic Scenic Background Image */}
       {activeConfig.backgroundImage && (
@@ -40,9 +39,9 @@ export const WholePersonCareSection: React.FC<WholePersonCareSectionProps> = ({
       )}
 
       {/* 2. Main Content Container */}
-      <div className="relative z-10 w-full mx-auto space-y-10 sm:space-y-12 box-border">
+      <div className="relative z-10 w-full site-container flex flex-col gap-[30px]">
         {/* Top Split Header: Left Intro & Right Cursive Tagline */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-10">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <CareIntro
             headline={activeConfig.headline}
             description={activeConfig.description}
@@ -50,10 +49,13 @@ export const WholePersonCareSection: React.FC<WholePersonCareSectionProps> = ({
           <CareTagline tagline={activeConfig.tagline} />
         </div>
 
-        {/* Bottom 6 Glassmorphism Pillar Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
+        {/* Bottom 6 Glassmorphism Pillar Cards Flex Row */}
+        <div className="flex flex-col sm:flex-row flex-wrap lg:flex-nowrap items-stretch justify-between gap-4">
           {activeConfig.pillars.map((pillar) => (
-            <PillarCard key={pillar.id} pillar={pillar} />
+            <PillarCard
+              key={pillar.id}
+              pillar={pillar}
+            />
           ))}
         </div>
       </div>

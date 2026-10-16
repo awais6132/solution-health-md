@@ -38,7 +38,7 @@ export function FooterNewsletter({ config }: FooterNewsletterProps) {
   };
 
   return (
-    <div suppressHydrationWarning className="space-y-3">
+    <div suppressHydrationWarning className="flex flex-col gap-3 w-full">
       <h3
         className="font-bold"
         style={{
@@ -63,8 +63,8 @@ export function FooterNewsletter({ config }: FooterNewsletterProps) {
           <span>Thank you for subscribing! You are all set.</span>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-2">
-          <div className="flex flex-col gap-2">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full">
+          <div className="flex flex-col gap-2 w-full">
             <input
               type="email"
               value={email}
@@ -79,11 +79,11 @@ export function FooterNewsletter({ config }: FooterNewsletterProps) {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="inline-flex w-full items-center justify-center rounded-lg px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm disabled:opacity-70 cursor-pointer btn-animated-gradient-success active:scale-[0.98]"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm disabled:opacity-70 cursor-pointer btn-animated-gradient-success active:scale-[0.98]"
             >
               {status === 'loading' ? (
                 <>
-                  <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
                   Subscribing...
                 </>
               ) : (

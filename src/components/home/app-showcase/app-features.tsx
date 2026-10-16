@@ -17,11 +17,11 @@ export const AppFeatures: React.FC<AppFeaturesProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-start justify-center space-y-6 sm:space-y-7 ${className}`}>
+    <div className={`flex flex-col items-start justify-center gap-6 ${className}`}>
       {/* 1. Feature Checklist */}
-      <ul className="flex flex-col space-y-3.5 sm:space-y-4">
+      <ul className="flex flex-col gap-3.5">
         {features.map((item) => (
-          <li key={item.id} className="flex items-center gap-3 sm:gap-3.5">
+          <li key={item.id} className="flex items-center gap-3">
             {/* Olive-Green Circular Check Badge */}
             <div className="w-[21px] h-[21px] rounded-full bg-[#8DB92E] flex items-center justify-center shrink-0 shadow-xs">
               <Check className="w-3.5 h-3.5 text-white stroke-[3.2]" />
@@ -37,13 +37,13 @@ export const AppFeatures: React.FC<AppFeaturesProps> = ({
       </ul>
 
       {/* 2. Cursive Script Tagline with Custom Hand-drawn Brush Underline */}
-      <div className="pt-2 sm:pt-3">
+      <div className="pt-2">
         <div
-          className="text-[27px] sm:text-[30px] font-bold italic text-[#4B9B44] leading-[1.18] select-none tracking-normal"
+          className="text-[27px] sm:text-[30px] font-bold italic text-[#4B9B44] leading-[1.18] select-none tracking-normal flex flex-col gap-0.5"
           style={{ fontFamily: 'var(--font-caveat), cursive, sans-serif' }}
         >
           <span className="block">{tagline.line1}</span>
-          <span className="block relative inline-block mt-0.5">
+          <span className="block relative inline-block">
             {tagline.line2}
             {/* Hand-drawn Green Underline Stroke */}
             <svg

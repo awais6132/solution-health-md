@@ -12,32 +12,22 @@ export const StepCard: React.FC<StepCardProps> = ({ step, className = '' }) => {
 
   return (
     <div
-      className={`group relative flex flex-col items-center text-center transition-all duration-300 w-full mx-auto justify-start hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 ${className}`}
-      style={{
-        maxWidth: '310px',
-        minHeight: '287px',
-        borderRadius: '16px',
-        padding: '24px',
-        backgroundColor: '#F8F9FF',
-        boxShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
-      }}
+      className={`w-full sm:w-[calc(50%-10px)] lg:w-auto lg:flex-1 flex flex-col items-center text-center justify-start p-6 rounded-[16px] bg-[#F8F9FF] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] gap-3 ${className}`}
     >
       {/* 1. Exact Outlined Number Badge */}
-      <div className="mb-4 shrink-0">
+      <div className="shrink-0">
         <StepNumberBadge stepNumber={stepNumber} />
       </div>
 
       {/* 2. Step Title */}
       <h3
-        className="w-full tracking-normal mb-1.5"
+        className="w-full tracking-normal"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 700,
           fontSize: '20.33px',
           lineHeight: '31.63px',
           letterSpacing: '0px',
-          textAlign: 'center',
-          verticalAlign: 'middle',
           color: '#000000',
         }}
       >
@@ -53,8 +43,6 @@ export const StepCard: React.FC<StepCardProps> = ({ step, className = '' }) => {
           fontSize: '15.82px',
           lineHeight: '25.7px',
           letterSpacing: '0px',
-          textAlign: 'center',
-          verticalAlign: 'middle',
           color: '#43474E',
         }}
       >

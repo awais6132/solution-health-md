@@ -55,12 +55,12 @@ export function Footer({
       {showPreFooter && <PreFooterCTA config={activeConfig.preFooter} />}
 
       {/* 2. Main Footer Content */}
-      <div suppressHydrationWarning className="bg-white border-t border-slate-200">
-        <Container className="pt-14 pb-8">
-          {/* Responsive Multi-Column Grid */}
-          <div suppressHydrationWarning className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
-            {/* Brand Column (Col Span 2) */}
-            <div suppressHydrationWarning className="lg:col-span-2">
+      <div suppressHydrationWarning className="bg-white border-t border-slate-200 w-full">
+        <div suppressHydrationWarning className="w-full box-border site-container site-section site-section-last flex flex-col gap-12">
+          {/* Responsive Multi-Column Flex Row (Zero Margins, Pure Flex Gap) */}
+          <div suppressHydrationWarning className="flex flex-col md:flex-row flex-wrap lg:flex-nowrap items-start justify-between gap-8 lg:gap-10 w-full">
+            {/* Brand Column (Wider branding column) */}
+            <div suppressHydrationWarning className="w-full md:w-[calc(50%-1rem)] lg:w-[30%] lg:flex-[2] flex flex-col">
               <FooterBrand
                 name={activeConfig.brand.name}
                 logoSrc={activeConfig.brand.logoSrc}
@@ -69,22 +69,22 @@ export function Footer({
               />
             </div>
 
-            {/* Dynamic Navigation Columns (Col Span 1 each) */}
+            {/* Dynamic Navigation Columns */}
             {activeConfig.navigationSections.map((section) => (
-              <div key={section.title} suppressHydrationWarning className="lg:col-span-1">
+              <div key={section.title} suppressHydrationWarning className="w-full sm:w-[calc(50%-1rem)] md:w-auto lg:flex-1 flex flex-col">
                 <FooterNavColumn section={section} />
               </div>
             ))}
 
-            {/* Newsletter Subscription Column (Col Span 1 on 6-col grid) */}
-            <div suppressHydrationWarning className="lg:col-span-1">
+            {/* Newsletter Subscription Column */}
+            <div suppressHydrationWarning className="w-full md:w-[calc(50%-1rem)] lg:w-[25%] lg:flex-[1.6] flex flex-col">
               <FooterNewsletter config={activeConfig.newsletter} />
             </div>
           </div>
 
           {/* 3. Bottom Legal & Copyright Bar */}
           <FooterBottomBar bottomBar={activeConfig.bottomBar} />
-        </Container>
+        </div>
       </div>
     </footer>
   );

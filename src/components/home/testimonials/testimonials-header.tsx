@@ -18,9 +18,9 @@ export const TestimonialsHeader: React.FC<TestimonialsHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-10 sm:pb-12 ${className}`}>
+    <div className={`flex flex-col sm:flex-row sm:items-end justify-between gap-4 ${className}`}>
       {/* Left: Main Headline & Subtitle */}
-      <div className="flex flex-col space-y-2 text-left">
+      <div className="flex flex-col gap-2 text-left">
         <h2
           className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0A192F] tracking-tight leading-[1.12]"
           style={{ fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif' }}

@@ -15,17 +15,11 @@ export const CareModelCard: React.FC<CareModelCardProps> = ({ item, className = 
 
   return (
     <div
-      className={`group relative flex flex-col justify-between overflow-hidden border border-white/5 transition-all duration-300 w-full p-6 sm:p-8 lg:p-9.5 ${className}`}
-      style={{
-        minHeight: '523.23px',
-        borderRadius: '27.11px',
-        backgroundColor: '#0000008C',
-        boxShadow: '0px 1.13px 2.26px 0px rgba(0, 0, 0, 0.05)',
-      }}
+      className={`group relative flex flex-col justify-between overflow-hidden rounded-[28px] min-h-[520px] w-full p-6 sm:p-8 lg:p-10 border border-white/10 shadow-sm ${className}`}
     >
-      {/* 1. Background Image */}
+      {/* 1. Background Image with Single Balanced Dark Gradient Overlay */}
       {backgroundImage && (
-        <div className="absolute inset-0 z-0 overflow-hidden" style={{ borderRadius: '27.11px' }}>
+        <div className="absolute inset-0 z-0 overflow-hidden rounded-[28px]">
           <Image
             src={backgroundImage}
             alt={title}
@@ -33,21 +27,14 @@ export const CareModelCard: React.FC<CareModelCardProps> = ({ item, className = 
             sizes="(max-width: 1024px) 100vw, 50vw"
             className={`object-cover ${bgPosition} transition-transform duration-700 group-hover:scale-105`}
           />
-          {/* Exact #0000008C Dark Overlay */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundColor: '#0000008C',
-            }}
-          />
-          {/* Subtle horizontal gradient to ensure text readability on all screen sizes */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          {/* Clean Balanced Gradient Overlay for readability without washing out photo */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/30" />
         </div>
       )}
 
       {/* 2. Foreground Graphic/Artwork if provided */}
       {foregroundImage && (
-        <div className="absolute right-0 bottom-0 top-0 w-[46%] sm:w-[50%] pointer-events-none z-[5] flex items-end justify-end overflow-hidden">
+        <div className="absolute right-0 bottom-0 top-0 w-[45%] pointer-events-none z-[5] flex items-end justify-end overflow-hidden">
           <div className="relative w-full h-full">
             <Image
               src={foregroundImage}
@@ -59,9 +46,9 @@ export const CareModelCard: React.FC<CareModelCardProps> = ({ item, className = 
         </div>
       )}
 
-      {/* 3. Content Layer */}
-      <div className="relative z-10 flex flex-col justify-between h-full space-y-6 sm:space-y-8 w-full">
-        <div className="flex flex-col space-y-5 sm:space-y-6">
+      {/* 3. Content Layer (Zero Margins, pure flex gap) */}
+      <div className="relative z-10 flex flex-col justify-between h-full gap-8 w-full">
+        <div className="flex flex-col gap-6">
           {/* Header (Badge + Title + Subtitle) */}
           <CareModelHeader badge={badge} title={title} subtitle={subtitle} />
 
@@ -69,18 +56,9 @@ export const CareModelCard: React.FC<CareModelCardProps> = ({ item, className = 
           <CareModelFeatures features={features} checkmarkColor={checkmarkColor} />
         </div>
 
-        {/* CTA Button using Global Button component */}
+        {/* CTA Button */}
         <CareModelCta cta={cta} />
       </div>
-
-      {/* Optional decorative accent note on image if available */}
-      {accentNote && (
-        <div className="hidden xl:block absolute right-8 top-12 z-10 pointer-events-none opacity-30 group-hover:opacity-60 transition-opacity">
-          <span className="text-xl font-serif italic text-emerald-300/80 transform -rotate-6 block">
-            {accentNote}
-          </span>
-        </div>
-      )}
     </div>
   );
 };

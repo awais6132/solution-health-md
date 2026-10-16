@@ -20,21 +20,17 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
   return (
     <section
       aria-label="How It Works"
-      className={`w-full bg-white py-[50px] px-[25px] ${className}`}
-      style={{
-        padding: '50px 25px',
-        backgroundColor: '#FFFFFF',
-      }}
+      className={`w-full bg-white site-section site-section-both px-0 ${className}`}
     >
-      <div className="w-full mx-auto box-border">
+      <div className="w-full box-border site-container flex flex-col gap-[30px]">
         {/* Centered Section Header */}
         <HowItWorksHeader
           headline={activeConfig.headline}
           subheadline={activeConfig.subheadline}
         />
 
-        {/* 4-Step Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-6.5 justify-items-center">
+        {/* 4-Step Cards Container */}
+        <div className="flex flex-col sm:flex-row flex-wrap lg:flex-nowrap items-stretch gap-[20px] w-full">
           {activeConfig.steps.map((step) => (
             <StepCard key={step.id} step={step} />
           ))}

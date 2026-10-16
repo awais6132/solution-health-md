@@ -55,6 +55,79 @@ html {
   --font-heading: var(--font-plus-jakarta-sans), 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
 }
 
+/* Global Section Content Spacing & Padding (Controlled in one single place) */
+:root {
+  --site-padding-x: 20px;
+  /* 50px section top padding rule */
+  --section-padding-y: 50px;
+}
+
+.site-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: var(--site-padding-x);
+  padding-right: var(--site-padding-x);
+}
+
+.site-section {
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: var(--section-padding-y);
+  padding-bottom: 0;
+}
+
+.site-section-last,
+.site-section-both,
+.site-section.site-section-both,
+.site-section.site-section-last,
+.site-section:last-of-type,
+.site-section:last-child {
+  padding-bottom: var(--section-padding-y);
+}
+
+/* Page Loader Animation */
+.loader-progress-bar {
+  width: 50%;
+  animation: loaderSlide 1.3s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes loaderSlide {
+  0% {
+    transform: translateX(-150%);
+  }
+  50% {
+    transform: translateX(80%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+/* Animated ECG Heartbeat Pulse Line */
+.ecg-pulse-line {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: ecgPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ecgPulse {
+  0% {
+    stroke-dashoffset: 240;
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  65% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -240;
+    opacity: 0.3;
+  }
+}
+
 /* Glassmorphism Utilities */
 .glass-card {
   background: rgba(255, 255, 255, 0.85);
@@ -221,4 +294,28 @@ body::-webkit-scrollbar-thumb:hover {
   border-color: #cbd5e1;
   box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08);
 }
+
+/* Seamless Infinite Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee 65s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Pause ALL tracks simultaneously when parent container is hovered */
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 

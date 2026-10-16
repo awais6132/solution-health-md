@@ -185,7 +185,7 @@ export function HeroMobileBanner({ config }: HeroMobileBannerProps) {
                   alt={slide.bannerImage.alt}
                   fill
                   priority={idx === 0}
-                  className="object-cover object-center select-none"
+                  className={`object-cover ${idx === 0 ? 'object-center' : 'object-right'} select-none`}
                   sizes="(max-width: 1024px) 100vw, 600px"
                 />
               </div>

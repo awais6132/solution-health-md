@@ -16,10 +16,10 @@ export const AppIntro: React.FC<AppIntroProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-start justify-center space-y-6 ${className}`}>
+    <div className={`flex flex-col items-start justify-center gap-6 ${className}`}>
       {/* 1. Main Headline with clean two-line break matching the screenshot */}
       <h2
-        className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0F172A] tracking-tight leading-[1.14]"
+        className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] leading-tight"
         style={{ fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif' }}
       >
         {headline === 'Your health, in your hands.' ? (
@@ -78,8 +78,8 @@ export const AppIntro: React.FC<AppIntroProps> = ({
               </svg>
             )}
 
-            <div className="flex flex-col text-left leading-none">
-              <span className="text-[8.5px] uppercase tracking-wider text-slate-300 font-medium mb-0.5">
+            <div className="flex flex-col text-left leading-none gap-0.5">
+              <span className="text-[8.5px] uppercase tracking-wider text-slate-300 font-medium">
                 {badge.subLabel}
               </span>
               <span className="text-sm font-bold tracking-tight text-white font-sans">

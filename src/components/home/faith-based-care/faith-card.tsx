@@ -14,15 +14,9 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
 
   return (
     <div
-      className={`group relative flex flex-col justify-between bg-white rounded-[24.3px] border-[1.01px] border-slate-100/90 p-[24.3px] w-full min-h-[317.25px] h-[317.25px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] hover:-translate-y-1 ${className}`}
-      style={{
-        width: '100%',
-        minHeight: '317.25px',
-        height: '317.25px',
-        opacity: 1,
-      }}
+      className={`group relative flex flex-col justify-between gap-5 bg-white rounded-[24px] border border-slate-100 p-6 w-full shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] hover:-translate-y-1 ${className}`}
     >
-      <div className="flex flex-col space-y-3">
+      <div className="flex flex-col gap-3">
         {/* 1. Icon Badge */}
         <div
           className="w-11 h-11 rounded-[12px] flex items-center justify-center shrink-0 shadow-2xs transition-transform duration-300 group-hover:scale-105"
@@ -36,7 +30,7 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
         </div>
 
         {/* 2. Title & Subtitle */}
-        <div className="flex flex-col space-y-0.5">
+        <div className="flex flex-col gap-0.5">
           <h3
             className="text-[19px] font-bold text-[#0A192F] leading-snug tracking-tight"
             style={{ fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif' }}
@@ -67,7 +61,7 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
 
       {/* 4. Action Buttons */}
       <div
-        className={`mt-auto pt-3 flex w-full ${
+        className={`flex w-full ${
           actions.length > 1
             ? 'flex-col xl:flex-row items-center gap-2'
             : 'flex-wrap items-center gap-2.5'

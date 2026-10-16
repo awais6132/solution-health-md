@@ -36,8 +36,7 @@ export function HeroSection({ config, className = '' }: HeroSectionProps) {
       {/* 1. DESKTOP VIEW (100.0% EXACT ORIGINAL IMPLEMENTATION PRESERVED) */}
       <section
         aria-label="Hero Introduction"
-        style={{ padding: '0 0 0 25px' }}
-        className={`relative w-full bg-white pl-[25px] pr-0 hidden lg:block ${className}`}
+        className={`relative w-full bg-white px-0 hidden lg:block ${className}`}
       >
         {/* Panoramic Hero Banner (Doctors on right, white fade on left with Content) */}
         <HeroBanner config={activeConfig} />

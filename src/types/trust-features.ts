@@ -13,6 +13,10 @@ export type TrustFeatureIconName =
 export interface TrustFeatureItem {
   id: string;
   title: string;
+  /** Optional first line of text */
+  line1?: string;
+  /** Optional second line of text */
+  line2?: string;
   /** Lucide icon name fallback */
   iconName?: TrustFeatureIconName;
   /** Custom SVG file path (e.g. '/assets/icons/shield.svg') */

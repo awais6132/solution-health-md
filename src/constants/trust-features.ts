@@ -4,6 +4,8 @@ export const defaultTrustFeatures: TrustFeatureItem[] = [
   {
     id: 'licensed-providers',
     title: 'Licensed Providers in All 50 States',
+    line1: 'Licensed Providers in All 50',
+    line2: 'States',
     iconName: 'shield',
     bgColor: 'bg-[#eff6ff]', // soft blue
     iconColor: 'text-[#2563eb]',
@@ -11,6 +13,7 @@ export const defaultTrustFeatures: TrustFeatureItem[] = [
   {
     id: 'hipaa-compliant',
     title: 'Secure & HIPAA Compliant',
+    line1: 'Secure & HIPAA Compliant',
     iconName: 'lock',
     bgColor: 'bg-[#ecfeff]', // soft cyan
     iconColor: 'text-[#0891b2]',
@@ -18,6 +21,8 @@ export const defaultTrustFeatures: TrustFeatureItem[] = [
   {
     id: 'prescriptions',
     title: 'Prescriptions to Local Pharmacy or Home Delivery',
+    line1: 'Prescriptions to Local',
+    line2: 'Pharmacy or Home Delivery',
     iconName: 'prescription',
     bgColor: 'bg-[#f0fdf4]', // soft emerald/green
     iconColor: 'text-[#16a34a]',
@@ -25,6 +30,7 @@ export const defaultTrustFeatures: TrustFeatureItem[] = [
   {
     id: 'video-visits',
     title: 'Video or Message Visits',
+    line1: 'Video or Message Visits',
     iconName: 'video',
     bgColor: 'bg-[#f0fdfa]', // soft teal
     iconColor: 'text-[#0d9488]',

@@ -187,12 +187,12 @@ export const heroConfig: HeroSectionConfig = {
       },
       {
         id: 'prescriptions',
-        title: 'Prescriptions & Local Pharmacy Coordination',
+        title: 'Prescriptions to Local Pharmacy or Home Delivery',
         iconName: 'pill',
       },
       {
         id: 'telehealth',
-        title: 'Video or Telehealth Visits',
+        title: 'Video or Message Visits',
         iconName: 'video',
       },
     ],

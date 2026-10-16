@@ -17,10 +17,9 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
   return (
     <section
       aria-label="Faith-Based Healthcare"
-      className={`relative w-full overflow-hidden py-[50px] min-h-[416px] flex items-center px-[25px] ${className}`}
+      className={`relative w-full overflow-hidden site-section min-h-[416px] flex items-center px-0 ${className}`}
       style={{
         backgroundColor: '#1E293B',
-        padding: '50px 25px',
       }}
     >
       {/* 1. Backdrop Scenic Image with Overlay */}
@@ -43,9 +42,9 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
       )}
 
       {/* 2. Main Content Container */}
-      <div className="relative z-10 w-full mx-auto box-border">
+      <div className="relative z-10 w-full box-border site-container">
         {/* Container ke andar 2 divs: Left 40% and Right 60% */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 xl:gap-10 w-full">
+        <div className="flex items-center gap-6">
           {/* Left Div: 40% Width */}
           <div className="w-full lg:w-[40%] flex flex-col justify-center">
             <FaithIntro
@@ -57,13 +56,11 @@ export const FaithBasedCareSection: React.FC<FaithBasedCareSectionProps> = ({
           </div>
 
           {/* Right Div: 60% Width */}
-          <div className="w-full lg:w-[60%] flex justify-center lg:justify-end">
+          <div className="w-full lg:w-[60%]">
             {/* Right Div ke andar 2 Divs: 50% / 50% equal divide */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 w-full">
+            <div className="flex flex-col sm:flex-row gap-5 w-full items-stretch">
               {activeConfig.cards.map((card) => (
-                <div key={card.id} className="w-full flex justify-center">
-                  <FaithCard item={card} className="w-full" />
-                </div>
+                <FaithCard key={card.id} item={card} className="flex-1 w-full" />
               ))}
             </div>
           </div>

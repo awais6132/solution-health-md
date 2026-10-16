@@ -34,32 +34,32 @@ function PillarIcon({ type, color }: { type: PillarIconType; color: string }) {
 }
 
 export const PillarCard: React.FC<PillarCardProps> = ({ pillar, className = '' }) => {
+  const cardClasses = `flex-1 flex flex-col items-center justify-center text-center gap-3 min-h-[150px] p-[22.59px] rounded-[18.08px] bg-white/20 hover:bg-white/30 border border-white/30 backdrop-blur-sm transition-colors ${className}`;
+
   const CardContent = (
-    <div
-      className={`group relative flex flex-col items-center justify-center text-center p-4 sm:p-5 rounded-[22px] sm:rounded-[26px] transition-all duration-300 backdrop-blur-md bg-white/20 hover:bg-white/30 border border-white/30 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_0_rgba(0,0,0,0.22)] hover:-translate-y-1 select-none min-h-[140px] sm:min-h-[160px] w-full ${className}`}
-    >
+    <>
       {/* 1. White Circular Icon Badge */}
-      <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110 shrink-0">
+      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
         <PillarIcon type={pillar.icon} color={pillar.iconColor} />
       </div>
 
       {/* 2. Pillar Title */}
       <h3
-        className="text-[13px] sm:text-[14px] font-bold text-white tracking-tight leading-snug drop-shadow-xs"
+        className="text-sm font-bold text-white text-center leading-snug"
         style={{ fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif' }}
       >
         {pillar.title}
       </h3>
-    </div>
+    </>
   );
 
   if (pillar.href) {
     return (
-      <Link href={pillar.href} className="block w-full focus:outline-none">
+      <Link href={pillar.href} className={cardClasses}>
         {CardContent}
       </Link>
     );
   }
 
-  return CardContent;
+  return <div className={cardClasses}>{CardContent}</div>;
 };

@@ -139,16 +139,15 @@ export function Header({
   return (
     <>
       <header
-        style={{ padding: '0 25px' }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 box-border px-[25px]',
+          'fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 box-border',
           isScrolled
             ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-md'
             : 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-2xs',
           className
         )}
       >
-        <div className="w-full mx-auto flex h-[90.375px] items-center justify-between box-border">
+        <div className="w-full max-w-[2048px] mx-auto site-container flex h-[90.375px] items-center justify-between box-border">
           {/* 1. Brand Logo */}
           <Link
             href={ROUTES.HOME}
@@ -167,7 +166,7 @@ export function Header({
           </Link>
 
           {/* 2. Desktop Navigation Links (Visible on lg+) */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <nav className="hidden lg:flex items-center gap-[30px]">
             {mainNavItems.map((item) => (
               <Link
                 key={item.title}
@@ -188,7 +187,7 @@ export function Header({
           </nav>
 
           {/* 3. Right Header Actions */}
-          <div className="flex items-center space-x-2 sm:space-x-3.5">
+          <div className="flex items-center gap-[10px]">
             {/* Cart Icon Button */}
             <Link
               href="/cart"

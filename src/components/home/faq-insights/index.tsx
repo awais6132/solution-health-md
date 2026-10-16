@@ -17,13 +17,13 @@ export const FaqInsightsSection: React.FC<FaqInsightsSectionProps> = ({
     <section
       id="faqs-and-insights"
       aria-label="Frequently Asked Questions and Health Insights"
-      style={{ padding: '50px 25px' }}
-      className={`relative w-full overflow-hidden overflow-x-hidden py-[50px] bg-white px-[25px] ${className}`}
+      className={`relative w-full overflow-hidden site-section site-section-last bg-white px-0 ${className}`}
     >
-      <div className="w-full mx-auto box-border">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
+      <div className="w-full box-border site-container">
+        {/* Responsive Flex Container (Zero Margins, Pure Flex Gap) */}
+        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-12 xl:gap-16 w-full">
           {/* Left Column: Frequently Asked Questions (Accordion) */}
-          <div className="lg:col-span-5 w-full">
+          <div className="w-full lg:w-[42%] flex flex-col">
             <FaqAccordion
               headline={activeConfig.faqHeadline}
               items={activeConfig.faqItems}
@@ -31,7 +31,7 @@ export const FaqInsightsSection: React.FC<FaqInsightsSectionProps> = ({
           </div>
 
           {/* Right Column: Health Insights & Resources */}
-          <div className="lg:col-span-7 w-full">
+          <div className="w-full lg:w-[58%] flex flex-col">
             <InsightsShowcase
               headline={activeConfig.insightsHeadline}
               viewAllLink={activeConfig.insightsViewAllLink}

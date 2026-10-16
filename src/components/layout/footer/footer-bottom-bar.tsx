@@ -15,7 +15,7 @@ export function FooterBottomBar({ bottomBar }: FooterBottomBarProps) {
     : `${currentYear}`;
 
   return (
-    <div suppressHydrationWarning className="border-t border-slate-200/80 pt-6 mt-12">
+    <div suppressHydrationWarning className="w-full border-t border-slate-200/80 pt-6">
       <div suppressHydrationWarning className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         {/* Left: Dynamic Copyright & Legal Links */}
         <div suppressHydrationWarning className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2">

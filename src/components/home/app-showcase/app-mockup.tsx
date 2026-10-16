@@ -21,7 +21,7 @@ export const AppMockup: React.FC<AppMockupProps> = ({
   // If a valid imageSrc is explicitly provided and has not errored, render it
   if (imageSrc && !imageError) {
     return (
-      <div className={`relative flex items-center justify-center w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[500px] mx-auto select-none ${className}`}>
+      <div className={`relative flex items-center justify-center w-full select-none ${className}`}>
         <div className="relative w-full aspect-[450/484] min-h-[440px] sm:min-h-[480px] lg:min-h-[510px]">
           <Image
             src={imageSrc}
@@ -41,7 +41,7 @@ export const AppMockup: React.FC<AppMockupProps> = ({
   // Pixel-perfect live coded 3D phone showcase matching the design screenshot
   return (
     <div
-      className={`relative flex items-center justify-center min-h-[510px] sm:min-h-[550px] lg:min-h-[580px] w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[540px] mx-auto select-none pt-4 sm:pt-6 ${className}`}
+      className={`relative flex items-center justify-center min-h-[510px] sm:min-h-[550px] lg:min-h-[580px] w-full select-none pt-4 sm:pt-6 ${className}`}
     >
       {/* 1. Large Mint Green Soft Circular Backdrop - prominently visible on Top, Left, and Right */}
       <div

@@ -43,11 +43,11 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
         </div>
       )}
 
-      {/* 2. Unified Container with exact vertical padding and standard horizontal padding */}
-      <Container className="relative z-10 py-12 sm:py-14 lg:py-16">
+      {/* 2. Unified Container with exact vertical padding and standard global horizontal padding */}
+      <div className="relative z-10 w-full box-border site-container site-section site-section-last">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
           {/* Left Side: Headline & Description - Single Line Headline on Desktop */}
-          <div className="flex-1 min-w-0 text-center lg:text-left">
+          <div className="flex-1 min-w-0 text-center lg:text-left flex flex-col gap-2">
             <h2
               className="text-white drop-shadow-md font-extrabold tracking-tight text-2xl sm:text-3xl md:text-[32px] lg:text-[34px] xl:text-[38px] leading-tight lg:whitespace-nowrap"
               style={{
@@ -58,7 +58,7 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
               {ctaData.title}
             </h2>
             {ctaData.description && (
-              <p className="text-sm sm:text-base md:text-[16.5px] text-white/95 font-normal drop-shadow-xs mt-2">
+              <p className="text-sm sm:text-base md:text-[16.5px] text-white/95 font-normal drop-shadow-xs">
                 {ctaData.description}
               </p>
             )}
@@ -70,10 +70,10 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
               <Link href={ctaData.primaryButton.href}>
                 <Button
                   size="lg"
-                  className="rounded-full px-7 py-3 text-sm sm:text-base font-semibold text-white bg-[#4B9B44] hover:bg-[#3f8539] shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border-none cursor-pointer group"
+                  className="rounded-full px-7 py-3 text-sm sm:text-base font-semibold text-white bg-[#4B9B44] hover:bg-[#3f8539] shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border-none cursor-pointer group inline-flex items-center gap-1.5"
                 >
                   <span>{ctaData.primaryButton.label}</span>
-                  <span className="ml-1.5 transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </Button>
               </Link>
             )}
@@ -91,7 +91,7 @@ export function PreFooterCTA({ config, className = '' }: PreFooterCtaProps) {
             )}
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

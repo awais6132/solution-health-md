@@ -5,11 +5,12 @@ import { ArticleItem } from '@/types/faq-insights';
 
 interface ArticleCardProps {
   article: ArticleItem;
+  className?: string;
 }
 
-export const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
+export const ArticleCard: React.FC<ArticleCardProps> = ({ article, className = '' }) => {
   return (
-    <article className="flex flex-col bg-[#F0F7FA] hover:bg-[#E8F3F8] transition-all duration-200 rounded-2xl overflow-hidden border border-[#E2EEF4]/60 group h-full">
+    <article className={`flex flex-col flex-1 w-full bg-[#F0F7FA] hover:bg-[#E8F3F8] transition-all duration-200 rounded-2xl overflow-hidden border border-[#E2EEF4]/60 group h-full ${className}`}>
       {/* Article Image Container */}
       <div className="relative w-full h-36 sm:h-40 overflow-hidden bg-slate-200">
         <Image

@@ -19,15 +19,36 @@ export const TrustFeatures: React.FC<TrustFeaturesProps> = ({
   return (
     <section
       aria-label="Trust & Medical Service Highlights"
-      style={{ padding: '20px 25px' }}
-      className={`w-full bg-[#F8F9FF] border-y-[1.13px] border-[#F1F5F9] py-[20px] px-[25px] box-border ${className}`}
+      style={{ minHeight: '120.56px' }}
+      className={`w-full bg-[#F8F9FF] border-y-[1.13px] border-[#F1F5F9] min-h-[120.56px] flex items-center overflow-hidden px-0 box-border ${className}`}
     >
-      <div className="w-full mx-auto box-border">
-        {/* Mobile & Tablet: Modern 2-col/responsive grid of cards; Desktop: Exact horizontal flex row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row items-stretch lg:items-center justify-between gap-3 sm:gap-4 lg:gap-0 w-full">
-          {items.map((item) => (
-            <TrustFeatureItemComponent key={item.id} item={item} />
-          ))}
+      <div className="marquee-container group w-full overflow-hidden flex select-none">
+        {/* Track 1 */}
+        <div className="animate-marquee group-hover:[animation-play-state:paused] flex items-center shrink-0">
+          <div className="flex items-center gap-[60px] pr-[60px]">
+            {items.map((item, index) => (
+              <TrustFeatureItemComponent key={`track1-a-${item.id}-${index}`} item={item} />
+            ))}
+          </div>
+          <div className="flex items-center gap-[60px] pr-[60px]">
+            {items.map((item, index) => (
+              <TrustFeatureItemComponent key={`track1-b-${item.id}-${index}`} item={item} />
+            ))}
+          </div>
+        </div>
+
+        {/* Track 2 (seamless continuation) */}
+        <div className="animate-marquee group-hover:[animation-play-state:paused] flex items-center shrink-0" aria-hidden="true">
+          <div className="flex items-center gap-[60px] pr-[60px]">
+            {items.map((item, index) => (
+              <TrustFeatureItemComponent key={`track2-a-${item.id}-${index}`} item={item} />
+            ))}
+          </div>
+          <div className="flex items-center gap-[60px] pr-[60px]">
+            {items.map((item, index) => (
+              <TrustFeatureItemComponent key={`track2-b-${item.id}-${index}`} item={item} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

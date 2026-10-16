@@ -30,10 +30,9 @@ export const CareServicesSection: React.FC<CareServicesSectionProps> = ({
   return (
     <section
       aria-label="Care and Treatment Options"
-      style={{ padding: '50px 25px' }}
-      className={`w-full bg-white py-[50px] px-[25px] ${className}`}
+      className={`w-full bg-white site-section px-0 ${className}`}
     >
-      <div className="w-full mx-auto box-border">
+      <div className="w-full box-border site-container flex flex-col gap-[30px]">
         {/* Header with Title & Action link */}
         <ServicesHeader
           headline={activeConfig.headline}

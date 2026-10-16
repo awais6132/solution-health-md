@@ -8,14 +8,15 @@ interface CareTaglineProps {
 
 export const CareTagline: React.FC<CareTaglineProps> = ({ tagline, className = '' }) => {
   return (
-    <div className={`flex flex-col items-start lg:items-end text-left lg:text-right justify-center ${className}`}>
+    <div className={`flex flex-col items-start lg:items-end justify-center ${className}`}>
       <div
-        className="text-3xl sm:text-4xl lg:text-[42px] font-bold italic text-white/95 leading-[1.18] drop-shadow-sm select-none"
+        className="text-3xl sm:text-4xl font-bold italic text-white/95 leading-tight flex flex-col gap-1"
         style={{ fontFamily: 'var(--font-caveat), cursive, sans-serif' }}
       >
-        <span className="block">{tagline.line1}</span>
-        <span className="block mt-0.5">{tagline.line2}</span>
+        <span>{tagline.line1}</span>
+        <span>{tagline.line2}</span>
       </div>
     </div>
   );
 };
+

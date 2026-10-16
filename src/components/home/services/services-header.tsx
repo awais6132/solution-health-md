@@ -19,7 +19,7 @@ export const ServicesHeader: React.FC<ServicesHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10 ${className}`}>
+    <div className={`flex flex-col sm:flex-row sm:items-end justify-between gap-4 ${className}`}>
       {/* Title & Subtitle */}
       <div className="flex flex-col">
         <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#0A192F] tracking-tight leading-tight">

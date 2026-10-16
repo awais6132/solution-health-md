@@ -20,7 +20,7 @@ export const FaithIntro: React.FC<FaithIntroProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-start text-left justify-center space-y-4 sm:space-y-5 ${className}`}>
+    <div className={`flex flex-col items-start gap-2 ${className}`}>
       {/* 1. Eyebrow Tag with Cross */}
       <div
         className="flex items-center gap-2 uppercase"
@@ -39,7 +39,7 @@ export const FaithIntro: React.FC<FaithIntroProps> = ({
 
       {/* 2. Main Heading (Strict 2 Lines) */}
       <h2
-        className="text-left text-[22px] sm:text-[26px] md:text-[28px] lg:text-[30px] xl:text-[34px] leading-[1.22] tracking-tight text-white font-extrabold"
+        className="text-left text-[22px] sm:text-[26px] md:text-[28px] lg:text-[30px] xl:text-[34px] leading-[1.22] tracking-tight text-white font-extrabold flex flex-col gap-1"
         style={{
           fontFamily: 'Inter, sans-serif',
           fontWeight: 800,
@@ -48,7 +48,7 @@ export const FaithIntro: React.FC<FaithIntroProps> = ({
         }}
       >
         <span className="block whitespace-normal sm:whitespace-nowrap">{headline.part1}</span>
-        <span className="block mt-1 whitespace-normal sm:whitespace-nowrap">{headline.part2}</span>
+        <span className="block whitespace-normal sm:whitespace-nowrap">{headline.part2}</span>
       </h2>
 
       {/* 3. Description Copy */}
@@ -59,7 +59,6 @@ export const FaithIntro: React.FC<FaithIntroProps> = ({
           fontWeight: 400,
           letterSpacing: '0px',
           color: '#F8F9FF',
-          maxWidth: '592px',
         }}
       >
         {description}
