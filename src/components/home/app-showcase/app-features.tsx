@@ -53,26 +53,32 @@ export const AppFeatures: React.FC<AppFeaturesProps> = ({
       {/* 2. Cursive Script Tagline with Custom Hand-drawn Brush Underline */}
       <div className="pt-2">
         <div
-          className="text-[27px] sm:text-[30px] font-bold italic text-[#4B9B44] leading-[1.18] select-none tracking-normal flex flex-col gap-0.5"
+          className="text-[28px] sm:text-[32px] font-semibold text-[#4B9B44] leading-[1.15] select-none tracking-normal flex flex-col gap-0.5"
           style={{ fontFamily: 'var(--font-caveat), cursive, sans-serif' }}
         >
           <span className="block">{tagline.line1}</span>
-          <span className="block relative inline-block">
-            {tagline.line2}
-            {/* Hand-drawn Green Underline Stroke */}
-            <svg
-              className="absolute -bottom-2 left-0 w-full h-3 text-[#4B9B44] overflow-visible"
-              viewBox="0 0 160 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 3 7 C 45 4, 115 5, 157 9"
-                stroke="currentColor"
-                strokeWidth="3.4"
-                strokeLinecap="round"
-              />
-            </svg>
+          <span className="block">
+            <span className="relative inline-block">
+              In One
+              {/* Hand-drawn Green Underline Stroke directly under "In One" matching Figma/design */}
+              <svg
+                className="absolute -bottom-1 left-0 w-[84px] h-[9px] text-[#4B9B44] overflow-visible pointer-events-none"
+                viewBox="0 0 84 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M 2 5.5 C 26 7.5, 58 7, 82 2.5"
+                  stroke="currentColor"
+                  strokeWidth="3.2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            {tagline.line2.startsWith('In One')
+              ? tagline.line2.slice(6)
+              : ` ${tagline.line2}`}
           </span>
         </div>
       </div>
