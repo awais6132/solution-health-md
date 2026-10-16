@@ -1,5 +1,4 @@
 import React from 'react';
-import { Check } from 'lucide-react';
 import { AppFeatureItem } from '@/types/app-showcase';
 
 interface AppFeaturesProps {
@@ -10,6 +9,24 @@ interface AppFeaturesProps {
   };
   className?: string;
 }
+
+const FeatureCheckIcon: React.FC<{ className?: string }> = ({ className = '' }) => (
+  <svg
+    width="23"
+    height="23"
+    viewBox="0 0 23 23"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={`shrink-0 ${className}`}
+    aria-hidden="true"
+  >
+    <rect width="22.5938" height="22.5938" rx="11.2969" fill="#9CBF3C" />
+    <path
+      d="M14.6914 6.41162C12.7812 9.13818 10.8184 11.6616 8.80273 13.9819C8.65039 14.1577 8.51758 14.2456 8.4043 14.2456C8.27539 14.2456 8.04297 13.9058 7.70703 13.2261C7.16406 12.1284 6.89258 11.4722 6.89258 11.2573C6.89258 11.1792 6.94531 11.0874 7.05078 10.9819C7.27734 10.7437 7.4375 10.6245 7.53125 10.6245C7.61719 10.6245 7.70898 10.7612 7.80664 11.0347C8.06445 11.73 8.33594 12.3491 8.62109 12.8921C10.5977 10.8921 12.5527 8.65186 14.4863 6.17139L14.6914 6.41162Z"
+      fill="#F8F9FF"
+    />
+  </svg>
+);
 
 export const AppFeatures: React.FC<AppFeaturesProps> = ({
   features,
@@ -22,12 +39,9 @@ export const AppFeatures: React.FC<AppFeaturesProps> = ({
       <ul className="flex flex-col gap-3.5">
         {features.map((item) => (
           <li key={item.id} className="flex items-center gap-3">
-            {/* Olive-Green Circular Check Badge */}
-            <div className="w-[21px] h-[21px] rounded-full bg-[#8DB92E] flex items-center justify-center shrink-0 shadow-xs">
-              <Check className="w-3.5 h-3.5 text-white stroke-[3.2]" />
-            </div>
+            <FeatureCheckIcon />
             <span
-              className="text-[15.5px] sm:text-[16px] font-semibold text-[#1E293B] tracking-tight whitespace-nowrap"
+              className="text-[17px] font-medium text-[#1E293B] tracking-tight whitespace-nowrap"
               style={{ fontFamily: 'var(--font-plus-jakarta-sans), Inter, sans-serif' }}
             >
               {item.text}
