@@ -1,4 +1,5 @@
 import { FaqInsightsConfig } from '@/types/faq-insights';
+import { ROUTES } from './routes';
 
 export const defaultFaqInsightsConfig: FaqInsightsConfig = {
   faqHeadline: 'Frequently Asked Questions',
@@ -42,15 +43,15 @@ export const defaultFaqInsightsConfig: FaqInsightsConfig = {
   ],
   insightsHeadline: 'Health Insights & Resources',
   insightsViewAllLink: {
-    label: 'View All Articles →',
-    href: '#articles',
+    label: 'Explore All Treatments →',
+    href: ROUTES.SERVICES,
   },
   articles: [
     {
       id: 'art-1',
       title: 'A Guide to GLP-1 Medications in 2026',
       slug: 'glp-1-medications-guide-2026',
-      href: '#articles#glp-1-guide',
+      href: `${ROUTES.SERVICES}#weight-loss`,
       imageUrl: '/assets/images/articles/glp1-guide.jpg',
       alt: 'Doctor discussing GLP-1 treatment plan',
       category: 'Weight Management',
@@ -60,7 +61,7 @@ export const defaultFaqInsightsConfig: FaqInsightsConfig = {
       id: 'art-2',
       title: 'Hormone Health: Signs You May Be Imbalanced',
       slug: 'hormone-health-signs-imbalance',
-      href: '#articles#hormone-health',
+      href: `${ROUTES.SERVICES}#womens-health`,
       imageUrl: '/assets/images/articles/hormone-health.jpg',
       alt: 'Patient reviewing hormone health metrics',
       category: 'Endocrinology',
@@ -70,7 +71,7 @@ export const defaultFaqInsightsConfig: FaqInsightsConfig = {
       id: 'art-3',
       title: 'Mental Health in a Busy World',
       slug: 'mental-health-busy-world',
-      href: '#articles#mental-health',
+      href: `${ROUTES.SERVICES}#mental-health`,
       imageUrl: '/assets/images/articles/mental-health.jpg',
       alt: 'Doctors consulting with patient on mental health',
       category: 'Mental Wellness',
@@ -79,9 +80,9 @@ export const defaultFaqInsightsConfig: FaqInsightsConfig = {
   ],
   featuredArticle: {
     id: 'feat-1',
-    title: 'A Guide to GLP-1 Medications in 2026',
-    slug: 'advanced-clinical-dermatology-glp1-2026',
-    href: '#articles#featured-care',
+    title: 'Advanced Clinical Dermatology Guide',
+    slug: 'advanced-clinical-dermatology-2026',
+    href: `${ROUTES.SERVICES}#dermatology`,
     imageUrl: '/assets/images/articles/dermatology-featured.jpg',
     alt: 'Advanced clinical dermatology and wellness procedure',
     category: 'Featured Clinical Guide',

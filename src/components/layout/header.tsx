@@ -99,7 +99,7 @@ export function Header({
   userEmail = 'User@gmail.com',
   userAvatar = '/assets/images/user-avatar.jpg',
   ctaText = 'Find My Care',
-  ctaHref = ROUTES.SIGNUP,
+  ctaHref = ROUTES.FIND_MY_CARE,
 }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

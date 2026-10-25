@@ -1,4 +1,5 @@
 import { HowItWorksSectionConfig } from '@/types/how-it-works';
+import { ROUTES } from './routes';
 
 export const defaultHowItWorksConfig: HowItWorksSectionConfig = {
   headline: 'How It Works',
@@ -9,6 +10,7 @@ export const defaultHowItWorksConfig: HowItWorksSectionConfig = {
       stepNumber: 1,
       title: 'Choose Your Care',
       description: 'Select the service that fits your needs.',
+      href: ROUTES.SERVICES,
       theme: 'blue',
       borderColor: '#0F6396',
       textColor: '#0F6396',

@@ -29,8 +29,9 @@ export const CareServicesSection: React.FC<CareServicesSectionProps> = ({
 
   return (
     <section
+      id="services"
       aria-label="Care and Treatment Options"
-      className={`w-full bg-white site-section px-0 ${className}`}
+      className={`w-full bg-white site-section px-0 scroll-mt-20 ${className}`}
     >
       <div className="w-full box-border site-container flex flex-col gap-[30px]">
         {/* Header with Title & Action link */}

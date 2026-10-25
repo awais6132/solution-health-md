@@ -45,5 +45,41 @@ export const defaultTestimonialsConfig: TestimonialsConfig = {
       metricValue: '100%',
       metricLabel: 'Satisfaction',
     },
+    {
+      id: '4',
+      rating: 5,
+      verified: true,
+      quote:
+        '“The faith-centered counseling helped me work through anxiety with Biblical principles. It is rare to find healthcare that genuinely cares for the soul.”',
+      patientName: 'Sarah M.',
+      location: 'Nashville, TN',
+      treatment: 'Christian Counseling',
+      metricValue: '98%',
+      metricLabel: 'Life Clarity',
+    },
+    {
+      id: '5',
+      rating: 5,
+      verified: true,
+      quote:
+        '“Immediate virtual care saved me an ER trip on a Sunday night. The clinician listened carefully and my prescription was ready within an hour.”',
+      patientName: 'David K.',
+      location: 'Chicago, IL',
+      treatment: 'Urgent Telehealth',
+      metricValue: '< 15 min',
+      metricLabel: 'Wait Time',
+    },
+    {
+      id: '6',
+      rating: 5,
+      verified: true,
+      quote:
+        '“Managing our family’s direct primary care memberships in the app is seamless. Transparent pricing, no hidden fees, and exceptional doctors.”',
+      patientName: 'Amanda W.',
+      location: 'Atlanta, GA',
+      treatment: 'Family Primary Care',
+      metricValue: '5.0 / 5',
+      metricLabel: 'Care Rating',
+    },
   ],
 };

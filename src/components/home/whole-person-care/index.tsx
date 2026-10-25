@@ -17,8 +17,9 @@ export const WholePersonCareSection: React.FC<WholePersonCareSectionProps> = ({
 
   return (
     <section
+      id="about"
       aria-label="Whole-Person Care and Wellness Pillars"
-      className={`relative w-full overflow-hidden site-section site-section-both flex items-center bg-[#071F3D] ${className}`}
+      className={`relative w-full overflow-hidden site-section site-section-both flex items-center bg-[#071F3D] scroll-mt-20 ${className}`}
     >
       {/* 1. Panoramic Scenic Background Image */}
       {activeConfig.backgroundImage && (

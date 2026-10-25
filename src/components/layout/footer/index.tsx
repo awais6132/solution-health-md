@@ -1,5 +1,11 @@
+'use client';
+
 import React from 'react';
-import { footerConfig as defaultFooterConfig } from '@/constants/footer';
+import { usePathname } from 'next/navigation';
+import {
+  footerConfig as defaultFooterConfig,
+  routePreFooterConfigs,
+} from '@/constants/footer';
 import { FooterConfig, PreFooterCtaConfig } from '@/types/footer';
 import { PreFooterCTA } from './pre-footer-cta';
 import { FooterBrand } from './footer-brand';
@@ -34,7 +40,10 @@ export function Footer({
   config,
   className = '',
 }: FooterProps) {
-  // Merge full configuration cleanly
+  const pathname = usePathname();
+  const routeCta = pathname ? routePreFooterConfigs[pathname] : undefined;
+
+  // Merge full configuration cleanly with route-level and custom prop overrides
   const activeConfig: FooterConfig = {
     ...defaultFooterConfig,
     ...config,
@@ -44,6 +53,7 @@ export function Footer({
     navigationSections: config?.navigationSections || defaultFooterConfig.navigationSections,
     preFooter: {
       ...defaultFooterConfig.preFooter,
+      ...(routeCta ? { secondaryButton: undefined, ...routeCta } : {}),
       ...config?.preFooter,
       ...preFooterConfig,
     },
@@ -56,7 +66,7 @@ export function Footer({
 
       {/* 2. Main Footer Content */}
       <div suppressHydrationWarning className="bg-white border-t border-slate-200 w-full">
-        <div suppressHydrationWarning className="w-full box-border site-container site-section site-section-last flex flex-col gap-12">
+        <div suppressHydrationWarning className="w-full box-border site-container pt-[var(--section-padding-y)] flex flex-col gap-10 lg:gap-12">
           {/* Responsive Multi-Column Flex Row (Zero Margins, Pure Flex Gap) */}
           <div suppressHydrationWarning className="flex flex-col md:flex-row flex-wrap lg:flex-nowrap items-start justify-between gap-8 lg:gap-10 w-full">
             {/* Brand Column (Wider branding column) */}

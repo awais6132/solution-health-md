@@ -15,9 +15,9 @@ export const FaqInsightsSection: React.FC<FaqInsightsSectionProps> = ({
 
   return (
     <section
-      id="faqs-and-insights"
+      id="faqs"
       aria-label="Frequently Asked Questions and Health Insights"
-      className={`relative w-full overflow-hidden site-section site-section-last bg-white px-0 ${className}`}
+      className={`relative w-full overflow-hidden site-section site-section-last bg-white px-0 scroll-mt-20 ${className}`}
     >
       <div className="w-full box-border site-container">
         {/* Responsive Flex Container (Zero Margins, Pure Flex Gap) */}

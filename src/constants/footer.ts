@@ -1,5 +1,75 @@
-import { FooterConfig } from '@/types/footer';
+import { FooterConfig, PreFooterCtaConfig } from '@/types/footer';
 import { ROUTES } from './routes';
+
+/**
+ * Route-specific PreFooter CTA configurations.
+ * Each service page has its own dedicated background image, headline, CTA button, and cursive script.
+ */
+export const routePreFooterConfigs: Record<string, Partial<PreFooterCtaConfig>> = {
+  [ROUTES.URGENT_CARE]: {
+    enabled: true,
+    title: 'Feel Better Today',
+    description: 'Expert care. Real people. Personalized for you.',
+    backgroundImage: '/assets/images/urgent-care-prefooter-banner.png',
+    floatingScript: 'Better Care\nBrighter Days',
+    primaryButton: {
+      label: 'See a Provider Now →',
+      href: `${ROUTES.SIGNUP}?service=urgent-care`,
+    },
+    secondaryButton: undefined,
+  },
+  [ROUTES.DERMATOLOGY]: {
+    enabled: true,
+    title: 'Ready for Healthier, More Confident Skin?',
+    description:
+      'Get expert dermatology care from licensed providers — start your online visit today.',
+    backgroundImage: '/assets/images/urgent-care-prefooter-banner.png',
+    floatingScript: 'Clear Skin\nBrighter You',
+    primaryButton: {
+      label: 'See If I Qualify →',
+      href: ROUTES.FIND_MY_CARE,
+    },
+    secondaryButton: undefined,
+  },
+  [ROUTES.MENTAL_HEALTH]: {
+    enabled: true,
+    title: "You Don't Have to Face Life's Challenges Alone.",
+    description:
+      'Faith-based counseling to help you find hope, healing, and a brighter tomorrow.',
+    backgroundImage: '/assets/images/urgent-care-prefooter-banner.png',
+    floatingScript: 'A Stronger Mind.\nA Brighter Tomorrow.',
+    primaryButton: {
+      label: 'See If I Qualify →',
+      href: ROUTES.FIND_MY_CARE,
+    },
+    secondaryButton: undefined,
+  },
+  [ROUTES.PEPTIDES]: {
+    enabled: true,
+    title: "You Don't Have to Face Life's Challenges Alone.",
+    description:
+      'Faith-based counseling to help you find hope, healing, and a brighter tomorrow.',
+    backgroundImage: '/assets/images/urgent-care-prefooter-banner.png',
+    floatingScript: 'A Stronger Mind.\nA Brighter Tomorrow.',
+    primaryButton: {
+      label: 'See If I Qualify →',
+      href: ROUTES.FIND_MY_CARE,
+    },
+    secondaryButton: undefined,
+  },
+  [ROUTES.MENS_HEALTH]: {
+    enabled: true,
+    title: 'Your Health. Your Goals. Our Mission.',
+    description: 'Take the first step toward a stronger, healthier you.',
+    backgroundImage: '/assets/images/urgent-care-prefooter-banner.png',
+    floatingScript: 'Better Health\nStarts Here.',
+    primaryButton: {
+      label: 'Get Started →',
+      href: ROUTES.FIND_MY_CARE,
+    },
+    secondaryButton: undefined,
+  },
+};
 
 export const footerConfig: FooterConfig = {
   preFooter: {
@@ -9,7 +79,7 @@ export const footerConfig: FooterConfig = {
     backgroundImage: '/assets/images/pre-footer-banner.jpg',
     primaryButton: {
       label: 'Find My Care',
-      href: ROUTES.SIGNUP,
+      href: ROUTES.SERVICES,
     },
     secondaryButton: {
       label: 'How It Works',
@@ -53,14 +123,16 @@ export const footerConfig: FooterConfig = {
     {
       title: 'Care',
       links: [
-        { label: 'Urgent Care', href: `${ROUTES.SERVICES}#urgent-care` },
-        { label: "Men's Health", href: `${ROUTES.SERVICES}#mens-health` },
+        { label: 'Weight Management', href: ROUTES.WEIGHT_LOSS },
+        { label: "Men's Health", href: ROUTES.MENS_HEALTH },
         { label: "Women's Health", href: `${ROUTES.SERVICES}#womens-health` },
-        { label: 'Mental Health', href: `${ROUTES.SERVICES}#mental-health` },
-        { label: 'Weight Management', href: `${ROUTES.SERVICES}#weight-loss` },
-        { label: 'Chronic Care', href: `${ROUTES.SERVICES}#chronic-care` },
-        { label: 'Dermatology', href: `${ROUTES.SERVICES}#dermatology` },
-        { label: 'Primary Care', href: `${ROUTES.SERVICES}#primary-care` },
+        { label: 'Peptides & Longevity', href: ROUTES.PEPTIDES },
+        { label: 'Direct Primary Care', href: `${ROUTES.SERVICES}#direct-primary-care` },
+        { label: 'Urgent Care', href: ROUTES.URGENT_CARE },
+        { label: 'Fever Care', href: ROUTES.FEVER },
+        { label: 'Dermatology', href: ROUTES.DERMATOLOGY },
+        { label: 'Mental Health', href: ROUTES.MENTAL_HEALTH },
+        { label: 'Prayer & Support', href: `${ROUTES.SERVICES}#prayer-support` },
       ],
     },
     {

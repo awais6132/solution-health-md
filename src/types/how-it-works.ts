@@ -6,6 +6,8 @@ export interface HowItWorksStep {
   theme: 'blue' | 'green';
   borderColor?: string;
   textColor?: string;
+  href?: string;
+  iconName?: 'file-text' | 'user' | 'clipboard' | 'message';
 }
 
 export interface HowItWorksSectionConfig {
@@ -17,4 +19,6 @@ export interface HowItWorksSectionConfig {
 export interface HowItWorksSectionProps {
   config?: Partial<HowItWorksSectionConfig>;
   className?: string;
+  variant?: 'cards' | 'minimal';
 }
+

@@ -19,10 +19,11 @@ export interface SocialLinkItem {
 
 export interface PreFooterCtaConfig {
   enabled?: boolean;
-  title: string;
-  description: string;
+  title: string | React.ReactNode;
+  description?: string;
   backgroundImage?: string;
-  primaryButton: {
+  floatingScript?: string;
+  primaryButton?: {
     label: string;
     href: string;
   };

@@ -9,23 +9,23 @@ export const siteConfig: SiteConfig = {
 export const mainNavItems: NavItem[] = [
   {
     title: 'Our Services',
-    href: '#services',
+    href: '/services',
   },
   {
     title: 'How It Works',
-    href: '#how-it-works',
+    href: '/#how-it-works',
   },
   {
     title: 'Pricing',
-    href: '#pricing',
+    href: '/#pricing',
   },
   {
     title: 'About',
-    href: '#about',
+    href: '/#about',
   },
   {
     title: 'FAQs',
-    href: '#faqs',
+    href: '/#faqs',
   },
 ];
 

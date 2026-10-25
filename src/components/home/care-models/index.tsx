@@ -13,8 +13,9 @@ export const CareModelsSection: React.FC<CareModelsSectionProps> = ({
 
   return (
     <section
+      id="pricing"
       aria-label="Care Delivery Options"
-      className={`w-full bg-white site-section px-0 ${className}`}
+      className={`w-full bg-white site-section px-0 scroll-mt-20 ${className}`}
     >
       <div className="w-full box-border site-container">
         {/* 2-Column Responsive Flex Row with exact gap and zero margins */}

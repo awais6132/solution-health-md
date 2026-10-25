@@ -1,7 +1,7 @@
 import React from 'react';
 import { defaultAppShowcaseConfig } from '@/constants/app-showcase';
 import { AppShowcaseSectionProps } from '@/types/app-showcase';
-import { AppIntro } from './app-intro';
+import { AppIntro, AppStoreBadges } from './app-intro';
 import { AppMockup } from './app-mockup';
 import { AppFeatures } from './app-features';
 
@@ -17,7 +17,7 @@ export const AppShowcaseSection: React.FC<AppShowcaseSectionProps> = ({
   return (
     <section
       aria-label="Patient Portal and Mobile App"
-      className={`relative w-full bg-[#F4F8FA] overflow-hidden site-section px-0 ${className}`}
+      className={`relative w-full bg-[#F4F8FA] overflow-hidden site-section site-section-both px-0 ${className}`}
     >
       <div className="w-full box-border site-container">
         {/* 3 Equal 33% Columns Flex Container */}
@@ -32,8 +32,10 @@ export const AppShowcaseSection: React.FC<AppShowcaseSectionProps> = ({
           </div>
 
           {/* Center Column: 33% Width */}
-          <div className="w-full lg:w-[33.333%] flex items-center justify-center">
+          <div className="w-full lg:w-[33.333%] flex flex-col items-center justify-center">
             <AppMockup data={activeConfig.mockup} imageSrc={activeConfig.imageSrc} />
+            {/* Mobile-only Badges: Positioned immediately below the image mockup on mobile devices */}
+            <AppStoreBadges badges={activeConfig.badges} className="flex lg:hidden justify-center pt-4" />
           </div>
 
           {/* Right Column: 33% Width */}

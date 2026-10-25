@@ -11,7 +11,7 @@ export const defaultFaithBasedCareConfig: FaithBasedCareConfig = {
     'We believe true health includes more than the physical. For those who desire faith-centered support, we offer Biblical Christian-based counseling as well as complimentary prayer support.',
   cta: {
     label: 'Learn More About Our Faith-Based Care',
-    href: `${ROUTES.SERVICES || '/services'}/prayer-support`,
+    href: `${ROUTES.SERVICES}#prayer-support`,
   },
   backgroundImage: '/assets/images/image (2).png',
   cards: [
@@ -28,7 +28,7 @@ export const defaultFaithBasedCareConfig: FaithBasedCareConfig = {
       actions: [
         {
           label: 'Explore Christian Counseling',
-          href: `${ROUTES.SERVICES || '/services'}/mental-health`,
+          href: `${ROUTES.SERVICES}#mental-health`,
           variant: 'secondary',
         },
       ],
@@ -46,12 +46,12 @@ export const defaultFaithBasedCareConfig: FaithBasedCareConfig = {
       actions: [
         {
           label: 'Connect for Prayer',
-          href: `${ROUTES.SERVICES || '/services'}/prayer-support`,
+          href: `${ROUTES.SERVICES}#prayer-support`,
           variant: 'secondary',
         },
         {
           label: 'Submit a Prayer Request',
-          href: `${ROUTES.SERVICES || '/services'}/prayer-support/request`,
+          href: `${ROUTES.SIGNUP}?service=prayer-support`,
           variant: 'outline',
         },
       ],

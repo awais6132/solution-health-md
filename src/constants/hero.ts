@@ -13,7 +13,7 @@ export const heroConfig: HeroSectionConfig = {
     'Personalized healthcare from licensed providers, with convenient virtual access nationwide.',
   primaryCta: {
     label: 'Find A Care',
-    href: ROUTES.SIGNUP,
+    href: ROUTES.SERVICES,
     variant: 'primary',
   },
   secondaryCta: {
@@ -42,7 +42,7 @@ export const heroConfig: HeroSectionConfig = {
         'Personalized healthcare from licensed providers, with convenient virtual access nationwide.',
       primaryCta: {
         label: 'Find A Care',
-        href: ROUTES.SIGNUP,
+        href: ROUTES.SERVICES,
         variant: 'primary',
       },
       secondaryCta: {
@@ -71,7 +71,7 @@ export const heroConfig: HeroSectionConfig = {
         'Compassionate, accessible primary care relationships, with dedicated clinical support nationwide.',
       primaryCta: {
         label: 'Explore Primary Care',
-        href: ROUTES.SERVICES,
+        href: `${ROUTES.SERVICES}#direct-primary-care`,
         variant: 'primary',
       },
       secondaryCta: {
@@ -100,7 +100,7 @@ export const heroConfig: HeroSectionConfig = {
         'Physician-supervised medical weight management, with personalized plans for real results.',
       primaryCta: {
         label: 'Start Your Journey',
-        href: ROUTES.SERVICES,
+        href: ROUTES.WEIGHT_LOSS,
         variant: 'primary',
       },
       secondaryCta: {
@@ -129,12 +129,12 @@ export const heroConfig: HeroSectionConfig = {
         'Confidential, evidence-based mental health counseling, with licensed clinicians nationwide.',
       primaryCta: {
         label: 'Connect for Counseling',
-        href: ROUTES.SERVICES,
+        href: `${ROUTES.SERVICES}#mental-health`,
         variant: 'primary',
       },
       secondaryCta: {
         label: 'View Specialties',
-        href: ROUTES.SERVICES,
+        href: `${ROUTES.SERVICES}#mental-health`,
         variant: 'outline',
       },
       bannerImage: {
@@ -158,12 +158,12 @@ export const heroConfig: HeroSectionConfig = {
         'Biblical Christian counseling and wellness, with complimentary prayer support nationwide.',
       primaryCta: {
         label: 'Explore Faith Care',
-        href: ROUTES.SERVICES,
+        href: `${ROUTES.SERVICES}#prayer-support`,
         variant: 'primary',
       },
       secondaryCta: {
         label: 'Prayer Support',
-        href: ROUTES.SERVICES,
+        href: `${ROUTES.SERVICES}#prayer-support`,
         variant: 'outline',
       },
       bannerImage: {

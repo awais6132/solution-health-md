@@ -63,7 +63,7 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
       <div
         className={`flex w-full ${
           actions.length > 1
-            ? 'flex-col xl:flex-row items-center gap-2'
+            ? 'flex-row items-center gap-2'
             : 'flex-wrap items-center gap-2.5'
         }`}
       >
@@ -77,13 +77,13 @@ export const FaithCard: React.FC<FaithCardProps> = ({ item, className = '' }) =>
             <Link
               key={index}
               href={action.href}
-              className={isMulti ? 'w-full xl:flex-1' : 'inline-block group/btn'}
+              className={isMulti ? 'flex-1 min-w-0' : 'inline-block group/btn'}
             >
               <Button
                 variant={action.variant}
                 className={`rounded-full h-auto py-2 font-semibold transition-all duration-200 cursor-pointer select-none whitespace-nowrap inline-flex items-center justify-center gap-1.5 w-full ${
                   isMulti
-                    ? 'px-3 text-xs xl:px-2 xl:text-[11.5px]'
+                    ? 'px-2 text-[11px] sm:text-xs xl:px-2 xl:text-[11.5px]'
                     : 'px-4 text-xs sm:text-[13px]'
                 } ${
                   isOutline

@@ -20,7 +20,7 @@ export const defaultCareModels: CareModelItem[] = [
     checkmarkColor: 'text-[#4ADE80]',
     cta: {
       label: 'Get Care Now',
-      href: `${ROUTES.SERVICES || '/services'}/urgent-care`,
+      href: `${ROUTES.SERVICES}#urgent-care`,
       variant: 'dark',
     },
     backgroundImage: '/assets/images/serene.jpg',
@@ -46,7 +46,7 @@ export const defaultCareModels: CareModelItem[] = [
     checkmarkColor: 'text-[#F59E0B]',
     cta: {
       label: 'Explore Memberships',
-      href: `${ROUTES.SERVICES || '/services'}/direct-primary-care`,
+      href: `${ROUTES.SERVICES}#direct-primary-care`,
       variant: 'secondary',
     },
     backgroundImage: '/assets/images/nurse portrait.jpg',
