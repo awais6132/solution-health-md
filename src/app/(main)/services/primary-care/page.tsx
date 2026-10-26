@@ -7,12 +7,12 @@ import {
   TestimonialsSection,
   FaqInsightsSection,
 } from '@/components/home';
-import { PeptidesLifestyleBanner } from '@/components/peptides';
 import {
   PrimaryCareHero,
   PrimaryCareApproach,
   PrimaryCarePricingGrid,
   PrimaryCareIncluded,
+  PrimaryCareLifestyleBanner,
 } from '@/components/primary-care';
 import {
   defaultPrimaryCareHeroConfig,
@@ -57,7 +57,7 @@ export default function PrimaryCarePage() {
       />
 
       {/* 7. More Than Primary Care. A Healthier You. (Lifestyle Mountain Banner) */}
-      <PeptidesLifestyleBanner config={defaultPrimaryCareLifestyleBannerConfig} />
+      <PrimaryCareLifestyleBanner />
 
       {/* 8. Real people. Real results. (3 Testimonials) */}
       <TestimonialsSection config={defaultPrimaryCareTestimonialsConfig} />
