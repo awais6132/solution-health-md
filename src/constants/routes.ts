@@ -16,6 +16,8 @@ export const ROUTES = {
   MENS_HEALTH: '/services/mens-health',
   PEPTIDES: '/services/peptides',
   PEPTIDES_LONGEVITY: '/services/peptides',
+  PRIMARY_CARE: '/services/primary-care',
+  DIRECT_PRIMARY_CARE: '/services/primary-care',
   HOW_IT_WORKS: '/#how-it-works',
   PRICING: '/pricing',
   CHECKOUT: '/checkout',

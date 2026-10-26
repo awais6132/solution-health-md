@@ -44,7 +44,7 @@ export const defaultServices: ServiceItem[] = [
     id: 'direct-primary-care',
     title: 'Direct Primary Care',
     subtitle: '(Membership)',
-    href: `${ROUTES.SERVICES}#direct-primary-care`,
+    href: ROUTES.PRIMARY_CARE,
     imageSrc: '/assets/images/Direct Primary Care.jpg',
     imageAlt: 'Direct Primary Care (Membership)',
     iconName: 'stethoscope',

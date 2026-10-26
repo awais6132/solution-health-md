@@ -30,5 +30,6 @@ export * from './trust-features';
 export * from './services';
 export * from './testimonials';
 export * from './faq-insights';
+export * from './primary-care-page';
 
 
