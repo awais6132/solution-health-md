@@ -9,6 +9,7 @@ import {
 } from '@/components/home';
 import { PeptidesLifestyleBanner } from '@/components/peptides';
 import {
+  PrimaryCareHero,
   PrimaryCareApproach,
   PrimaryCarePricingGrid,
   PrimaryCareIncluded,
@@ -35,7 +36,7 @@ export default function PrimaryCarePage() {
   return (
     <div className="flex flex-col w-full">
       {/* 1. Hero Banner: Personalized Primary Care for a Healthier You. */}
-      <ServicesHero config={defaultPrimaryCareHeroConfig} />
+      <PrimaryCareHero />
 
       {/* 2. Trust Highlights Bar (5 Badges) */}
       <TrustFeatures items={primaryCareTrustFeatures} />
