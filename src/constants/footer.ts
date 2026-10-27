@@ -69,6 +69,30 @@ export const routePreFooterConfigs: Record<string, Partial<PreFooterCtaConfig>> 
     },
     secondaryButton: undefined,
   },
+  [ROUTES.PRIMARY_CARE]: {
+    enabled: true,
+    title: 'Ready to Experience a Higher Standard of Care?',
+    description: 'Personalized. Proactive. Designed Around You.',
+    backgroundImage: '/assets/images/urgent-care-prefooter-banner.png',
+    floatingScript: undefined,
+    primaryButton: {
+      label: 'See Plans & Pricing →',
+      href: '#plans',
+    },
+    secondaryButton: undefined,
+  },
+  [ROUTES.WOMENS_HEALTH]: {
+    enabled: true,
+    title: 'Ready to Experience a Higher Standard of Care?',
+    description: 'Take the first step toward feeling your best with personalized care.',
+    backgroundImage: '/assets/images/urgent-care-prefooter-banner.png',
+    floatingScript: undefined,
+    primaryButton: {
+      label: 'See Plans & Pricing →',
+      href: ROUTES.PRICING,
+    },
+    secondaryButton: undefined,
+  },
 };
 
 export const footerConfig: FooterConfig = {
@@ -125,7 +149,7 @@ export const footerConfig: FooterConfig = {
       links: [
         { label: 'Weight Management', href: ROUTES.WEIGHT_LOSS },
         { label: "Men's Health", href: ROUTES.MENS_HEALTH },
-        { label: "Women's Health", href: `${ROUTES.SERVICES}#womens-health` },
+        { label: "Women's Health", href: ROUTES.WOMENS_HEALTH },
         { label: 'Peptides & Longevity', href: ROUTES.PEPTIDES },
         { label: 'Direct Primary Care', href: `${ROUTES.SERVICES}#direct-primary-care` },
         { label: 'Urgent Care', href: ROUTES.URGENT_CARE },

@@ -92,10 +92,22 @@ export function ServicesHero({ config, className = '' }: ServicesHeroProps) {
         {/* Layer 2: Text & Buttons positioned over the white fade in site-container */}
         <div className="relative z-20 w-full box-border site-container py-12 lg:py-16">
           <div className="flex flex-col items-start text-left w-full md:w-[64%] lg:w-[56%] xl:w-[52%] max-w-[680px] gap-4 sm:gap-5 lg:gap-6">
-            {/* Green Eyebrow Badge */}
+            {/* Eyebrow Badge */}
             {activeConfig.badge && (
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#4B9B44]/10 border border-[#4B9B44]/20 text-[#4B9B44] text-xs font-bold uppercase tracking-wider select-none">
-                <span className="w-2 h-2 rounded-full bg-[#4B9B44]" />
+              <div
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider select-none ${
+                  activeConfig.badgeColor === 'blue' || activeConfig.badge === "WOMEN'S HEALTH"
+                    ? 'bg-[#0E6C9B]/10 border border-[#0E6C9B]/20 text-[#0E6C9B]'
+                    : 'bg-[#4B9B44]/10 border border-[#4B9B44]/20 text-[#4B9B44]'
+                }`}
+              >
+                <span
+                  className={`w-2 h-2 rounded-full ${
+                    activeConfig.badgeColor === 'blue' || activeConfig.badge === "WOMEN'S HEALTH"
+                      ? 'bg-[#0E6C9B]'
+                      : 'bg-[#4B9B44]'
+                  }`}
+                />
                 <span>{activeConfig.badge}</span>
               </div>
             )}
@@ -135,6 +147,35 @@ export function ServicesHero({ config, className = '' }: ServicesHeroProps) {
             </div>
           </div>
         </div>
+
+        {/* Floating Checklist Card (Desktop) */}
+        {activeConfig.checklistItems && activeConfig.checklistItems.length > 0 && (
+          <div className="hidden md:block absolute bottom-6 lg:bottom-8 right-6 lg:right-12 xl:right-20 z-20 pointer-events-auto select-none">
+            <div className="bg-white/85 backdrop-blur-md border border-white/80 rounded-2xl shadow-lg px-5 py-4 flex flex-col gap-2.5 min-w-[260px]">
+              {activeConfig.checklistItems.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2.5">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="shrink-0"
+                  >
+                    <rect width="16" height="16" rx="8" fill="#4B9B44" />
+                    <path
+                      d="M11.2495 4.83594C9.65771 7.10807 8.02197 9.21094 6.34229 11.1445C6.21533 11.291 6.10465 11.3643 6.01025 11.3643C5.90283 11.3643 5.70915 11.0811 5.4292 10.5146C4.97673 9.59994 4.75049 9.05306 4.75049 8.87402C4.75049 8.80892 4.79443 8.73242 4.88232 8.64453C5.07113 8.44596 5.20459 8.34668 5.28271 8.34668C5.35433 8.34668 5.43083 8.46061 5.51221 8.68848C5.72705 9.2679 5.95329 9.78385 6.19092 10.2363C7.83805 8.56966 9.46729 6.7028 11.0786 4.63574L11.2495 4.83594V4.83594"
+                      fill="white"
+                    />
+                  </svg>
+                  <span className="text-[13px] font-semibold text-[#334155] tracking-tight">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* 2. MOBILE VIEW (HIGH-IMPACT, PURPOSE-BUILT FOR PHONES) */}
@@ -180,8 +221,20 @@ export function ServicesHero({ config, className = '' }: ServicesHeroProps) {
         <div className="relative z-10 w-full px-5 pb-10 pt-2 flex flex-col items-start gap-4">
           {/* Eyebrow Badge */}
           {activeConfig.badge && (
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4B9B44]/10 border border-[#4B9B44]/20 text-[#4B9B44] text-[11px] font-bold uppercase tracking-wider select-none">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4B9B44]" />
+            <div
+              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider select-none ${
+                activeConfig.badgeColor === 'blue' || activeConfig.badge === "WOMEN'S HEALTH"
+                  ? 'bg-[#0E6C9B]/10 border border-[#0E6C9B]/20 text-[#0E6C9B]'
+                  : 'bg-[#4B9B44]/10 border border-[#4B9B44]/20 text-[#4B9B44]'
+              }`}
+            >
+              <span
+                className={`w-1.5 h-1.5 rounded-full ${
+                  activeConfig.badgeColor === 'blue' || activeConfig.badge === "WOMEN'S HEALTH"
+                    ? 'bg-[#0E6C9B]'
+                    : 'bg-[#4B9B44]'
+                }`}
+              />
               <span>{activeConfig.badge}</span>
             </div>
           )}
@@ -232,9 +285,20 @@ export function ServicesHero({ config, className = '' }: ServicesHeroProps) {
                 ]
               ).map((item, idx) => (
                 <div key={idx} className="flex items-center gap-2.5 text-xs font-semibold text-slate-700">
-                  <span className="w-4 h-4 rounded-full bg-[#4B9B44] text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-                    ✓
-                  </span>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="shrink-0"
+                  >
+                    <rect width="16" height="16" rx="8" fill="#4B9B44" />
+                    <path
+                      d="M11.2495 4.83594C9.65771 7.10807 8.02197 9.21094 6.34229 11.1445C6.21533 11.291 6.10465 11.3643 6.01025 11.3643C5.90283 11.3643 5.70915 11.0811 5.4292 10.5146C4.97673 9.59994 4.75049 9.05306 4.75049 8.87402C4.75049 8.80892 4.79443 8.73242 4.88232 8.64453C5.07113 8.44596 5.20459 8.34668 5.28271 8.34668C5.35433 8.34668 5.43083 8.46061 5.51221 8.68848C5.72705 9.2679 5.95329 9.78385 6.19092 10.2363C7.83805 8.56966 9.46729 6.7028 11.0786 4.63574L11.2495 4.83594V4.83594"
+                      fill="white"
+                    />
+                  </svg>
                   <span>{item}</span>
                 </div>
               ))}

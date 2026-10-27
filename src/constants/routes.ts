@@ -14,6 +14,7 @@ export const ROUTES = {
   DERMATOLOGY: '/services/dermatology',
   MENTAL_HEALTH: '/services/mental-health',
   MENS_HEALTH: '/services/mens-health',
+  WOMENS_HEALTH: '/services/womens-health',
   PEPTIDES: '/services/peptides',
   PEPTIDES_LONGEVITY: '/services/peptides',
   PRIMARY_CARE: '/services/primary-care',

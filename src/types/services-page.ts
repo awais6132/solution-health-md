@@ -2,6 +2,7 @@ import React from 'react';
 
 export interface ServicesHeroConfig {
   badge?: string;
+  badgeColor?: 'green' | 'blue';
   title: React.ReactNode | string;
   description: string;
   primaryCta?: {

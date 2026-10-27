@@ -152,21 +152,19 @@ export function PrimaryCareLifestyleBanner({
           className="object-cover object-[right_top] md:object-[right_18%] select-none"
         />
 
-        {/* Optional Cursive Tagline from the full design ("Healthier Today, Brighter Tomorrow") */}
-        {showScript && (
-          <div className="hidden lg:block absolute top-12 right-20 xl:right-32 z-10 pointer-events-none select-none">
-            <span
-              style={{
-                fontFamily: 'var(--font-caveat), "Caveat", cursive',
-              }}
-              className="text-3xl xl:text-[38px] font-bold text-white -rotate-6 block leading-[1.08] drop-shadow-md tracking-wide"
-            >
-              Healthier Today
-              <br />
-              Brighter Tomorrow
-            </span>
-          </div>
-        )}
+        {/* Floating Cursive Tagline ("Healthier Today, Brighter Tomorrow") - Positioned cleanly in upper sky */}
+        <div className="hidden lg:block absolute top-5 lg:top-7 xl:top-8 right-[15%] lg:right-[17%] xl:right-[19%] 2xl:right-[21%] z-20 pointer-events-none select-none">
+          <span
+            style={{
+              fontFamily: 'var(--font-caveat), "Caveat", cursive',
+            }}
+            className="text-2xl lg:text-[28px] xl:text-[34px] font-bold text-[#0E6C9B] -rotate-12 block leading-[1.1] drop-shadow-xs tracking-wide whitespace-nowrap"
+          >
+            Healthier Today
+            <br />
+            Brighter Tomorrow
+          </span>
+        </div>
       </div>
 
       {/* 2. Content Container matching Figma 1440x250 */}

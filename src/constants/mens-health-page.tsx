@@ -15,11 +15,12 @@ import {
  */
 export const defaultMensHealthHeroConfig: ServicesHeroConfig = {
   badge: "MEN'S HEALTH",
+  badgeColor: 'blue',
   title: (
     <>
-      <span className="text-[#0E6C9B] block">More Energy.</span>
+      <span className="text-[#0E4A72] block">More Energy.</span>
       <span className="text-[#4B9B44] block">Better Health.</span>
-      <span className="text-[#0E6C9B] block">A Stronger You.</span>
+      <span className="text-[#0E4A72] block">A Stronger You.</span>
     </>
   ),
   description:
@@ -32,19 +33,19 @@ export const defaultMensHealthHeroConfig: ServicesHeroConfig = {
     label: 'How It Works',
     href: '#how-it-works',
   },
-  imageSrc: '/assets/images/peptides-hero-banner.png',
-  imageAlt: 'Mens Health More Energy Better Health A Stronger You',
-  imagePosition: 'right center',
+  imageSrc: '/assets/images/mens-health-hero-banner.png',
+  imageAlt: "Men's Health More Energy Better Health A Stronger You",
+  imagePosition: 'right bottom',
   imageAlign: 'full',
   overlayGradient:
-    'bg-gradient-to-r from-white via-white/85 via-40% to-transparent w-full md:w-[60%] lg:w-[50%]',
-  floatingTagline: (
-    <span className="inline-block text-left sm:text-center leading-[1.15]">
-      <span className="block text-[#1D70B8]">Healthier Man</span>
-      <span className="block text-[#1D70B8]">Stronger</span>
-      <span className="block text-[#1D70B8]">Future</span>
-    </span>
-  ),
+    'bg-gradient-to-r from-white via-white/80 via-35% to-transparent w-full md:w-[54%] lg:w-[46%]',
+  floatingTagline: undefined,
+  checklistItems: [
+    'Licensed Providers',
+    'Personalized Treatment Plans',
+    'Convenient Virtual Visits',
+    'Ongoing Support',
+  ],
 };
 
 /**
