@@ -1,6 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -10,38 +8,78 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# Next.js Build & Outputs
 /.next/
 /out/
-
-# production
 /build
+dist/
 
-# misc
-.DS_Store
+# TypeScript & Cache
+*.tsbuildinfo
+next-env.d.ts
+.eslintcache
+.stylelintcache
+.turbo
+.cache
+
+# Environment Variables & Secrets (Keep sensitive credentials off GitHub)
+.env*
+!.env.example
 *.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
 
-# debug
+# Logs & Debugging
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+lerna-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Testing & Coverage
+/coverage
+.nyc_output
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
 
-# vercel
+# Deployment Platforms & Hosting
 .vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# Local Netlify folder
 .netlify
 
-# Backups
+# Editor & IDE Directories
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+*.sublime-project
+*.sublime-workspace
+.fleet/
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Temporary Files & Backups
 .backup_originals
+*.bak
+*.tmp
+*.temp
